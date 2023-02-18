@@ -15,14 +15,3 @@ body:after {content:'';background-repeat:no-repeat;background-size:cover;-webkit
 .captcha-img img {height:34px;border:1px solid #e6e6e6;height:36px;width:100%;}
 
 
-/*!*轮播图样式开始*!*/
-/*.layui-carousel{*/
-/*    min-height: 14rem;*/
-/*}*/
-
-/*.layui-carousel img{*/
-/*    width: 100%;*/
-/*    height: auto;*/
-/*    display: block;*/
-/*    min-height: 14rem;*/
-/*}*/

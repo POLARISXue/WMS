@@ -5,15 +5,6 @@ layui.use(['form','jquery','jquery_cookie','carousel'], function () {
         $ = layui.jquery_cookie($);
 
 
-    // var carousel = layui.carousel;
-    // //建造实例
-    // carousel.render({
-    //     elem: '#test1'
-    //     ,width: '100%' //设置容器宽度
-    //     ,height: "100%"  //按比例和浏览器可视页面宽度来获取高度
-    //     ,arrow: 'always' //始终显示箭头
-    //     //,anim: 'updown' //切换动画方式
-    // });
 
     form.on('submit(login)', function(data){
 
@@ -55,3 +46,4 @@ layui.use(['form','jquery','jquery_cookie','carousel'], function () {
     
     
 });
+

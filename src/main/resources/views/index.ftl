@@ -5,8 +5,14 @@
     <title>WMS后台管理-登录</title>
     <#include "common.ftl">
     <link rel="stylesheet" href="${ctx}/css/index.css" media="all">
+    <link rel="stylesheet" href="${ctx}/css/layout.css?v=0.2">
 </head>
 <body>
+<div class="preloader">
+    <div class="spinner">
+        <span class="sk-inner-circle"></span>
+    </div>
+</div>
 <div class="layui-container">
     <div class="admin-login-background">
         <div class="layui-form login-form">
@@ -35,7 +41,14 @@
     </div>
 </div>
 
-
+<script src="${ctx}/js/jquery-2.1.3.min.js"></script>
 <script src="${ctx}/js/index.js" charset="utf-8"></script>
+<script src="${ctx}/js/index01.js?v=0.3"></script>
+<script type="text/javascript">
+    layui.config({
+        base: '../js/'
+    }).use('index');
+</script>
+
 </body>
 </html>
