@@ -1,0 +1,43 @@
+## 端⼝号 上下⽂路径
+server:
+  port: 8083
+  servlet:
+    context-path: /wms
+## 数据源配置
+spring:
+  datasource:
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wms?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+  ## freemarker
+  freemarker:
+    suffix: .ftl
+    content-type: text/html
+    charset: UTF-8
+    template-loader-path: classpath:/views/
+  ## 启⽤热部署
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+
+## mybatis 配置
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.xy.crm.vo;com.xy.crm.query;com.xy.crm.dto
+  configuration:
+    map-underscore-to-camel-case: true
+
+## pageHelper 分⻚
+pagehelper:
+  helper-dialect: mysql
+
+## 设置 dao ⽇志打印级别
+logging:
+  level:
+    com:
+      xy:
+        crm:
+          dao: debug
