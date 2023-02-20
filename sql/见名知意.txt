@@ -1,0 +1,9 @@
+物品  		 goods
+供应商	 supplier
+仓库		 warehouse
+
+成本价 	cost_price
+售价 		sale_price
+需求商 	customers
+销售总价  	sale_total_price
+出库状态	out_warehouse_state
