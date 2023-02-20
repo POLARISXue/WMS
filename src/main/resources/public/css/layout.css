@@ -10,7 +10,8 @@ body {
     line-height: 25px;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    background: #28292e;
+    background-image: url("../images/slide-4.png");
+    background-size: cover;
 }
 
 html{
