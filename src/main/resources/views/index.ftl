@@ -40,15 +40,7 @@
         </div>
     </div>
 </div>
-
 <script src="${ctx}/js/jquery-2.1.3.min.js"></script>
 <script src="${ctx}/js/index.js" charset="utf-8"></script>
-<script src="${ctx}/js/index01.js?v=0.3"></script>
-<script type="text/javascript">
-    layui.config({
-        base: '../js/'
-    }).use('index');
-</script>
-
 </body>
 </html>
