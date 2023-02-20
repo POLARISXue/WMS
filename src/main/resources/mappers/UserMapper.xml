@@ -144,5 +144,6 @@
     select <include refid="Base_Column_List"></include>
     from t_user
     where user_name = #{userName}
+    and is_valid = 1
   </select>
 </mapper>

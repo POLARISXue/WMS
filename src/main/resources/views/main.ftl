@@ -50,7 +50,7 @@
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-street-view"></i><span class="layui-left-nav"> 采购计划管理</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
                                     <dd>
-                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="sale_chance/index" target="_self"><i class="fa fa-tty"></i><span class="layui-left-nav">采购计划管理</span></a>
+                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="intowarehouse/index" target="_self"><i class="fa fa-tty"></i><span class="layui-left-nav">采购计划管理</span></a>
                                     </dd>
                             </dl>
                         </li>

@@ -5,13 +5,13 @@ layui.use(['table','layer'],function(){
 
 
     var tableIns = table.render({
-        elem: '#saleChanceList'
-        ,id:'saleChanceListTable'
+        elem: '#intoWarehouseList'
+        ,id:'intoWarehouseListTable'
         //容器高多  full-差值
         ,height: "full-125"
         ,cellMinWidth: 95
         //访问数据的url，对应后端的数据接口
-        ,url: ctx+'/sale_chance/list' //数据接口
+        ,url: ctx+'/intowarehouse/list' //数据接口
         ,page: true //开启分页
         ,limit: 10
         ,limits: [10,20,30,40,50]
@@ -24,54 +24,34 @@ layui.use(['table','layer'],function(){
             //fixed:固定列
             {type:'checkbox',fixed: 'center'}
             ,{field: 'id', title: 'ID', sort: true, fixed: 'left'}
-            ,{field: 'chanceSource', title: '机会来源', align:'center'}
-            ,{field: 'customerName', title: '客户姓名', align:'center'}
-            ,{field: 'cgjl', title: '成功几率', align:'center'}
-            ,{field: 'overview', title: '概要', align:'center'}
-            ,{field: 'linkMan', title: '联系人',align:'center'}
-            ,{field: 'linkPhone', title: '联系人电话', align:'center'}
-            ,{field: 'description', title: '描述', align:'center'}
-            ,{field: 'createMan', title: '创始人', align:'center'}
-            ,{field: 'uName', title: '分配人', align:'center'}
-            ,{field: 'assignTime', title: '分配时间', align:'center'}
-            ,{field: 'isValid', title: '签名', align:'center'}
+            ,{field: 'goodsName', title: '物品名称', align:'center'}
+            ,{field: 'goodsNumber', title: '物品数量', align:'center'}
+            ,{field: 'totalPrice', title: '物品总成本', align:'center'}
+            ,{field: 'supplierName', title: '供应商', align:'center'}
             ,{field: 'createDate', title: '创建时间', align:'center'}
             ,{field: 'updateDate', title: '更新时间', align:'center'}
+            ,{field: 'remarks', title: '备注', align:'center'}
             ,{field: 'state', title: '分配状态', align:'center' , templet: function (d) { return formatterState(d.state);}}
-            ,{field: 'devResult', title: '开发状态', align:'center',templet: function (d) { return formatterDevResult(d.devResult);}}
-            ,{title: '操作',templet:'#saleChanceListBar',fixed: 'right',minWidth:150}
+            ,{title: '操作',templet:'#intoWarehouseListBar',fixed: 'right',minWidth:150}
         ]]
     });
 
     function formatterState(state){
         if(state==0) {
-            return "<div style='color: #FF9933'>未分配</div>";
+            return "<div style='color: #FF9933'>未入库</div>";
         } else if(state==1) {
-            return "<div style='color: green'>已分配</div>";
+            return "<div style='color: green'>已入库</div>";
         } else {
             return "<div style='color: red'>未知</div>";
         }
     }
 
-    function formatterDevResult(value){
-        if(value == 0) {
-            return "<div style='color: #FF9933'>未开发</div>";
-        } else if(value==1) {
-            return "<div style='color: #00FF00;'>开发中</div>";
-        } else if(value==2) {
-            return "<div style='color: #00B83F'>开发成功</div>";
-        } else if(value==3) {
-            return "<div style='color: red'>开发失败</div>";
-        } else {
-            return "<div style='color: #af0000'>未知</div>"
-        }
-    }
 
     $(".search_btn").click(function (){
         tableIns.reload({
             where: { //设定异步数据接口的额外参数，任意设
-                customerName: $("input[name='customerName']").val(), // 客户名
-                createMan: $("input[name='createMan']").val(), // 创建⼈
+                goodsName: $("input[name='goodsName']").val(), // 客户名
+                supplier: $("input[name='supplier']").val(), // 创建⼈
                 state: $("#state").val() // 状态
             }
             ,page: {
@@ -80,10 +60,10 @@ layui.use(['table','layer'],function(){
         });
     });
 
-    table.on('toolbar(saleChances)', function(obj){
+    table.on('toolbar(intoWarehouse)', function(obj){
         switch(obj.event){
             case 'add':
-                openAddOrUpdateSaleChanceDialog();
+                openAddOrUpdateIntoWarehouseDialog();
                 break;
             case 'del':
                 deleteSaleChances(table.checkStatus(obj.config.id));
@@ -99,7 +79,7 @@ layui.use(['table','layer'],function(){
     table.on('tool(saleChances)',function (data){
         if (data.event == 'edit'){
             //编辑操作
-            openAddOrUpdateSaleChanceDialog(data.data.id);
+            openAddOrUpdateIntoWarehouseDialog(data.data.id);
         }else if (data.event == 'del'){
             //删除操作
             deleteSaleChance(data.data);
@@ -176,14 +156,14 @@ layui.use(['table','layer'],function(){
      * 打开添加或更新界面
      * @param saleChanceId
      */
-    function openAddOrUpdateSaleChanceDialog(saleChanceId){
+    function openAddOrUpdateIntoWarehouseDialog(saleChanceId){
 
         if (saleChanceId == '' || saleChanceId == null){
             layui.layer.open({
-                title:"<h2>营销机会管理-添加</h2>",
+                title:"<h2>采购计划管理-添加</h2>",
                 type: 2,
-                content: ctx+"/sale_chance/addOrUpdateSaleChancePage",
-                area:["500px","620px"],
+                content: ctx+"/intowarehouse/addOrUpdateSaleChancePage",
+                area:["500px","400px"],
                 maxmin:true
             })
         }else {

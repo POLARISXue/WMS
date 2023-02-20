@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="${ctx}/lib/font-awesome-4.7.0/css/font-awesome.min.css" media="all">
 <link rel="stylesheet" href="${ctx}/css/formSelects-v4.css" media="all">
 <link rel="stylesheet" href="${ctx}/css/public.css" media="all">
+<script src="${ctx}/js/jquery-2.1.3.min.js"></script>
 <script src="${ctx}/lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
 <script src="${ctx}/js/lay-config.js" charset="utf-8"></script>
 

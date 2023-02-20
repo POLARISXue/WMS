@@ -39,5 +39,5 @@ logging:
   level:
     com:
       xy:
-        crm:
+        wms:
           dao: debug
