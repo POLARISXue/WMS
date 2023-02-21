@@ -11,7 +11,7 @@
  Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 20/02/2023 19:22:24
+ Date: 21/02/2023 18:04:16
 */
 
 SET NAMES utf8mb4;
@@ -25,9 +25,10 @@ CREATE TABLE `customers`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `link_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `create_date` datetime NULL DEFAULT NULL,
   `update_date` datetime NULL DEFAULT NULL,
-  `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
@@ -35,8 +36,8 @@ CREATE TABLE `customers`  (
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
-INSERT INTO `customers` VALUES (1, 'xx超市', '13898982363', '2023-02-20 09:10:26', '2023-02-20 09:10:29', '测试', 1);
-INSERT INTO `customers` VALUES (2, 'xx商城', '15623465123', '2023-02-20 09:10:51', '2023-02-20 09:10:55', '测试', 1);
+INSERT INTO `customers` VALUES (1, 'xx超市', '13898982363', NULL, '测试', '2023-02-20 09:10:26', '2023-02-20 09:10:29', 1);
+INSERT INTO `customers` VALUES (2, 'xx商城', '15623465123', NULL, '测试', '2023-02-20 09:10:51', '2023-02-20 09:10:55', 1);
 
 -- ----------------------------
 -- Table structure for goods
@@ -52,13 +53,14 @@ CREATE TABLE `goods`  (
   `update_date` datetime NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
 INSERT INTO `goods` VALUES (1, '可口可乐', 1, 1.5, 3.5, '2023-02-20 09:12:12', '2023-02-20 09:12:18', 1);
-INSERT INTO `goods` VALUES (2, '百事可乐', 1, 1.5, 3.5, '2023-02-20 14:59:47', '2023-02-20 14:59:50', 1);
+INSERT INTO `goods` VALUES (2, '百事可乐', 1, 1.5, 3.5, '2023-02-20 14:59:47', '2023-02-21 15:51:41', 1);
+INSERT INTO `goods` VALUES (3, '冰红茶', 1, 1.5, 3, '2023-02-21 15:52:40', '2023-02-21 15:52:40', 1);
 
 -- ----------------------------
 -- Table structure for goods_supplier
@@ -86,13 +88,14 @@ DROP TABLE IF EXISTS `goods_type`;
 CREATE TABLE `goods_type`  (
   ` id` int(11) NOT NULL,
   `type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `is_valid` int(2) NULL DEFAULT NULL,
   PRIMARY KEY (` id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goods_type
 -- ----------------------------
-INSERT INTO `goods_type` VALUES (1, '饮品');
+INSERT INTO `goods_type` VALUES (1, '饮品', NULL);
 
 -- ----------------------------
 -- Table structure for into_warehouse
@@ -110,12 +113,15 @@ CREATE TABLE `into_warehouse`  (
   `state` int(11) NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of into_warehouse
 -- ----------------------------
 INSERT INTO `into_warehouse` VALUES (1, 1, 1, 100, 150, '2023-02-20 11:01:06', '2023-02-20 11:01:09', '测试数据', 0, 1);
+INSERT INTO `into_warehouse` VALUES (9, 2, 1, 10, 15, '2023-02-20 20:21:58', '2023-02-20 20:21:58', '1', 1, 1);
+INSERT INTO `into_warehouse` VALUES (10, 2, 1, 10, 15, '2023-02-20 20:22:28', '2023-02-20 20:22:28', '', 1, 1);
+INSERT INTO `into_warehouse` VALUES (11, 2, 1, 10, 15, '2023-02-20 21:22:48', '2023-02-20 22:13:49', '1', 1, 0);
 
 -- ----------------------------
 -- Table structure for into_warehouse_supplier
@@ -143,16 +149,21 @@ CREATE TABLE `out_warehouse`  (
   `customers_id` int(11) NULL DEFAULT NULL,
   `goods_number` int(11) NULL DEFAULT NULL,
   `sale_total_price` double NULL DEFAULT NULL,
-  `out_warehouse_state` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `out_warehouse_state` int(255) NULL DEFAULT NULL,
+  `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `create_date` datetime NULL DEFAULT NULL,
   `update_date` datetime NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of out_warehouse
 -- ----------------------------
+INSERT INTO `out_warehouse` VALUES (1, 2, 1, 10, 35, 0, '12', '2023-02-21 09:31:03', '2023-02-21 14:54:01', 1);
+INSERT INTO `out_warehouse` VALUES (2, 1, 1, 10, 35, 0, NULL, '2023-02-21 10:23:02', '2023-02-21 10:23:02', 1);
+INSERT INTO `out_warehouse` VALUES (3, 1, 1, 40, 140, 1, NULL, '2023-02-21 10:29:28', '2023-02-21 10:29:28', 1);
+INSERT INTO `out_warehouse` VALUES (4, 1, 1, 10, 35, 0, '2', '2023-02-21 11:26:00', '2023-02-21 11:26:00', 1);
 
 -- ----------------------------
 -- Table structure for out_warehouse_customers
@@ -178,6 +189,9 @@ CREATE TABLE `supplier`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `link_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `create_date` datetime NULL DEFAULT NULL,
+  `update_date` datetime NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
@@ -185,8 +199,51 @@ CREATE TABLE `supplier`  (
 -- ----------------------------
 -- Records of supplier
 -- ----------------------------
-INSERT INTO `supplier` VALUES (1, '百事可乐供应商', '13786541256', 1);
-INSERT INTO `supplier` VALUES (2, 'xx工厂', '18965411256', 1);
+INSERT INTO `supplier` VALUES (1, '百事可乐供应商', '13786541256', NULL, NULL, NULL, 1);
+INSERT INTO `supplier` VALUES (2, 'xx工厂', '18965411256', NULL, NULL, NULL, 1);
+
+-- ----------------------------
+-- Table structure for t_module
+-- ----------------------------
+DROP TABLE IF EXISTS `t_module`;
+CREATE TABLE `t_module`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资源名称',
+  `module_style` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '模块样式',
+  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地址',
+  `parent_id` int(11) NULL DEFAULT NULL,
+  `parent_opt_value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `grade` int(11) NULL DEFAULT NULL COMMENT '等级',
+  `opt_value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '权限值',
+  `orders` int(11) NULL DEFAULT NULL,
+  `is_valid` tinyint(4) NULL DEFAULT NULL,
+  `create_date` datetime NULL DEFAULT NULL,
+  `update_date` datetime NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 183 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_module
+-- ----------------------------
+INSERT INTO `t_module` VALUES (1, '系统管理', NULL, '#', -1, NULL, NULL, '10', NULL, 0, '2023-02-20 10:53:57', '2023-02-20 17:30:51');
+INSERT INTO `t_module` VALUES (2, '采购计划管理', NULL, '#', 1, NULL, NULL, NULL, NULL, 0, '2023-02-20 11:35:29', '2023-02-20 17:30:48');
+INSERT INTO `t_module` VALUES (166, '采购计划管理', '', NULL, -1, NULL, 0, '10', NULL, 1, '2023-02-20 17:28:07', '2023-02-20 17:32:32');
+INSERT INTO `t_module` VALUES (167, '仓库管理', '', NULL, -1, NULL, 0, '20', NULL, 1, '2023-02-20 17:28:39', '2023-02-20 17:32:35');
+INSERT INTO `t_module` VALUES (168, '销售管理', '', NULL, -1, NULL, 0, '30', NULL, 1, '2023-02-20 17:28:51', '2023-02-20 17:32:39');
+INSERT INTO `t_module` VALUES (169, '供需商管理', '', NULL, -1, NULL, 0, '40', NULL, 1, '2023-02-20 17:29:14', '2023-02-20 17:32:41');
+INSERT INTO `t_module` VALUES (170, '物品管理', '', NULL, -1, NULL, 0, '50', NULL, 1, '2023-02-20 17:29:25', '2023-02-20 17:32:45');
+INSERT INTO `t_module` VALUES (171, '系统设置', '', NULL, -1, NULL, 0, '60', NULL, 1, '2023-02-20 17:31:14', '2023-02-20 17:32:49');
+INSERT INTO `t_module` VALUES (172, '采购计划管理', '', '#shopping', 166, NULL, 1, '1010', NULL, 1, '2023-02-20 17:37:03', '2023-02-20 17:37:03');
+INSERT INTO `t_module` VALUES (173, '库存管理', '', '#wareHouseNumber', 167, NULL, 1, '2010', NULL, 1, '2023-02-20 17:37:44', '2023-02-20 17:37:44');
+INSERT INTO `t_module` VALUES (174, '销售计划管理', '', '#sale', 168, NULL, 1, '3010', NULL, 1, '2023-02-20 17:38:25', '2023-02-20 17:38:25');
+INSERT INTO `t_module` VALUES (175, '供应商管理', '', '#supplier', 169, NULL, 1, '4010', NULL, 1, '2023-02-20 17:39:03', '2023-02-20 17:39:03');
+INSERT INTO `t_module` VALUES (176, '需求商管理', '', '#customers', 169, NULL, 1, '4020', NULL, 1, '2023-02-20 17:39:35', '2023-02-20 17:39:35');
+INSERT INTO `t_module` VALUES (177, '物品管理', '', '#goods', 170, NULL, 1, '5010', NULL, 1, '2023-02-20 17:39:57', '2023-02-20 17:39:57');
+INSERT INTO `t_module` VALUES (178, '物品类型管理', '', '#goodsType', 170, NULL, 1, '5020', NULL, 1, '2023-02-20 17:40:54', '2023-02-20 17:40:54');
+INSERT INTO `t_module` VALUES (179, '用户管理', '', '#user', 171, NULL, 1, '6010', NULL, 1, '2023-02-20 17:41:48', '2023-02-20 17:41:48');
+INSERT INTO `t_module` VALUES (180, '角色管理', '', '#roles', 171, NULL, 1, '6020', NULL, 1, '2023-02-20 17:42:06', '2023-02-20 17:42:06');
+INSERT INTO `t_module` VALUES (181, '菜单管理', '', '#menuManagement', 171, NULL, 1, '6030', NULL, 1, '2023-02-20 17:43:18', '2023-02-20 17:43:18');
+INSERT INTO `t_module` VALUES (182, '测试228', '', NULL, 172, NULL, 2, '101001', NULL, 1, '2023-02-20 17:57:54', '2023-02-20 17:57:54');
 
 -- ----------------------------
 -- Table structure for t_role
@@ -282,11 +339,12 @@ CREATE TABLE `warehouse`  (
   `update_date` datetime NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of warehouse
 -- ----------------------------
-INSERT INTO `warehouse` VALUES (1, 1, 100, '2023-02-20 09:13:42', '2023-02-20 09:13:45', 1);
+INSERT INTO `warehouse` VALUES (1, 1, 10, '2023-02-20 09:13:42', '2023-02-21 10:29:27', 1);
+INSERT INTO `warehouse` VALUES (3, 2, 40, '2023-02-20 20:21:58', '2023-02-20 22:13:48', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
