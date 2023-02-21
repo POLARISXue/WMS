@@ -9,11 +9,13 @@ public class Customers {
 
     private String linkPhone;
 
+    private String address;
+
+    private String remarks;
+
     private Date createDate;
 
     private Date updateDate;
-
-    private String remarks;
 
     private Integer isValid;
 
@@ -41,6 +43,22 @@ public class Customers {
         this.linkPhone = linkPhone == null ? null : linkPhone.trim();
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks == null ? null : remarks.trim();
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -55,14 +73,6 @@ public class Customers {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks == null ? null : remarks.trim();
     }
 
     public Integer getIsValid() {

@@ -130,4 +130,40 @@
   <select id="queryAllGoods" resultType="map">
     SELECT id,goods_name FROM goods where is_valid = 1
   </select>
+
+  <select id="selectByGoodsName" resultType="com.xy.wms.vo.Goods">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    goods
+    where is_valid = 1 and goods_name = #{goodsName}
+  </select>
+
+  <select id="selectByParams" resultType="com.xy.wms.vo.Goods" parameterType="com.xy.wms.query.GoodsQuery">
+    select
+    <include refid="Base_Column_List"></include>
+    from goods
+    <where>
+      is_valid = 1
+      <if test="null != goodsName and goodsName != ''">
+        and goods_name like concat('%',#{goodsName},'%')
+      </if>
+      <if test="null != goodsTypeId">
+        and goods_type_id = #{goodsTypeId}
+      </if>
+    </where>
+  </select>
+
+  <update id="deleteBatch">
+    update
+    goods
+    set
+    is_valid = 0
+    where
+    id
+    in
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </update>
 </mapper>

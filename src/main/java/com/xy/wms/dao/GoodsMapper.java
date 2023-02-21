@@ -9,4 +9,6 @@ import java.util.Map;
 public interface GoodsMapper extends BaseMapper<Goods,Integer> {
 
     List<Map<String,Object>> queryAllGoods();
+
+    Goods selectByGoodsName(String goodsName);
 }

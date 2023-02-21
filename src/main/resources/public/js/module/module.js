@@ -14,9 +14,10 @@ layui.use(['table', 'treetable'], function () {
         toolbar: "#toolbarDemo",
         treeDefaultClose:true,
         page: true,
+
         cols: [[
             {type: 'numbers'},
-            {field: 'moduleName', minWidth: 100, title: '菜单名称'},
+            {field: 'moduleName', minWidth: 90, title: '菜单名称'},
             {field: 'optValue', title: '权限码'},
             {field: 'url', title: '菜单url'},
             {field: 'createDate', title: '创建时间'},
@@ -24,17 +25,17 @@ layui.use(['table', 'treetable'], function () {
             {
                 field: 'grade', width: 80, align: 'center', templet: function (d) {
                     if (d.grade == 0) {
-                        return '<span class="layui-badge layui-bg-blue">目录</span>';
+                        return '<span class="layui-badge layui-bg-green">目录</span>';
                     }
                     if(d.grade==1){
-                        return '<span class="layui-badge-rim">菜单</span>';
+                        return '<span class="layui-badge layui-bg-orange">菜单</span>';
                     }
                     if (d.grade == 2) {
-                        return '<span class="layui-badge layui-bg-gray">按钮</span>';
+                        return '<span class="layui-badge layui-bg-blue">按钮</span>';
                     }
                 }, title: '类型'
             },
-            {templet: '#auth-state', width: 180, align: 'center', title: '操作'}
+            {templet: '#auth-state', width: 280, align: 'center', title: '操作'}
         ]],
         done: function () {
             layer.closeAll('loading');

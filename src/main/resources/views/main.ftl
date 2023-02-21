@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>CRM-智能办公系统</title>
+    <title>SWM</title>
     <#include "common.ftl">
 </head>
 <body class="layui-layout-body layuimini-all">
@@ -11,7 +11,7 @@
         <div class="layui-logo">
             <a href="">
                 <img src="images/logo.png" alt="logo">
-                <h1>CRM-智能办公</h1>
+                <h1>SWM-智能仓管</h1>
             </a>
         </div>
         <a>
@@ -92,7 +92,7 @@
                         <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 物品管理</span> <span class="layui-nav-more"></span></a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="user/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 物品管理</span></a>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="goods/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 物品管理</span></a>
                             </dd>
                             <dd class="">
                                 <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="role/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 物品类型管理</span></a>
