@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xy.wms.dao.OutWarehouseMapper" >
+  <resultMap id="BaseResultMap" type="com.xy.wms.vo.OutWarehouse" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="customers_id" property="customersId" jdbcType="INTEGER" />
+    <result column="goods_number" property="goodsNumber" jdbcType="INTEGER" />
+    <result column="sale_total_price" property="saleTotalPrice" jdbcType="DOUBLE" />
+    <result column="out_warehouse_state" property="outWarehouseState" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goods_id, customers_id, goods_number, sale_total_price, out_warehouse_state, 
+    remarks, create_date, update_date, is_valid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from out_warehouse
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from out_warehouse
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xy.wms.vo.OutWarehouse" >
+    insert into out_warehouse (id, goods_id, customers_id, 
+      goods_number, sale_total_price, out_warehouse_state, 
+      remarks, create_date, update_date, 
+      is_valid)
+    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{customersId,jdbcType=INTEGER}, 
+      #{goodsNumber,jdbcType=INTEGER}, #{saleTotalPrice,jdbcType=DOUBLE}, #{outWarehouseState,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{isValid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xy.wms.vo.OutWarehouse" >
+    insert into out_warehouse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="customersId != null" >
+        customers_id,
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number,
+      </if>
+      <if test="saleTotalPrice != null" >
+        sale_total_price,
+      </if>
+      <if test="outWarehouseState != null" >
+        out_warehouse_state,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="customersId != null" >
+        #{customersId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNumber != null" >
+        #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="saleTotalPrice != null" >
+        #{saleTotalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="outWarehouseState != null" >
+        #{outWarehouseState,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xy.wms.vo.OutWarehouse" >
+    update out_warehouse
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="customersId != null" >
+        customers_id = #{customersId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsNumber != null" >
+        goods_number = #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="saleTotalPrice != null" >
+        sale_total_price = #{saleTotalPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="outWarehouseState != null" >
+        out_warehouse_state = #{outWarehouseState,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xy.wms.vo.OutWarehouse" >
+    update out_warehouse
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      customers_id = #{customersId,jdbcType=INTEGER},
+      goods_number = #{goodsNumber,jdbcType=INTEGER},
+      sale_total_price = #{saleTotalPrice,jdbcType=DOUBLE},
+      out_warehouse_state = #{outWarehouseState,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      is_valid = #{isValid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--  多条件查询-->
+  <select id="selectByParams" parameterType="com.xy.wms.query.OutWarehouseQuery" resultType="com.xy.wms.vo.OutWarehouse">
+    select
+    ow.id,g.goods_name,ow.goods_number,ow.sale_total_price,c.name as customers_name,ow.create_date,ow.update_date,ow.remarks,ow.out_warehouse_state
+    from out_warehouse ow
+    join customers c on ow.customers_id = c.id
+    join goods g on ow.goods_id = g.id
+    <where>
+      ow.is_valid=1
+      <if test="goodsName !=null and goodsName !=''">
+        and g.goods_name like concat('%',#{goodsName},'%')
+      </if>
+      <if test="customersName !=null and customersName !=''">
+        and c.name like concat('%',#{customersName},'%')
+      </if>
+      <if test="state !=null and state !=''">
+        and ow.state = #{state}
+      </if>
+    </where>
+  </select>
+</mapper>

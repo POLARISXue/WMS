@@ -52,7 +52,7 @@
         </javaClientGenerator>
         <!-- 数据库的表名与对应的实体类的名称，tableName是数据库中的表名，domainObjectName是⽣成的JAVA模
        型名 -->
-        <table tableName="warehouse" domainObjectName="Warehouse"
+        <table tableName="customers" domainObjectName="Customers"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
