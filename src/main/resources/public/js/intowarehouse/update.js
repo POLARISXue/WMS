@@ -17,10 +17,8 @@ layui.use(['form', 'layer'], function () {
 
         var url =ctx
 
-        url +=  "/intowarehouse/add";
+        url +=  "/intowarehouse/update";
 
-
-        console.log(data.field)
         $.post(url,data.field,function(result){
             if (result.code==200){
                 layer.msg("操作成功")
@@ -43,7 +41,7 @@ layui.use(['form', 'layer'], function () {
         data:{},
         success:function (data) {
             if (data != null){
-                var selectedId = $("#goodsId").val();
+                var selectedId = $("#intoWarehousegoodsId").val();
                 for (var i = 0; i <data.length;i++){
                     var option;
                     if (selectedId == data[i].id){
@@ -57,18 +55,56 @@ layui.use(['form', 'layer'], function () {
                     $("#goodsId").append(option);
                 }
             }
+            var goodsId=$("select[name='goodsId']").val();
+
+            $.ajax({
+                type:"get",
+                url: ctx+"/goodssupplier/queryAllSupplierByGoodsId?goodsId="+goodsId,
+                success:function (data) {
+                    if (data != null) {
+                        var selectedId = $("#intoWarehousesupplierId").val();
+                        if (data.length!=0){
+                            for (var i = 0; i < data.length; i++) {
+                                var option;
+                                if (selectedId == data[i].id) {
+                                    option = "<option value='" + data[i].id + "' selected>" + data[i].name + "</option>";
+                                } else {
+                                    option = "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
+                                }
+
+                                //设置下拉选项
+
+                                $("#supplierId").empty();
+                                $("#supplierId").append(
+                                    "<option value=\"\">请选择</option>\n"
+                                )
+
+                                $("#supplierId").append(option);
+                            }
+                        }else {
+                            $("#supplierId").empty();
+                            $("#supplierId").append(
+                                "<option value=\"\">请选择</option>\n"
+                            )
+                        }
+
+                    }
+                    //重新渲染下拉框
+                    layui.form.render("select");
+
+                }
+            })
+
+
             //重新渲染下拉框
             layui.form.render("select");
         }
     })
 
 
-
-
-
     form.on('select(addOrUpdateIntoWarehouse)',function (data) {
         var goodsId=$("select[name='goodsId']").val();
-        console.log(goodsId);
+
 
 
         $.ajax({

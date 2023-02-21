@@ -5,9 +5,9 @@
     </head>
     <body class="childrenBody">
         <form class="layui-form" style="width:80%;">
-
-            <input type="hidden" name="goodsId" value="">
-            <input type="hidden" name="supplierId" value="">
+            <input type="hidden" name="id" id="intoWarehouseId" value="${(intoWarehouse.id)!}">
+            <input type="hidden" name="goodsId" id="intoWarehousegoodsId" value="${(intoWarehouse.goodsId)!}">
+            <input type="hidden" name="supplierId" id="intoWarehousesupplierId" value="${(intoWarehouse.supplierId)!}">
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">物品</label>
                 <div class="layui-input-block">
@@ -29,7 +29,7 @@
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">物品数量</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" name="goodsNumber"  lay-verify="required"  value="" placeholder="请输入物品数量">
+                    <input type="text" class="layui-input" name="goodsNumber"  lay-verify="required"  value="${(intoWarehouse.goodsNumber)!}" placeholder="请输入物品数量">
                 </div>
             </div>
 
@@ -49,7 +49,7 @@
                 <label class="layui-form-label">备注</label>
                 <div class="layui-input-block">
                     <input type="text" class="layui-input"
-                            name="remarks" value="" id="remarks" placeholder="请输入备注">
+                            name="remarks" value="${(intoWarehouse.remarks)!}" id="remarks" placeholder="请输入备注">
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
 
         </form>
     <script src="${ctx}/js/jquery-2.1.3.min.js"></script>
-    <script type="text/javascript" src="${ctx}/js/intowarehouse/add.update.js"></script>
+    <script type="text/javascript" src="${ctx}/js/intowarehouse/update.js"></script>
 
 
     </body>

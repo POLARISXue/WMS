@@ -171,4 +171,15 @@
       </if>
     </where>
   </select>
+
+  <update id="deleteBatch">
+    UPDATE
+    into_warehouse
+    set
+    is_valid = 0
+    where
+    id IN <foreach collection="array" item="id" open="(" close=")" separator=",">
+    #{id}
+  </foreach>
+  </update>
 </mapper>

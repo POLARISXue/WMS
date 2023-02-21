@@ -66,7 +66,7 @@ layui.use(['table','layer'],function(){
                 openAddOrUpdateIntoWarehouseDialog();
                 break;
             case 'del':
-                deleteSaleChances(table.checkStatus(obj.config.id));
+                deleteIntoWarehouses(table.checkStatus(obj.config.id));
                 break;
 
         };
@@ -76,42 +76,42 @@ layui.use(['table','layer'],function(){
 
 
 
-    table.on('tool(saleChances)',function (data){
+    table.on('tool(intoWarehouse)',function (data){
         if (data.event == 'edit'){
             //编辑操作
             openAddOrUpdateIntoWarehouseDialog(data.data.id);
         }else if (data.event == 'del'){
             //删除操作
-            deleteSaleChance(data.data);
+            deleteIntoWarehouse(data.data);
         }
     })
 
     /**
      * 表格头工具栏删除
      */
-    function deleteSaleChances(checkStatus){
+    function deleteIntoWarehouses(checkStatus){
         //获取被选中的对应数据
-        var saleChanceData = checkStatus.data;
+        var IntoWarehouseData = checkStatus.data;
         //判断用户是否选择了记录
-        if (saleChanceData.length < 1){
+        if (IntoWarehouseData.length < 1){
             layer.msg("请选择要删除的记录!",{icon:5});
             return;
         }
 
-        layer.confirm("是否确认删除选择的记录",{icon:3,title:"营销机会管理"},function (index){
+        layer.confirm("是否确认删除选择的记录",{icon:3,title:"入库记录管理"},function (index){
             //关闭确认框
             layer.close(index);
             var ids= "ids=";
-            for (var i = 0;i<saleChanceData.length;i++){
-                if (i<saleChanceData.length-1){
-                    ids=ids+saleChanceData[i].id+"&ids=";
+            for (var i = 0;i<IntoWarehouseData.length;i++){
+                if (i<IntoWarehouseData.length-1){
+                    ids=ids+IntoWarehouseData[i].id+"&ids=";
                 }else {
-                    ids=ids+saleChanceData[i].id;
+                    ids=ids+IntoWarehouseData[i].id;
                 }
             }
             $.ajax({
                 type:"post",
-                url: ctx+"/sale_chance/delete",
+                url: ctx+"/intowarehouse/delete",
                 data:ids,
                 dataType:"json",
                 success:function (result){
@@ -130,19 +130,20 @@ layui.use(['table','layer'],function(){
      * 表格行工具栏删除单个记录
      * @param data
      */
-    function deleteSaleChance(data){
+    function deleteIntoWarehouse(data){
         //弹出确认框，询问用户是否删除
-        layer.confirm('确定要删除该记录吗？',{icon:3,title:"营销机会管理"},function (index){
+        layer.confirm('确定要删除该记录吗？',{icon:3,title:"入库记录管理"},function (index){
             layer.close(index);
             $.ajax({
                 type:"post",
-                url:ctx+"/sale_chance/delete",
+                url:ctx+"/intowarehouse/delete",
                 data:{
                     ids:data.id
                 },
                 dataType:"json",
                 success:function (result) {
                     if (result.code == 200){
+                        layer.msg("删除成功",{icon:6})
                         tableIns.reload({page:{curr:1}});
                     }else {
                         layer.msg(result.msg,{icon: 5});
@@ -156,21 +157,21 @@ layui.use(['table','layer'],function(){
      * 打开添加或更新界面
      * @param saleChanceId
      */
-    function openAddOrUpdateIntoWarehouseDialog(saleChanceId){
+    function openAddOrUpdateIntoWarehouseDialog(Id){
 
-        if (saleChanceId == '' || saleChanceId == null){
+        if (Id == '' || Id == null){
             layui.layer.open({
                 title:"<h2>采购计划管理-添加</h2>",
                 type: 2,
-                content: ctx+"/intowarehouse/addOrUpdateSaleChancePage",
+                content: ctx+"/intowarehouse/addOrUpdateIntoWarehousePage",
                 area:["500px","400px"],
                 maxmin:true
             })
         }else {
             layui.layer.open({
-                title:"<h2>营销机会管理-编辑</h2>",
+                title:"<h2>采购计划管理-编辑</h2>",
                 type: 2,
-                content: ctx+"/sale_chance/addOrUpdateSaleChancePage?id="+saleChanceId,
+                content: ctx+"/intowarehouse/addOrUpdateIntoWarehousePage?id="+Id,
                 area:["500px","620px"],
                 maxmin:true
             })
