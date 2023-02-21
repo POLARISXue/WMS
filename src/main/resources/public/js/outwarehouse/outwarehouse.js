@@ -31,15 +31,15 @@ layui.use(['table','layer'],function(){
             ,{field: 'createDate', title: '创建时间', align:'center'}
             ,{field: 'updateDate', title: '更新时间', align:'center'}
             ,{field: 'remarks', title: '备注', align:'center'}
-            ,{field: 'outWarehouseState', title: '分配状态', align:'center' , templet: function (d) { return formatterState(d.state);}}
+            ,{field: 'outWarehouseState', title: '分配状态', align:'center' , templet: function (d) { return formatterState(d.outWarehouseState);}}
             ,{title: '操作',templet:'#outWarehouseListBar',fixed: 'right',minWidth:150}
         ]]
     });
 
-    function formatterState(state){
-        if(state==0) {
+    function formatterState(outWarehouseState){
+        if(outWarehouseState==0) {
             return "<div style='color: #FF9933'>未出库</div>";
-        } else if(state==1) {
+        } else if(outWarehouseState==1) {
             return "<div style='color: green'>已出库</div>";
         } else {
             return "<div style='color: red'>未知</div>";
@@ -63,10 +63,10 @@ layui.use(['table','layer'],function(){
     table.on('toolbar(outWarehouse)', function(obj){
         switch(obj.event){
             case 'add':
-                openAddOrUpdateIntoWarehouseDialog();
+                openAddOrUpdateOutWarehouseDialog();
                 break;
             case 'del':
-                deleteIntoWarehouses(table.checkStatus(obj.config.id));
+                deleteOutWarehouses(table.checkStatus(obj.config.id));
                 break;
 
         };
@@ -79,21 +79,21 @@ layui.use(['table','layer'],function(){
     table.on('tool(outWarehouse)',function (data){
         if (data.event == 'edit'){
             //编辑操作
-            openAddOrUpdateIntoWarehouseDialog(data.data.id);
+            openAddOrUpdateOutWarehouseDialog(data.data.id);
         }else if (data.event == 'del'){
             //删除操作
-            deleteIntoWarehouse(data.data);
+            deleteOutWarehouse(data.data);
         }
     })
 
     /**
      * 表格头工具栏删除
      */
-    function deleteIntoWarehouses(checkStatus){
+    function deleteOutWarehouses(checkStatus){
         //获取被选中的对应数据
-        var IntoWarehouseData = checkStatus.data;
+        var OutWarehouseData = checkStatus.data;
         //判断用户是否选择了记录
-        if (IntoWarehouseData.length < 1){
+        if (OutWarehouseData.length < 1){
             layer.msg("请选择要删除的记录!",{icon:5});
             return;
         }
@@ -102,11 +102,11 @@ layui.use(['table','layer'],function(){
             //关闭确认框
             layer.close(index);
             var ids= "ids=";
-            for (var i = 0;i<IntoWarehouseData.length;i++){
-                if (i<IntoWarehouseData.length-1){
-                    ids=ids+IntoWarehouseData[i].id+"&ids=";
+            for (var i = 0;i<OutWarehouseData.length;i++){
+                if (i<OutWarehouseData.length-1){
+                    ids=ids+OutWarehouseData[i].id+"&ids=";
                 }else {
-                    ids=ids+IntoWarehouseData[i].id;
+                    ids=ids+OutWarehouseData[i].id;
                 }
             }
             $.ajax({
@@ -130,9 +130,9 @@ layui.use(['table','layer'],function(){
      * 表格行工具栏删除单个记录
      * @param data
      */
-    function deleteIntoWarehouse(data){
+    function deleteOutWarehouse(data){
         //弹出确认框，询问用户是否删除
-        layer.confirm('确定要删除该记录吗？',{icon:3,title:"入库记录管理"},function (index){
+        layer.confirm('确定要删除该记录吗？',{icon:3,title:"出库记录管理"},function (index){
             layer.close(index);
             $.ajax({
                 type:"post",
@@ -157,13 +157,13 @@ layui.use(['table','layer'],function(){
      * 打开添加或更新界面
      * @param saleChanceId
      */
-    function openAddOrUpdateIntoWarehouseDialog(Id){
+    function openAddOrUpdateOutWarehouseDialog(Id){
 
         if (Id == '' || Id == null){
             layui.layer.open({
                 title:"<h2>销售计划管理-添加</h2>",
                 type: 2,
-                content: ctx+"/outwarehouse/addOrUpdateIntoWarehousePage",
+                content: ctx+"/outwarehouse/addOrUpdateOutWarehousePage",
                 area:["500px","400px"],
                 maxmin:true
             })
@@ -171,7 +171,7 @@ layui.use(['table','layer'],function(){
             layui.layer.open({
                 title:"<h2>销售计划管理-编辑</h2>",
                 type: 2,
-                content: ctx+"/outwarehouse/addOrUpdateIntoWarehousePage?id="+Id,
+                content: ctx+"/outwarehouse/addOrUpdateOutWarehousePage?id="+Id,
                 area:["500px","620px"],
                 maxmin:true
             })

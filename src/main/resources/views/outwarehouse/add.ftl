@@ -11,7 +11,7 @@
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">物品</label>
                 <div class="layui-input-block">
-                    <select name="goodsId" id="goodsId" lay-filter="addOrUpdateIntoWarehouse">
+                    <select name="goodsId" id="goodsId" lay-filter="addOrUpdateOutWarehouse">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -20,7 +20,7 @@
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">需求商</label>
                 <div class="layui-input-block" id="supplierSelect">
-                    <select name="supplierId" id="supplierId">
+                    <select name="customersId" id="customersId">
                         <option value="">请选择</option>
                     </select>
                 </div>
@@ -36,7 +36,7 @@
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">分配状态</label>
                 <div class="layui-input-block">
-                    <select name="state" id="state">
+                    <select name="outWarehouseState" id="state">
                         <option value="">请选择</option>
                         <option value="0">未出库</option>
                         <option value="1">已出库</option>
@@ -57,7 +57,7 @@
 
             <div class="layui-form-item layui-row layui-col-xs12">
                 <div class="layui-input-block">
-                    <button class="layui-btn layui-btn-lg" lay-submit=""  lay-filter="addOrUpdateIntoWarehouse">确认 </button>
+                    <button class="layui-btn layui-btn-lg" lay-submit=""  lay-filter="addOutWarehouse">确认 </button>
                     <button class="layui-btn layui-btn-lg layui-btn-normal" id="closeBtn">取消</button>
                 </div>
             </div>

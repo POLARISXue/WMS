@@ -114,4 +114,13 @@
       is_valid = #{isValid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="queryAllCustomers" resultType="map" >
+    select
+      id,name
+    from
+      customers
+    where
+      is_valid=1
+  </select>
 </mapper>
