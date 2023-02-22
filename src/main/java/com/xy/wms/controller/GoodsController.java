@@ -43,14 +43,14 @@ public class GoodsController extends BaseController {
     @ResponseBody
     public ResultInfo addGoods(Goods goods) {
         goodsService.addGoods(goods);
-        return success("用户添加成功！！");
+        return success("物品添加成功！！");
     }
 
     @PostMapping("update")
     @ResponseBody
     public ResultInfo updateGoods(Goods goods) {
         goodsService.updateGoods(goods);
-        return success("用户更新成功！");
+        return success("物品更新成功！");
     }
 
     @RequestMapping("openAddOrUpdateGoodsPage")
@@ -61,7 +61,7 @@ public class GoodsController extends BaseController {
             // 通过id查询用户对象
             Goods goods = goodsService.selectByPrimaryKey(id);
             // 将数据设置到请求域中
-            request.setAttribute("userInfo", goods);
+            request.setAttribute("goodsInfo", goods);
         }
 
         return "goods/add_update";
@@ -84,6 +84,12 @@ public class GoodsController extends BaseController {
         goodsService.deleteByIds(ids);
 
         return success("用户删除成功！");
+    }
+
+    @RequestMapping("queryAllGoodsType")
+    @ResponseBody
+    public List<Map<String,Object>> queryAllGoodsType(){
+        return goodsService.queryAllGoodsType();
     }
 
 }

@@ -10,7 +10,7 @@ layui.use(['form', 'layer','formSelects'], function () {
         parent.layer.close(index);
     })
 
-    form.on('submit(addOrUpdateUser)',function (data){
+    form.on('submit(addOrUpdateGoodsType)',function (data){
         var loading = top.layer.msg("数据提交中，请稍后...",{
             icon:16,
             time:false,
@@ -18,12 +18,12 @@ layui.use(['form', 'layer','formSelects'], function () {
         });
 
 
-        var url=ctx+"/user/add";
-        var info="用户添加成功！";
+        var url=ctx+"/goodsType/add";
+        var info="商品类型添加成功！";
 
         if ($('[name=id]').val()){
-            url=ctx+"/user/update";
-            info="用户修改成功！";
+            url=ctx+"/goodsType/update";
+            info="商品类型修改成功！";
         }
 
         console.log(data.field);

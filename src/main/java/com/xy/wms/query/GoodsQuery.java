@@ -4,7 +4,7 @@ import com.xy.wms.base.BaseQuery;
 
 public class GoodsQuery extends BaseQuery {
     private String goodsName;
-    private Integer goodsTypeId;
+    private String goodsType;
 
     public String getGoodsName() {
         return goodsName;
@@ -14,11 +14,11 @@ public class GoodsQuery extends BaseQuery {
         this.goodsName = goodsName;
     }
 
-    public Integer getGoodsTypeId() {
-        return goodsTypeId;
+    public String getGoodsType() {
+        return goodsType;
     }
 
-    public void setGoodsTypeId(Integer goodsTypeId) {
-        this.goodsTypeId = goodsTypeId;
+    public void setGoodsType(String goodsType) {
+        this.goodsType = goodsType;
     }
 }

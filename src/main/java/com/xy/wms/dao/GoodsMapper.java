@@ -11,4 +11,6 @@ public interface GoodsMapper extends BaseMapper<Goods,Integer> {
     List<Map<String,Object>> queryAllGoods();
 
     Goods selectByGoodsName(String goodsName);
+
+    List<Map<String, Object>> queryAllGoodsType();
 }

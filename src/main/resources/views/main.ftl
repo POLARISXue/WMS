@@ -69,7 +69,7 @@
                             <dl class="layui-nav-child">
 
                                 <dd>
-                                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="customer/index" target="_self"><i class="fa fa-exchange"></i><span class="layui-left-nav"> 库存管理</span></a>
+                                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="warehouse/index" target="_self"><i class="fa fa-exchange"></i><span class="layui-left-nav"> 库存管理</span></a>
                                 </dd>
 
                             </dl>
@@ -104,7 +104,7 @@
                                 <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="goods/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 物品管理</span></a>
                             </dd>
                             <dd class="">
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="role/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 物品类型管理</span></a>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="goodsType/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 物品类型管理</span></a>
                             </dd>
                         </dl>
                     </li>

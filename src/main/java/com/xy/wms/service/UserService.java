@@ -6,6 +6,7 @@ import com.xy.wms.dao.UserMapper;
 import com.xy.wms.model.UserLoginModel;
 import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.utils.Md5Util;
+import com.xy.wms.utils.PhoneUtil;
 import com.xy.wms.utils.UserIDBase64;
 import com.xy.wms.vo.User;
 import org.apache.commons.lang3.StringUtils;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 @Service
 public class UserService extends BaseService<User,Integer> {
@@ -86,6 +88,109 @@ public class UserService extends BaseService<User,Integer> {
         AssertUtil.isTrue(StringUtils.isBlank(confirmPassword),"新密码确认值为空");
         AssertUtil.isTrue(!newPassword.equals(confirmPassword),"新密码两次输入不一致");
         AssertUtil.isTrue(newPassword.equals(oldPassword),"新密码与旧密码不能一致");
+    }
+
+    /**
+     * 添加用户
+     *  1.参数校验
+     *      用户名userName     非空，唯一性
+     *      邮箱email          非空
+     *      手机号phone        非空，格式正确
+     *  2.设置参数的默认值
+     *      isValid           1
+     *      createDate        系统当前时间
+     *      updateDate        系统当前时间
+     *      默认密码            123456-> md5加密
+     *  3.执行添加操作，判断受影响的行数
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void addUser(User user){
+        //1.参数校验
+        checkUserParams(user.getUserName(),user.getEmail(),user.getPhone(),null);
+        //2.设置参数的默认值
+        user.setIsValid(1);
+        user.setCreateDate(new Date());
+        user.setUpdateDate(new Date());
+        //设置默认密码
+        user.setUserPwd(Md5Util.encode("123456"));
+
+        //3.执行添加操作，判断受影响的行数
+        AssertUtil.isTrue(userMapper.insertSelective(user) <1,"用户添加失败！");
+
+        /* 用户角色关联  */
+        // relationUserRole(user.getId(),user.getRoleIds());
+    }
+
+
+
+    /**
+     * 更新用户
+     *  1.参数校验
+     *  判断用户ID是否为空，且数据存在
+     *      用户名userName     非空，唯一性
+     *      邮箱email          非空
+     *      手机号phone        非空，格式正确
+     *  2.设置参数的默认值
+     *      updateDate        系统当前时间
+     *  3.执行添加操作，判断受影响的行数
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void updateUser(User user){
+        //判断用户ID是否为空，且数据存在
+        AssertUtil.isTrue(null ==user.getId(),"待更新记录不存在！");
+        //通过ID查询数据
+        User temp = userMapper.selectByPrimaryKey(user.getId());
+        //判断是否存在
+        AssertUtil.isTrue(null == temp,"待更新记录不存在！");
+        //1.参数校验
+        checkUserParams(user.getUserName(),user.getEmail(),user.getPhone(),user.getId());
+        //2.设置参默认值
+        user.setUpdateDate(new Date());
+        //3.执行添加操作，判断受影响的行数
+        AssertUtil.isTrue(userMapper.updateByPrimaryKeySelective(user) !=1,"用户更新失败！");
+
+        /* 用户角色关联  */
+        // relationUserRole(user.getId(),user.getRoleIds());
+    }
+
+    private void checkUserParams(String userName, String email, String phone,Integer userId) {
+        //判断用户名是否为空
+        //通过用户名查询用户对象
+        User temp = userMapper.queryUserByUserName(userName);
+        //如果用户对象为空，则表示用户名可用；如果用户对象不为空，则表示用户名不可用
+        // 如果是添加操作，数据库中无数据，只要通过名称查到数据，则表示用户名被占用
+        // 如果是修改操作，数据库中有对应的记录，通过用户名查到数据，可能是当前记录本身，也可能是别的记录
+        // 如果用户名存在，且与当前修改记录不是同一个，则表示其他记录占用了该用户名，不可用
+        AssertUtil.isTrue(null != temp && !(temp.getId().equals(userId)),"用户名已存在，请重新输入！");
+
+        //邮箱非空
+        AssertUtil.isTrue(StringUtils.isBlank(email),"用户邮箱不能为空！");
+
+        //手机号非空
+        AssertUtil.isTrue(StringUtils.isBlank(phone),"用户手机号不能为空！");
+
+        //手机号 格式正确
+        AssertUtil.isTrue(!PhoneUtil.isMobile(phone),"手机号格式不正确！");
+    }
+
+    //用户删除
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteByIds(Integer[] ids) {
+        // 判断ids是否为空，长度是否大于0
+        AssertUtil.isTrue(ids == null && ids.length == 0,"待删除记录不存在！");
+        // 执行删除操作，判断受影响的行数
+        AssertUtil.isTrue(userMapper.deleteBatch(ids) !=ids.length,"用户删除失败！");
+
+        //遍历用户ID的数组
+        /*for (Integer userId : ids) {
+            //通过用户ID查询对应的用户角色记录
+            Integer count = userRoleMapper.countUserRoleByUserId(userId);
+            //判断用户角色记录是否存在
+            if (count > 0){
+                //通过用户ID删除对应的用户角色记录
+                AssertUtil.isTrue(userRoleMapper.deleteUserRoleByUserId(userId) !=count,"删除用户失败！");
+            }
+        }*/
     }
 
 }

@@ -123,4 +123,19 @@
       role_id = #{roleId}
 
   </select>
+
+  <select id="countPermissionByRoleId" resultType="java.lang.Integer" parameterType="int">
+    select count(1) from t_permission where role_id = #{roleId}
+  </select>
+  <delete id="deletePermissionByRoleId" parameterType="int">
+    delete from t_permission where role_id = #{roleId}
+  </delete>
+
+  <insert id="insertBatch">
+    insert into t_permission (role_id,module_id,acl_value,create_date,update_date)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.roleId},#{item.moduleId},#{item.aclValue},now(),now())
+    </foreach>
+  </insert>
 </mapper>

@@ -141,15 +141,16 @@
 
   <select id="selectByParams" resultType="com.xy.wms.vo.Goods" parameterType="com.xy.wms.query.GoodsQuery">
     select
-    <include refid="Base_Column_List"></include>
-    from goods
+    g.id, goods_name, type_name goods_type, goods_cost_price, goods_sale_price, create_date, update_date,
+    g.is_valid
+    from goods g join goods_type gt on g.goods_type_id = gt.id
     <where>
-      is_valid = 1
+      g.is_valid = 1
       <if test="null != goodsName and goodsName != ''">
         and goods_name like concat('%',#{goodsName},'%')
       </if>
-      <if test="null != goodsTypeId">
-        and goods_type_id = #{goodsTypeId}
+      <if test="null != goodsType and goodsType != ''">
+        and goods_type like concat('%',#{goodsType},'%')
       </if>
     </where>
   </select>
@@ -166,4 +167,8 @@
       #{id}
     </foreach>
   </update>
+
+  <select id="queryAllGoodsType" resultType="map">
+    select id ,type_name goods_type from  goods_type where is_valid=1
+  </select>
 </mapper>

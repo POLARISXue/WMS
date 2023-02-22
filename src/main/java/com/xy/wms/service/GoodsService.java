@@ -86,4 +86,8 @@ public class GoodsService extends BaseService<Goods,Integer> {
 
     }
 
+    public List<Map<String, Object>> queryAllGoodsType() {
+        return goodsMapper.queryAllGoodsType();
+    }
+
 }

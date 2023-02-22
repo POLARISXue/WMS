@@ -1,29 +1,21 @@
 package com.xy.wms.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
-public class Warehouse extends Goods{
+public class Role {
     private Integer id;
 
-    private Integer goodsId;
+    private String roleName;
 
-    private Integer goodsNumber;
-
+    private String roleRemark;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDate;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date updateDate;
 
     private Integer isValid;
-
-    private Date chooseTime;
-
-    public Date getChooseTime() {
-        return chooseTime;
-    }
-
-    public void setChooseTime(Date chooseTime) {
-        this.chooseTime = chooseTime;
-    }
 
     public Integer getId() {
         return id;
@@ -33,20 +25,20 @@ public class Warehouse extends Goods{
         this.id = id;
     }
 
-    public Integer getGoodsId() {
-        return goodsId;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName == null ? null : roleName.trim();
     }
 
-    public Integer getGoodsNumber() {
-        return goodsNumber;
+    public String getRoleRemark() {
+        return roleRemark;
     }
 
-    public void setGoodsNumber(Integer goodsNumber) {
-        this.goodsNumber = goodsNumber;
+    public void setRoleRemark(String roleRemark) {
+        this.roleRemark = roleRemark == null ? null : roleRemark.trim();
     }
 
     public Date getCreateDate() {

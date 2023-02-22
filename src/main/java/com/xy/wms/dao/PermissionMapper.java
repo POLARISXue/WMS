@@ -12,4 +12,8 @@ public interface PermissionMapper extends BaseMapper<Permission,Integer> {
     void deletePermissionByModuleId(Integer id);
 
     List<Integer> selectRoleHasModuleIdsByRoleId(Integer roleId);
+
+    Integer countPermissionByRoleId(Integer roleId);
+
+    void deletePermissionByRoleId(Integer roleId);
 }

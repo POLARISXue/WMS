@@ -39,7 +39,7 @@ layui.use(['table','layer'],function(){
             {type:'checkbox',fixed: 'center'}
             ,{field: 'id', title: 'ID', sort: true, fixed: 'left'}
             ,{field: 'goodsName', title: '商品名称', align:'center'}
-            ,{field: 'goodsTypeId', title: '商品类型编号', align:'center'}
+            ,{field: 'goodsType', title: '商品类型', align:'center'}
             ,{field: 'goodsCostPrice', title: '进价', align:'center'}
             ,{field: 'goodsSalePrice', title: "售价",align:'center'}
             ,{field: 'createDate', title: '创建时间',align:'center'}
@@ -74,7 +74,7 @@ layui.use(['table','layer'],function(){
             openAddOrUpdateGoods(data.data.id);
         }else if (data.event == 'del'){
             //删除操作
-            deleteGoods(data.data)
+            deleteGood(data.data)
         }
     })
 
@@ -107,7 +107,7 @@ layui.use(['table','layer'],function(){
     /**
      *
      */
-    function deleteGoods(data){
+    function deleteGood(data){
         //弹出确认框，询问用户是否删除
         layer.confirm('确定要删除该记录吗？',{icon:3,title:"用户管理"},function (index){
             layer.close(index);
@@ -163,9 +163,6 @@ layui.use(['table','layer'],function(){
             });
         })
     }
-
-
-
 
 
 });

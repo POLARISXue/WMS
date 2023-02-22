@@ -103,7 +103,45 @@
       is_valid = #{isValid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByParams" parameterType="com.xy.wms.query.WarehouseQuery" resultType="com.xy.wms.vo.Warehouse">
+    SELECT
+    W.*,G.goods_name,G.goods_cost_price,G.goods_sale_price,T.type_name
+    FROM
+    warehouse W LEFT JOIN goods G ON W.goods_id = G.id LEFT JOIN goods_type T ON G.goods_type_id = T.id
+    <where>
+      w.is_valid = 1
+      <if test="goodsId != null and goodsId != ''">
+        and w.goods_id like concat('%',#{goodsId},'%')
+      </if>
+      <if test="goodsName != null and goodsName != ''">
+        and G.goods_name like concat('%',#{goodsName},'%')
+      </if>
+    </where>
+  </select>
 
+  <select id="queryAllGoods" resultType="map">
+    SELECT id,goods_name FROM goods where is_valid = 1
+  </select>
+
+  <select id="queryGoodsByName" parameterType="java.lang.String" resultType="com.xy.wms.vo.Warehouse">
+    select warehouse.*  from warehouse JOIN	goods where warehouse.goods_id=goods.id and goods_name=#{goodsName}
+  </select>
+  <update id="deleteBatch">
+    update
+    warehouse
+    set
+    is_valid = 0
+    where
+    id
+    in
+    <foreach collection="array" separator="," open="(" close=")" item="id">
+      #{id}
+    </foreach>
+  </update>
+
+  <select id="newQuerygoodsByName" resultType="java.lang.String" parameterType="java.lang.Integer">
+    select goods_name from goods where id=#{goodsId}
+  </select>
 
   <select id="selectByGoodsId" parameterType="int" resultType="com.xy.wms.vo.Warehouse">
     SELECT <include refid="Base_Column_List" />

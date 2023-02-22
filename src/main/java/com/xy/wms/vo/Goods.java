@@ -11,6 +11,10 @@ public class Goods {
 
     private Integer goodsTypeId;
 
+    private String typeName;
+
+    private String goodsType;
+
     private Double goodsCostPrice;
 
     private Double goodsSalePrice;
@@ -22,6 +26,22 @@ public class Goods {
     private Date updateDate;
 
     private Integer isValid;
+
+    public String getGoodsType() {
+        return goodsType;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public void setGoodsType(String goodsType) {
+        this.goodsType = goodsType;
+    }
 
     public Integer getId() {
         return id;

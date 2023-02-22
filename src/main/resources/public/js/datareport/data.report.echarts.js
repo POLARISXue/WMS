@@ -20,9 +20,7 @@ function loadInventoryOverview(x,y) {
 
     option = {
         title: {
-            left: "center",
             text: 'Inventory Overview\n 仓库概览',
-            subtext: "X-Item Name/物品 名称\nY-Item Quantity/物品 数量",
             textStyle: {
                 fontSize: 20,
                 fontStyle: "italic"
@@ -55,7 +53,10 @@ function loadInventoryOverview(x,y) {
             data: x,
         },
         yAxis: {
-            type: 'value'
+            type: 'value',
+            axisLabel: {
+                formatter: '{value} item'
+            }
         },
         series: [
             {

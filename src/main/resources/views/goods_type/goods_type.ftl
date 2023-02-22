@@ -10,10 +10,10 @@
                 <form class="layui-form">
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-                            <input type="text" name="goodsName" class="layui-input searchVal" placeholder="商品名称" />
+                            <input type="text" name="typeName" class="layui-input searchVal" placeholder="商品类型名称" />
                         </div>
                         <div class="layui-input-inline">
-                            <input type="text" name="goodsType" class="layui-input searchVal" placeholder="商品类型" />
+                            <input type="text" name="id" class="layui-input searchVal" placeholder="商品类型编号" />
                         </div>
                         <a class="layui-btn search_btn" data-type="reload">
                             <i class="layui-icon">&#xe615;</i>
@@ -23,17 +23,17 @@
                 </form>
             </blockquote>
 
-            <table id="goodsList" class="layui-table"  lay-filter="goods"></table>
+            <table id="typeList" class="layui-table"  lay-filter="goodsType"></table>
 
             <script type="text/html" id="toolbarDemo">
                 <div class="layui-btn-container">
                     <a class="layui-btn layui-btn-radius layui-btn-normal addNews_btn" lay-event="add">
                         <i class="layui-icon">&#xe608;</i>
-                        添加商品
+                        添加商品类型
                     </a>
                     <a class="layui-btn layui-btn-radius layui-btn-danger delNews_btn" lay-event="del">
                         <i class="layui-icon">&#xe608;</i>
-                        删除商品
+                        删除商品类型
                     </a>
                 </div>
             </script>
@@ -42,12 +42,12 @@
             <script id="goodsListBar" type="text/html">
                 <a class="layui-btn layui-btn-sm layui-btn-warm " id="edit" lay-event="edit" >
                     <i class="layui-icon">&#xe642;</i>
-                    修改数据
+                    修改商品类型
                 </a>
                 <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
             </script>
         </form>
 
-    <script type="text/javascript" src="${ctx}/js/goods/goods.js"></script>
+    <script type="text/javascript" src="${ctx}/js/goods_type/goods_type.js"></script>
     </body>
 </html>

@@ -92,4 +92,10 @@ public class ModuleController extends BaseController {
         return "module/update";
     }
 
+    @RequestMapping("toAddGrantPage")
+    public String toAddGrantPage(Integer roleId, HttpServletRequest request){
+        request.setAttribute("roleId",roleId);
+        return "role/grant";
+    }
+
 }

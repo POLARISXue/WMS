@@ -1,47 +1,67 @@
-layui.use(['form', 'layer'], function () {
+layui.use(['form', 'layer', 'formSelects'], function () {
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : top.layer,
         $ = layui.jquery;
+    var formSelects = layui.formSelects;
 
-    $("#closeBtn").click(function (){
-        var index = parent.layer.getFrameIndex(window.name);
-        parent.layer.close(index);
-    })
 
-    form.on('submit(addOrUpdateRole)',function (data){
-        var loading = top.layer.msg("数据提交中，请稍后...",{
-            icon:16,
-            time:false,
-            shade:0.8
+    /**
+     * 表单Submit监听
+     */
+    form.on('submit(addOrUpdateRole)', function (data) {
+
+        // 提交数据时的加载层 （https://layer.layui.com/）
+        var index = top.layer.msg("数据提交中,请稍后...",{
+            icon:16, // 图标
+            time:false, // 不关闭
+            shade:0.8 // 设置遮罩的透明度
         });
 
+        // 得到所有的表单元素的值
+        var formData = data.field;
 
-        var url=ctx+"/role/add";
-        var info="角色添加成功！";
+        // 请求的地址
+        var url = ctx + "/role/add"; // 添加操作
 
-        if ($('[name=id]').val()){
-            url=ctx+"/role/update";
-            info="角色修改成功！";
+        // 判断是否是更新操作 （判断隐藏域域中是否存在角色ID）
+        var roleId = $("[name='id']").val();
+        if (roleId != null && roleId != '') {
+            // 修改操作
+            url = ctx + "/role/update";
         }
 
-        console.log(data.field);
-        $.post(url,data.field,function(result){
-            if (result.code==200){
-                // 关闭弹出层（返回值为index的弹出层）
-                top.layer.close(loading);
-                top.layer.msg(info,{icon:6});
-                // 关闭所有ifream层
+
+        $.post(url, formData, function (result) {
+            // 判断操作是否执行成功 200=成功
+            if (result.code == 200) {
+                // 成功
+                // 提示成功
+                top.layer.msg("操作成功！",{icon:6});
+                // 关闭加载层
+                top.layer.close(index);
+                // 关闭弹出层
                 layer.closeAll("iframe");
-                // 刷新⽗⻚⾯
+                // 刷新父窗口，重新加载数据
                 parent.location.reload();
-            }else {
-                layer.msg(result.msg,{icon:5});
+            } else {
+                // 失败
+                layer.msg(result.msg, {icon:5});
             }
-        })
+        });
+
+        // 阻止表单提交
         return false;
     });
 
 
+    /**
+     * 关闭弹出层
+     */
+    $("#closeBtn").click(function () {
+        // 当你在iframe页面关闭自身时
+        var index = parent.layer.getFrameIndex(window.name); // 先得到当前iframe层的索引
+        parent.layer.close(index); // 再执行关闭
+    });
 
-
+    
 });

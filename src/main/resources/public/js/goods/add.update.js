@@ -43,15 +43,29 @@ layui.use(['form', 'layer','formSelects'], function () {
         return false;
     });
 
-    /*var userId = $('[name=id]').val();
-    /!**
-     * 加载角色下拉框
-     *!/
-    formSelects.config("selectId",{
-        type:"post",
-        searchUrl:ctx+"/role/queryAllRoles?userId="+userId,
-        keyName:"roleName",
-        keyVal: 'id'
-    },true);*/
+    $.ajax({
+        type:"get",
+        url: ctx+"/goods/queryAllGoodsType",
+        data:{},
+        success:function (data) {
+            var selected = $("#hiddenGoodsTypeId").val();
+
+            if (data != null){
+                for (var i = 0; i <data.length;i++){
+                    if (data[i].id == selected){
+                        var option = "<option selected value='"+data[i].id+"'>"+data[i].goods_type+"</option>";
+                    }else {
+                        var option = "<option value='"+data[i].id+"'>"+data[i].goods_type+"</option>";
+                    }
+
+                    //设置下拉选项
+
+                    $("#goodsTypeId").append(option);
+                }
+            }
+            //重新渲染下拉框
+            layui.form.render("select");
+        }
+    })
     
 });
