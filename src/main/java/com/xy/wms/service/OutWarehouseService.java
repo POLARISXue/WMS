@@ -75,11 +75,15 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
                 ,goods.getGoodsName()
                 ,customers.getName()
                 ,outWarehouse.getGoodsNumber()
-                ,outWarehouse.getGoodsId());
+                );
         //2.设置相关参数值
         outWarehouse.setUpdateDate(new Date());
         //执行更新操作，判断受影响行数，并判断出库状态是否从未出库修改成已出库，若修改，则对库存数量减去相应数量
         if(outWarehouseMapper.selectByPrimaryKey(outWarehouse.getId()).getOutWarehouseState()==0 &&outWarehouse.getOutWarehouseState()==1){
+            Warehouse old = warehouseMapper.selectByGoodsId(outWarehouse.getGoodsId());
+            AssertUtil.isTrue(old==null,"未查询到库存");
+            Integer warehouseNumber = old.getGoodsNumber();
+            AssertUtil.isTrue( warehouseNumber==0 || warehouseNumber==null || outWarehouse.getGoodsNumber()>warehouseNumber,"当前库存数量已不足，无法出库，请重试！");
             updateWarehouse(outWarehouse);
         }
         AssertUtil.isTrue(outWarehouseMapper.updateByPrimaryKeySelective(outWarehouse)!=1,"出库记录更新失败！");
@@ -98,7 +102,7 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
     }
 
     //    基本参数校验
-    private void checkUpdateParams(Integer outWarehouseId,String goodsName, String name, Integer goodsNumber,Integer id) {
+    private void checkUpdateParams(Integer outWarehouseId,String goodsName, String name, Integer goodsNumber) {
         //1.参数校验
         // 通过id查询记录
         //  营销机会ID  非空，数据库中对应的记录存在
@@ -109,10 +113,6 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
         AssertUtil.isTrue(StringUtils.isBlank(goodsName),"未检测到物品名称！");
         AssertUtil.isTrue(StringUtils.isBlank(name),"未检测到需求商名称！");
         AssertUtil.isTrue(goodsNumber<=0,"出库数量不合法！");
-        Warehouse old = warehouseMapper.selectByGoodsId(id);
-        AssertUtil.isTrue(old==null,"未查询到库存");
-        Integer warehouseNumber = old.getGoodsNumber();
-        AssertUtil.isTrue( warehouseNumber==0 || warehouseNumber==null || goodsNumber>warehouseNumber,"当前库存数量已不足，无法出库，请重试！");
     }
 
 

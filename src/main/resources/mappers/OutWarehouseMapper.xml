@@ -185,4 +185,9 @@
     </foreach>
   </update>
 
+  <!--按天查询销售总额-->
+  <select id="saleTotalPriceByDay" resultType="com.xy.wms.vo.report.SaleTotalPriceByDay">
+    select DATE_FORMAT(create_date,'%Y年%m月%d日') group_name,SUM(sale_total_price)  sale_price from out_warehouse GROUP BY DATE_FORMAT(create_date,'%Y年%m月%d日')
+  </select>
+
 </mapper>

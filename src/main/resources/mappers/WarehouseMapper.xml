@@ -114,4 +114,8 @@
   <update id="updateByGoodsId">
     UPDATE warehouse SET goods_number=#{sum},update_date=now() WHERE goods_id=#{goodsId};
   </update>
+
+  <select id="inventoryOverview" resultType="com.xy.wms.vo.report.InventoryOverviewQuery">
+    SELECT g.goods_name, w.goods_number FROM `warehouse` w join goods g on w.goods_id=g.id ORDER BY w.id
+  </select>
 </mapper>
