@@ -6,8 +6,9 @@
     <body class="childrenBody">
         <form class="layui-form" style="width:80%;">
             <input type="hidden" name="id" id="intoWarehouseId" value="${(intoWarehouse.id)!}">
-            <input type="hidden" name="goodsId" id="intoWarehousegoodsId" value="${(intoWarehouse.goodsId)!}">
-            <input type="hidden" name="supplierId" id="intoWarehousesupplierId" value="${(intoWarehouse.supplierId)!}">
+            <input type="hidden"  id="intoWarehousegoodsId" value="${(intoWarehouse.goodsId)!}">
+            <input type="hidden"  id="intoWarehousesupplierId" value="${(intoWarehouse.supplierId)!}">
+            <input type="hidden"  id="intoWarehouseStateId" value="${(intoWarehouse.state)!}">
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">物品</label>
                 <div class="layui-input-block">
@@ -37,7 +38,7 @@
                 <label class="layui-form-label">分配状态</label>
                 <div class="layui-input-block">
                     <select name="state" id="state">
-                        <option value="">请选择</option>
+                        <option value="" >请选择</option>
                         <option value="0">未入库</option>
                         <option value="1">已入库</option>
                     </select>

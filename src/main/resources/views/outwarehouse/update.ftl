@@ -8,6 +8,7 @@
             <input type="hidden" name="id" id="outWarehouseId" value="${(outWarehouse.id)!}">
             <input type="hidden"  id="outWarehousegoodsId" value="${(outWarehouse.goodsId)!}">
             <input type="hidden"  id="outWarehousecustomersId" value="${(outWarehouse.customersId)!}">
+            <input type="hidden"  id="outWarehouseStateId" value="${(outWarehouse.outWarehouseState)!}">
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">物品</label>
                 <div class="layui-input-block">

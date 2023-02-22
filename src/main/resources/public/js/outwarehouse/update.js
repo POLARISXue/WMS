@@ -30,6 +30,13 @@ layui.use(['form', 'layer'], function () {
         return false;
     })
 
+    var selectedId = $("#outWarehouseStateId").val();
+    if (selectedId==0){
+        $("#state").find("option[value='0']").attr("selected",true);
+    }else if (selectedId==1){
+        $("#state").find("option[value='1']").attr("selected",true);
+    }
+
 
 
 

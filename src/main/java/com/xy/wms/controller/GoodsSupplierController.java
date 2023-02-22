@@ -21,7 +21,8 @@ public class GoodsSupplierController extends BaseController {
     @RequestMapping("/queryAllSupplierByGoodsId")
     @ResponseBody
     public List<Map<String,Object>>  queryAllSupplierByGoodsId(Integer goodsId){
-        return goodsSupplierService.queryAllSupplierByGoodsId(goodsId);
+        List<Map<String,Object>> list = goodsSupplierService.queryAllSupplierByGoodsId(goodsId);
+        return list;
     }
 
 

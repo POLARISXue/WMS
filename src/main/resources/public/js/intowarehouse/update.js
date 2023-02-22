@@ -31,6 +31,12 @@ layui.use(['form', 'layer'], function () {
         })
         return false;
     })
+    var selectedId = $("#intoWarehouseStateId").val();
+    if (selectedId==0){
+        $("#state").find("option[value='0']").attr("selected",true);
+    }else if (selectedId==1){
+        $("#state").find("option[value='1']").attr("selected",true);
+    }
 
 
 
@@ -64,6 +70,8 @@ layui.use(['form', 'layer'], function () {
                     if (data != null) {
                         var selectedId = $("#intoWarehousesupplierId").val();
                         if (data.length!=0){
+                            $("#supplierId").empty();
+                            $("#supplierId").append("<option value=\"\">请选择</option>\n")
                             for (var i = 0; i < data.length; i++) {
                                 var option;
                                 if (selectedId == data[i].id) {
@@ -71,21 +79,12 @@ layui.use(['form', 'layer'], function () {
                                 } else {
                                     option = "<option value='" + data[i].id + "'>" + data[i].name + "</option>";
                                 }
-
                                 //设置下拉选项
-
-                                $("#supplierId").empty();
-                                $("#supplierId").append(
-                                    "<option value=\"\">请选择</option>\n"
-                                )
-
                                 $("#supplierId").append(option);
                             }
                         }else {
                             $("#supplierId").empty();
-                            $("#supplierId").append(
-                                "<option value=\"\">请选择</option>\n"
-                            )
+                            $("#supplierId").append("<option value=\"\">请选择</option>\n")
                         }
 
                     }
