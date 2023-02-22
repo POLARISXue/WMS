@@ -11,7 +11,7 @@
  Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 21/02/2023 18:04:16
+ Date: 22/02/2023 11:35:29
 */
 
 SET NAMES utf8mb4;
@@ -36,8 +36,8 @@ CREATE TABLE `customers`  (
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
-INSERT INTO `customers` VALUES (1, 'xx超市', '13898982363', NULL, '测试', '2023-02-20 09:10:26', '2023-02-20 09:10:29', 1);
-INSERT INTO `customers` VALUES (2, 'xx商城', '15623465123', NULL, '测试', '2023-02-20 09:10:51', '2023-02-20 09:10:55', 1);
+INSERT INTO `customers` VALUES (1, 'xx超市', '13898982363', '北京', '测试', '2023-02-20 09:10:26', '2023-02-20 09:10:29', 1);
+INSERT INTO `customers` VALUES (2, 'xx商城', '15623465123', '上海', '测试', '2023-02-20 09:10:51', '2023-02-20 09:10:55', 1);
 
 -- ----------------------------
 -- Table structure for goods
@@ -74,22 +74,24 @@ CREATE TABLE `goods_supplier`  (
   `update_date` datetime NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goods_supplier
 -- ----------------------------
 INSERT INTO `goods_supplier` VALUES (1, 2, 1, '2023-02-20 15:57:42', '2023-02-20 15:57:45', 1);
+INSERT INTO `goods_supplier` VALUES (2, 2, 2, '2023-02-22 09:20:46', '2023-02-22 09:20:48', 1);
+INSERT INTO `goods_supplier` VALUES (3, 1, 2, '2023-02-22 09:21:00', '2023-02-22 09:21:03', 1);
 
 -- ----------------------------
 -- Table structure for goods_type
 -- ----------------------------
 DROP TABLE IF EXISTS `goods_type`;
 CREATE TABLE `goods_type`  (
-  ` id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `is_valid` int(2) NULL DEFAULT NULL,
-  PRIMARY KEY (` id`) USING BTREE
+  PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -118,8 +120,8 @@ CREATE TABLE `into_warehouse`  (
 -- ----------------------------
 -- Records of into_warehouse
 -- ----------------------------
-INSERT INTO `into_warehouse` VALUES (1, 1, 1, 100, 150, '2023-02-20 11:01:06', '2023-02-20 11:01:09', '测试数据', 0, 1);
-INSERT INTO `into_warehouse` VALUES (9, 2, 1, 10, 15, '2023-02-20 20:21:58', '2023-02-20 20:21:58', '1', 1, 1);
+INSERT INTO `into_warehouse` VALUES (1, 1, 2, 100, 150, '2023-02-20 11:01:06', '2023-02-22 09:21:24', '测试数据', 0, 1);
+INSERT INTO `into_warehouse` VALUES (9, 2, 1, 10, 15, '2023-02-20 20:21:58', '2023-02-22 09:19:46', '1', 1, 1);
 INSERT INTO `into_warehouse` VALUES (10, 2, 1, 10, 15, '2023-02-20 20:22:28', '2023-02-20 20:22:28', '', 1, 1);
 INSERT INTO `into_warehouse` VALUES (11, 2, 1, 10, 15, '2023-02-20 21:22:48', '2023-02-20 22:13:49', '1', 1, 0);
 
@@ -155,7 +157,7 @@ CREATE TABLE `out_warehouse`  (
   `update_date` datetime NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of out_warehouse
@@ -164,6 +166,7 @@ INSERT INTO `out_warehouse` VALUES (1, 2, 1, 10, 35, 0, '12', '2023-02-21 09:31:
 INSERT INTO `out_warehouse` VALUES (2, 1, 1, 10, 35, 0, NULL, '2023-02-21 10:23:02', '2023-02-21 10:23:02', 1);
 INSERT INTO `out_warehouse` VALUES (3, 1, 1, 40, 140, 1, NULL, '2023-02-21 10:29:28', '2023-02-21 10:29:28', 1);
 INSERT INTO `out_warehouse` VALUES (4, 1, 1, 10, 35, 0, '2', '2023-02-21 11:26:00', '2023-02-21 11:26:00', 1);
+INSERT INTO `out_warehouse` VALUES (5, 1, 1, 10, 35, 0, '23', '2023-02-22 11:28:34', '2023-02-22 11:28:34', 1);
 
 -- ----------------------------
 -- Table structure for out_warehouse_customers
@@ -334,7 +337,7 @@ DROP TABLE IF EXISTS `warehouse`;
 CREATE TABLE `warehouse`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `goods_id` int(11) NULL DEFAULT NULL,
-  `goods_number` int(11) NOT NULL,
+  `goods_number` int(11) NULL DEFAULT NULL,
   `create_date` datetime NULL DEFAULT NULL,
   `update_date` datetime NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
@@ -345,6 +348,6 @@ CREATE TABLE `warehouse`  (
 -- Records of warehouse
 -- ----------------------------
 INSERT INTO `warehouse` VALUES (1, 1, 10, '2023-02-20 09:13:42', '2023-02-21 10:29:27', 1);
-INSERT INTO `warehouse` VALUES (3, 2, 40, '2023-02-20 20:21:58', '2023-02-20 22:13:48', 1);
+INSERT INTO `warehouse` VALUES (3, 2, 50, '2023-02-20 20:21:58', '2023-02-22 09:19:45', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

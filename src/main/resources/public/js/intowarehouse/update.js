@@ -113,6 +113,10 @@ layui.use(['form', 'layer'], function () {
                 if (data != null) {
                     var selectedId = $("#supplierId").val();
                     if (data.length!=0){
+                        $("#supplierId").empty();
+                        $("#supplierId").append(
+                            "<option value=\"\">请选择</option>\n"
+                        )
                         for (var i = 0; i < data.length; i++) {
                             var option;
                             if (selectedId == data[i].id) {
@@ -123,10 +127,7 @@ layui.use(['form', 'layer'], function () {
 
                             //设置下拉选项
 
-                            $("#supplierId").empty();
-                            $("#supplierId").append(
-                                "<option value=\"\">请选择</option>\n"
-                            )
+
 
                             $("#supplierId").append(option);
                         }

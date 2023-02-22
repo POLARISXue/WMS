@@ -47,6 +47,15 @@
                 <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-this" id="currency">
 
                         <li class="layui-nav-item">
+                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-street-view"></i><span class="layui-left-nav"> 数据报表</span> <span class="layui-nav-more"></span></a>
+                            <dl class="layui-nav-child">
+                                <dd>
+                                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="dataReport/index" target="_self"><i class="fa fa-tty"></i><span class="layui-left-nav">数据报表</span></a>
+                                </dd>
+                            </dl>
+                        </li>
+
+                        <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-street-view"></i><span class="layui-left-nav"> 采购计划管理</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
                                     <dd>

@@ -6,8 +6,6 @@
     <body class="childrenBody">
         <form class="layui-form" style="width:80%;">
 
-            <input type="hidden" name="goodsId" value="">
-            <input type="hidden" name="supplierId" value="">
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">物品</label>
                 <div class="layui-input-block">
