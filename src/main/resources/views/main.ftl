@@ -145,6 +145,12 @@
         </div>
     </div>
 
+    <div class="layui-footer layui-tab -copyright" style="height: 30px;background-color: #393D49;text-align: center" >
+        <div style="color: #FFFFFF ;text-align: center" >
+       © Copyright <strong><span>JAVA63-2-WMS</span></strong>. All Rights Reserved
+        </div>
+    </div>
+
 </div>
 
 <script type="text/javascript" src="${ctx}/js/main.js"></script>

@@ -26,7 +26,7 @@
                         <option value="1" >已出库</option>
                     </select>
 				</div>
-				<a class="layui-btn search_btn" data-type="reload"><i
+				<a class="layui-btn search_btn layui-btn-normal" data-type="reload"><i
 							class="layui-icon">&#xe615;</i> 搜索</a>
 			</div>
 		</form>
@@ -52,8 +52,14 @@
 	<!--行工具栏-->
 	<!--操作-->
 	<script id="outWarehouseListBar" type="text/html">
-		<a class="layui-btn layui-btn-xs" id="edit" lay-event="edit">编辑</a>
-		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+		<a class="layui-btn layui-btn-xs layui-btn layui-btn-normal" id="edit" lay-event="edit">
+			<i class="layui-icon">&#xe642;</i>
+			编辑
+		</a>
+		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">
+			<i class="layui-icon">&#xe67e;</i>
+			删除
+		</a>
 	</script>
 
 </form>

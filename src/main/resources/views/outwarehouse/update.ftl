@@ -5,7 +5,7 @@
     </head>
     <body class="childrenBody">
         <form class="layui-form" style="width:80%;">
-            <input type="hidden" name="id" id="intoWarehouseId" value="${(outWarehouse.id)!}">
+            <input type="hidden" name="id" id="outWarehouseId" value="${(outWarehouse.id)!}">
             <input type="hidden"  id="outWarehousegoodsId" value="${(outWarehouse.goodsId)!}">
             <input type="hidden"  id="outWarehousecustomersId" value="${(outWarehouse.customersId)!}">
             <div class="layui-form-item layui-row layui-col-xs12">
