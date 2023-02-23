@@ -7,6 +7,7 @@ import com.xy.wms.dao.OutWarehouseMapper;
 import com.xy.wms.dao.WarehouseMapper;
 import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.*;
+import com.xy.wms.vo.report.RadarChart;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
@@ -126,4 +128,7 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
 
     }
 
+    public List<Integer> loadRadarChart() {
+        return outWarehouseMapper.loadRadarChart();
+    }
 }

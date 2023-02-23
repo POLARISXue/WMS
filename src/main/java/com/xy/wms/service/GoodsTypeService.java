@@ -32,6 +32,8 @@ public class GoodsTypeService extends BaseService<GoodsType,Integer> {
 
 
 
+
+
     public void updateGoodsType(GoodsType goodsType) {
         AssertUtil.isTrue(null == goodsType.getId(),"待修改记录不存在");
         AssertUtil.isTrue(null == goodsTypeMapper.selectByPrimaryKey(goodsType.getId()),"待修改记录不存在！！");
@@ -46,5 +48,9 @@ public class GoodsTypeService extends BaseService<GoodsType,Integer> {
         GoodsType temp = goodsTypeMapper.selectByTypeName(typeName);
         AssertUtil.isTrue(null != temp &&!(temp.getId().equals(id)),"商品类型不能重复");
 
+    }
+
+    public List<Map<String,Integer>> loadRadarChart() {
+        return goodsTypeMapper.loadRadarChart();
     }
 }

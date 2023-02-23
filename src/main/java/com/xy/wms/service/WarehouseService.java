@@ -8,6 +8,7 @@ import com.xy.wms.dao.WarehouseMapper;
 import com.xy.wms.query.WarehouseQuery;
 import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.Warehouse;
+import com.xy.wms.vo.report.RadarChart;
 import com.xy.wms.vo.wms.WMS;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -105,5 +106,10 @@ public class WarehouseService extends BaseService<Warehouse,Integer> {
         map.put("Librarycapacity", WMS.Librarycapacity);
         resultInfo.setResult(map);
         return resultInfo;
+    }
+
+
+    public List<Integer> loadRadarChart() {
+       return warehouseMapper.loadRadarChart();
     }
 }

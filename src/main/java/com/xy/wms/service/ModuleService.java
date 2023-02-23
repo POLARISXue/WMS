@@ -51,7 +51,7 @@ public class ModuleService extends BaseService<Module, Integer> {
         Integer grade = module.getGrade();
         AssertUtil.isTrue(null == grade||!(grade == 0 ||grade == 1 ||grade == 2),"待添加的层级不合法");
         //根据层级查询名称，名称不能重复
-        AssertUtil.isTrue(!(null == moduleMapper.selectByGradeAndModuleName(grade,module.getModuleName())),"同意层级内权限名称不能重复");
+        AssertUtil.isTrue(null != moduleMapper.selectByGradeAndModuleNameAndParentId(grade,module.getModuleName(),module.getParentId()),"同一层级内权限名称不能重复");
         //判断层级
         if (grade == -1){
             AssertUtil.isTrue(StringUtils.isBlank(module.getUrl()),"url不能为空！");
@@ -96,7 +96,7 @@ public class ModuleService extends BaseService<Module, Integer> {
         Integer grade =module.getGrade();
         AssertUtil.isTrue(null == grade ||!(grade == 0 || grade == 1 || grade == 2),"修改层级不满足要求");
         //模块名称判断
-        temp = moduleMapper.selectByGradeAndModuleName(grade,module.getModuleName());
+        temp = moduleMapper.selectByGradeAndModuleNameAndParentId(grade,module.getModuleName(),module.getParentId());
         //非空，同一层级下模块名称唯一 （不包含当前修改记录本身）
         if (temp != null) {
             AssertUtil.isTrue(!(temp.getId()).equals(module.getId()), "该层级下菜单名已存在！");

@@ -103,5 +103,8 @@
       </if>
     </where>
   </select>
+  <select id="loadRadarChart" resultType="string">
+    SELECT type_name name,1000 max from goods_type WHERE is_valid=1 ORDER BY id
+  </select>
 
 </mapper>

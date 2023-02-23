@@ -10,4 +10,6 @@ public interface GoodsTypeMapper extends BaseMapper<GoodsType,Integer> {
 
     List<Map<String,Object>> queryAllGoodsType();
     GoodsType selectByTypeName(String typeName);
+
+    List<Map<String,Integer>> loadRadarChart();
 }

@@ -73,7 +73,10 @@
 
                     <div class="layui-col-md6">
                         <div class="layui-card">
+                            <div class="layui-card-header">库存/销售类型统计</div>
+                            <div class="layui-card-body" id="radarChart" style="width: 100%;height:500px">
 
+                            </div>
 
                         </div>
                     </div>
@@ -105,5 +108,6 @@
 <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/datareport/data.report.title.js"></script>
 <script type="text/javascript" src="${ctx}/js/datareport/data.report.libraryCapacity.js"></script>
+<script type="text/javascript" src="${ctx}/js/datareport/data.report.radarChart.js"></script>
 </body>
 </html>

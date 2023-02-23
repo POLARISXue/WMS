@@ -11,7 +11,6 @@ public interface ModuleMapper extends BaseMapper<Module,Integer> {
 
     List<Module> queryModuleList();
 
-    Module selectByGradeAndModuleName(@Param("grade") Integer grade, @Param("moduleName")String moduleName);
 
     Module selectModuleByOptValue(String optValue);
 
@@ -21,5 +20,5 @@ public interface ModuleMapper extends BaseMapper<Module,Integer> {
 
     List<TreeModel> selectAllModules();
 
-
+    Module selectByGradeAndModuleNameAndParentId(@Param("grade") Integer grade, @Param("moduleName")String moduleName,@Param("parentId") Integer parentId);
 }

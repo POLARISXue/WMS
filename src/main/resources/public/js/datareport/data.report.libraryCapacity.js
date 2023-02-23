@@ -26,9 +26,6 @@ function loadInventory(x,y) {
                 type: 'gauge',
                 min:0,
                 max:y,
-                progress: {
-                    show: true,
-                },
                 axisLine: {
                     lineStyle: {
                         width: 30,

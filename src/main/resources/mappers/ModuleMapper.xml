@@ -182,13 +182,13 @@
     where
         is_valid = 1
   </select>
-  <select id="selectByGradeAndModuleName" resultType="com.xy.wms.vo.Module">
+  <select id="selectByGradeAndModuleNameAndParentId" resultType="com.xy.wms.vo.Module">
     select
         <include refid="Base_Column_List"></include>
     from
         t_module
     where
-        is_valid = 1 and grade = #{grade} and module_name = #{moduleName}
+        is_valid = 1 and grade = #{grade} and module_name = #{moduleName} and parent_id = #{parentId}
   </select>
   <select id="selectByGradeAndUrl" resultType="com.xy.wms.vo.Module">
     select

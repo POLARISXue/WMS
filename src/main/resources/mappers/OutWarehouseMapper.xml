@@ -190,4 +190,8 @@
     select DATE_FORMAT(create_date,'%Y年%m月%d日') group_name,SUM(sale_total_price)  sale_price from out_warehouse GROUP BY DATE_FORMAT(create_date,'%Y年%m月%d日') limit 10
   </select>
 
+  <select id="loadRadarChart" resultType="int">
+    SELECT sum from goods_type gt LEFT JOIN (SELECT SUM(goods_number) sum,goods_type_id FROM `out_warehouse` w JOIN goods g on w.goods_id=g.id WHERE w.is_valid=1 GROUP BY goods_type_id ORDER BY goods_type_id) wg
+     on gt.id = wg.goods_type_id WHERE gt.is_valid=1 ORDER BY gt.id
+  </select>
 </mapper>
