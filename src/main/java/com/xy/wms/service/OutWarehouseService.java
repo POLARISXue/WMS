@@ -38,6 +38,7 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
         Customers customers = customersMapper.selectByPrimaryKey(outWarehouse.getCustomersId());
         AssertUtil.isTrue(null == goods,"未查询到对应的物品数据");
         AssertUtil.isTrue(null==customers,"未查询到对应的需求商数据");
+        AssertUtil.isTrue(null == outWarehouse.getOutWarehouseState(),"出库状态不能为空");
         //1.参数校验
         checkAddParams(
                  goods.getGoodsName()
@@ -68,8 +69,9 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
         //校验基础参数
         Goods goods = goodsMapper.selectByPrimaryKey(outWarehouse.getGoodsId());
         Customers customers = customersMapper.selectByPrimaryKey(outWarehouse.getCustomersId());
-        AssertUtil.isTrue(null == goods,"为查询到对应的物品数据");
-        AssertUtil.isTrue(null==customers,"为查询到对应的需求商数据");
+        AssertUtil.isTrue(null == goods,"未查询到对应的物品数据");
+        AssertUtil.isTrue(null==customers,"未查询到对应的需求商数据");
+        AssertUtil.isTrue(null == outWarehouse.getOutWarehouseState(),"出库状态不能为空");
         //1.参数校验
         checkUpdateParams(outWarehouse.getId()
                 ,goods.getGoodsName()

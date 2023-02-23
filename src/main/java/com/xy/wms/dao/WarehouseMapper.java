@@ -22,5 +22,6 @@ public interface WarehouseMapper extends BaseMapper<Warehouse,Integer> {
 
     List<InventoryOverviewQuery> inventoryOverview();
 
+    Integer queryInventory();
 
 }

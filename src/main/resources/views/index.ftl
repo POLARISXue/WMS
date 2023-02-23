@@ -6,6 +6,7 @@
     <#include "common.ftl">
     <link rel="stylesheet" href="${ctx}/css/index.css" media="all">
     <link rel="stylesheet" href="${ctx}/css/layout.css?v=0.2">
+
 </head>
 <body>
 <div class="preloader">
@@ -17,8 +18,7 @@
     <div class="admin-login-background">
         <div class="layui-form login-form">
             <form class="layui-form" action="">
-                <div class="layui-form-item logo-title">
-                    <h1>WMS后端登录</h1>
+                <div id="indexTitle" style="height: 100px;width: 100%" >
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-icon layui-icon-username" for="username"></label>
@@ -42,6 +42,8 @@
 </div>
 <script src="${ctx}/js/jquery-2.1.3.min.js"></script>
 <script src="${ctx}/js/index.js" charset="utf-8"></script>
-<script src="${ctx}/index.Title.js"></script>
+<script type="text/javascript" src="${ctx}/js/echarts.js"></script>
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/index.Title.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@ import com.xy.wms.dao.WarehouseMapper;
 import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.IntoWarehouse;
 import com.xy.wms.vo.Warehouse;
+import com.xy.wms.vo.wms.WMS;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,6 +64,7 @@ public class IntoWarehouseService extends BaseService<IntoWarehouse,Integer> {
         AssertUtil.isTrue(intoWarehouse.getGoodsId()==null,"物品名称不能为空");
         AssertUtil.isTrue(intoWarehouse.getSupplierId()==null,"供应商不能为空");
         AssertUtil.isTrue(intoWarehouse.getGoodsNumber()==null || intoWarehouse.getGoodsNumber()<1,"物品数量异常");
+        AssertUtil.isTrue(intoWarehouse.getGoodsNumber()> WMS.Librarycapacity-warehouseMapper.queryInventory(),"物品数量大于剩余库存容量");
         AssertUtil.isTrue(intoWarehouse.getState()==null,"采购状态不能为空");
 
     }

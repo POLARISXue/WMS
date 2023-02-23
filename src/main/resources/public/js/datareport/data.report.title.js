@@ -1,4 +1,4 @@
-var chartDom = document.getElementById('indexTitle');
+var chartDom = document.getElementById('datareportTitle');
 var myChart = echarts.init(chartDom);
 var option;
 
@@ -10,7 +10,7 @@ option = {
                 left: 'center',
                 top: 'center',
                 style: {
-                    text:'WMS',
+                    text:'              Welcome To\nWarehouse Management System',
                     fontSize: 80,
                     fontWeight: 'bold',
                     lineDash: [0, 200],

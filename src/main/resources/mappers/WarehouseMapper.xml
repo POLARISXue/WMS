@@ -156,4 +156,8 @@
   <select id="inventoryOverview" resultType="com.xy.wms.vo.report.InventoryOverviewQuery">
     SELECT g.goods_name, w.goods_number FROM warehouse w join goods g on w.goods_id=g.id ORDER BY w.goods_number LIMIT 25
   </select>
+  
+  <select id="queryInventory" resultType="int">
+    SELECT SUM(goods_number) FROM warehouse WHERE is_valid=1
+  </select>
 </mapper>

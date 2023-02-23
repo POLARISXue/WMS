@@ -3,10 +3,12 @@ package com.xy.wms.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.xy.wms.base.BaseService;
+import com.xy.wms.base.ResultInfo;
 import com.xy.wms.dao.WarehouseMapper;
 import com.xy.wms.query.WarehouseQuery;
 import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.Warehouse;
+import com.xy.wms.vo.wms.WMS;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -92,5 +94,16 @@ public class WarehouseService extends BaseService<Warehouse,Integer> {
     public void deleteWarehouse(Integer[] ids){
         AssertUtil.isTrue(null==ids||ids.length==0,"请选择待删除记录！");
         AssertUtil.isTrue(deleteBatch(ids)!=ids.length,"记录删除失败");
+    }
+
+    public ResultInfo queryInventory() {
+        ResultInfo resultInfo = new ResultInfo();
+        Integer inventory = warehouseMapper.queryInventory();
+        AssertUtil.isTrue(inventory==null || inventory<0,"库存异常");
+        HashMap<String,Integer> map = new HashMap<>();
+        map.put("inventory",inventory);
+        map.put("Librarycapacity", WMS.Librarycapacity);
+        resultInfo.setResult(map);
+        return resultInfo;
     }
 }

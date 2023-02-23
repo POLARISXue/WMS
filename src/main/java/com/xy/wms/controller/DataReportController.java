@@ -2,7 +2,9 @@ package com.xy.wms.controller;
 
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
+import com.xy.wms.dao.WarehouseMapper;
 import com.xy.wms.service.DataReportService;
+import com.xy.wms.service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,9 @@ public class DataReportController extends BaseController {
 
     @Autowired
     private DataReportService dataReportService;
+
+    @Autowired
+    private WarehouseService warehouseService;
 
 
     @RequestMapping("/index")
@@ -33,6 +38,12 @@ public class DataReportController extends BaseController {
     @ResponseBody
     public ResultInfo dailySalesExpenses(){
         return dataReportService.dailySalesExpenses();
+    }
+
+    @RequestMapping("/queryInventory")
+    @ResponseBody
+    public ResultInfo queryInventory(){
+       return warehouseService.queryInventory();
     }
 
 }
