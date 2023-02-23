@@ -101,7 +101,7 @@
     </div>
 </div>
 
-
+<script type="text/javascript" src="${ctx}/js/datareport/index.js"></script>
 <script type="text/javascript" src="${ctx}/js/echarts.js"></script>
 <script type="text/javascript" src="${ctx}/js/datareport/data.report.echarts.js"></script>
 <script type="text/javascript" src="${ctx}/js/datareport/data.report.echarts.saletotalprice.js"></script>
