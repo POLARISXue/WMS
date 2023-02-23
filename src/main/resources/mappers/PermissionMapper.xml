@@ -138,4 +138,18 @@
       (#{item.roleId},#{item.moduleId},#{item.aclValue},now(),now())
     </foreach>
   </insert>
+
+  <select id="queryUserHasRoleHasPermissionByUserId" parameterType="int" resultType="java.lang.String">
+    select distinct
+      acl_value
+    from
+      t_user_role ur
+        left join
+      t_permission p
+      on
+        ur.role_id = p.role_id
+    where
+      ur.user_id = #{userId}
+  </select>
+
 </mapper>

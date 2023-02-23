@@ -10,7 +10,7 @@ layui.use(['util', 'laydate', 'layer'], function() {
         , bgcolor: '#393D49'
         , click: function (type) {
             if (type === 'bar2') {
-                layer.msg('数据皆为实时数据');
+                layer.msg('如有疑问欢迎咨询:QQ-578152192');
             }
         }
     });
