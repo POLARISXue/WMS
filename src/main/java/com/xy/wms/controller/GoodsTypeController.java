@@ -1,5 +1,6 @@
 package com.xy.wms.controller;
 
+import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
 import com.xy.wms.query.GoodsTypeQuery;
@@ -20,7 +21,7 @@ import java.util.Map;
 public class GoodsTypeController extends BaseController {
     @Resource
     private GoodsTypeService goodsTypeService;
-
+    @RequiredPermission(code = "5020")
     @RequestMapping("index")
     public String index(){
         return "goods_type/goods_type";

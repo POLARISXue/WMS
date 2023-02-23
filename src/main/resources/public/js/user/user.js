@@ -87,18 +87,18 @@ layui.use(['table','layer'],function(){
     function openAddOrUpdateUser(id){
         if(id != null && id != ''){
             layui.layer.open({
-                title:"<h3>营销机会管理-修改</h3>",
+                title:"<h3>用户管理-修改</h3>",
                 type: 2,
                 content: ctx+"/user/toAddOrUpdateUserPage?id="+id,
-                area:["650px","400px"],
+                area:["650px","650px"],
                 maxmin:true
             })
         }else {
             layui.layer.open({
-                title:"<h3>营销机会管理-添加</h3>",
+                title:"<h3>用户管理-添加</h3>",
                 type: 2,
                 content: ctx+"/user/toAddOrUpdateUserPage",
-                area:["650px","400px"],
+                area:["650px","650px"],
                 maxmin:true
             })
         }

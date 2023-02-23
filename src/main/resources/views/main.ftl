@@ -89,10 +89,10 @@
                         <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 供需商管理</span> <span class="layui-nav-more"></span></a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="user/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 供应商管理</span></a>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="supplier/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 供应商管理</span></a>
                             </dd>
                             <dd class="">
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="role/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 需求商管理</span></a>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="customer/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 需求商管理</span></a>
                             </dd>
                         </dl>
                     </li>

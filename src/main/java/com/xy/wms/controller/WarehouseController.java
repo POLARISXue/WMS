@@ -1,5 +1,6 @@
 package com.xy.wms.controller;
 
+import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
 import com.xy.wms.query.WarehouseQuery;
@@ -64,6 +65,7 @@ public class WarehouseController extends BaseController {
     /**
      *进入库存管理界面
      */
+    @RequiredPermission(code = "2010")
     @RequestMapping("index")
     public String index(){
         return "warehouse/warehouse";

@@ -1,5 +1,6 @@
 package com.xy.wms.controller;
 
+import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
 import com.xy.wms.query.GoodsQuery;
@@ -27,7 +28,7 @@ public class GoodsController extends BaseController {
     public List<Map<String,Object>> queryAllGoods(){
         return goodsService.queryAllGoods();
     }
-
+    @RequiredPermission(code = "5010")
     @RequestMapping("index")
     public String index() {
         return "goods/goods";
@@ -38,14 +39,14 @@ public class GoodsController extends BaseController {
     public Map<String, Object> selectByParams(GoodsQuery goodsQuery) {
         return goodsService.queryByParamsForTable(goodsQuery);
     }
-
+    @RequiredPermission(code = "501002")
     @PostMapping("add")
     @ResponseBody
     public ResultInfo addGoods(Goods goods) {
         goodsService.addGoods(goods);
         return success("物品添加成功！！");
     }
-
+    @RequiredPermission(code = "501004")
     @PostMapping("update")
     @ResponseBody
     public ResultInfo updateGoods(Goods goods) {
@@ -77,6 +78,7 @@ public class GoodsController extends BaseController {
      * @param ids
      * @return com.xxxx.crm.base.ResultInfo
      */
+    @RequiredPermission(code = "501003")
     @PostMapping("delete")
     @ResponseBody
     public ResultInfo deleteGoods(Integer[] ids) {

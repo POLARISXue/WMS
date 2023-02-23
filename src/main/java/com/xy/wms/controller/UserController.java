@@ -1,5 +1,6 @@
 package com.xy.wms.controller;
 
+import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
 import com.xy.wms.query.UserQuery;
@@ -33,7 +34,7 @@ public class UserController extends BaseController {
     public ResultInfo updatePassword(HttpServletRequest request, String oldPassword, String newPassword, String confirmPassword){
         return userService.updateUserPassword(LoginUserUtil.releaseUserIdFromCookie(request),oldPassword,newPassword,confirmPassword);
     }
-
+    @RequiredPermission(code = "6010")
     @RequestMapping("/index")
     public String index() {
         return "user/user";

@@ -1,5 +1,6 @@
 package com.xy.wms.controller;
 
+import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
 import com.xy.wms.service.ModuleService;
@@ -26,6 +27,7 @@ public class ModuleController extends BaseController {
      *在main页面中 加载菜单管理页面
      * @return
      */
+    @RequiredPermission(code = "6030")
     @RequestMapping("index")
     public String index(){
         return "module/module";

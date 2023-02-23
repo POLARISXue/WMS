@@ -1,5 +1,6 @@
 package com.xy.wms.controller;
 
+import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
 import com.xy.wms.query.RoleQuery;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 
@@ -20,7 +22,7 @@ import java.util.Map;
 public class RoleController extends BaseController {
     @Resource
     private RoleService roleService;
-
+    @RequiredPermission(code = "6020")
     @RequestMapping("index")
     public String index(){
         return "role/role";
@@ -62,5 +64,11 @@ public class RoleController extends BaseController {
         roleService.addGrant(roleId,mIds);
         return success("角色授权成功");
 
+    }
+    //查询所有的角色列表
+    @RequestMapping("queryAllRoles")
+    @ResponseBody
+    public List<Map<String,Object>> queryAllRoles(Integer userId){
+        return roleService.queryAllRoles(userId);
     }
 }

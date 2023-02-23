@@ -43,15 +43,15 @@ layui.use(['form', 'layer','formSelects'], function () {
         return false;
     });
 
-    /*var userId = $('[name=id]').val();
-    /!**
+    var userId = $('[name=id]').val();
+    /**
      * 加载角色下拉框
-     *!/
+     */
     formSelects.config("selectId",{
         type:"post",
         searchUrl:ctx+"/role/queryAllRoles?userId="+userId,
         keyName:"roleName",
         keyVal: 'id'
-    },true);*/
+    },true);
     
 });

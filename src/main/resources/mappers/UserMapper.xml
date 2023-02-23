@@ -35,7 +35,7 @@
       #{isValid,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.xy.wms.vo.User">
+  <insert id="insertSelective" parameterType="com.xy.wms.vo.User" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

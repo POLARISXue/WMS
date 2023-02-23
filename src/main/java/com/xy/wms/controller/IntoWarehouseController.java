@@ -1,5 +1,6 @@
 package com.xy.wms.controller;
 
+import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
 import com.xy.wms.query.IntoWarehouseQuery;
@@ -20,7 +21,7 @@ public class IntoWarehouseController extends BaseController {
 
     @Autowired
     private IntoWarehouseService intoWarehouseService;
-
+    @RequiredPermission(code = "1010")
     @RequestMapping("/index")
     public String index(){
         return "intowarehouse/intowarehouse";

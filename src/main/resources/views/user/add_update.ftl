@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="magb15 layui-col-md4 layui-col-xs12">
+            <div class="layui-form-item layui-col-md4 layui-col-xs12">
                 <label class="layui-form-label">角色</label>
                     <div class="layui-input-block">
                         <select name="roleIds" xm-select="selectId">
@@ -46,7 +46,6 @@
                     </div>
             </div>
 
-            <br/>
             <div class="layui-form-item layui-row layui-col-xs12">
                 <div class="layui-input-block">
                     <button class="layui-btn layui-btn-lg" lay-submit=""
