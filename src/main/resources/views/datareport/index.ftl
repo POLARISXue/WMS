@@ -29,10 +29,9 @@
                 <div class="layui-row layui-col-space18">
                     <div class="layui-col-md6">
                         <div class="layui-card">
-                            <div class="layui-card-header">销售额</div>
-                            <div class="layui-card-body">
-                                卡片式面板面板通常用于非白色背景色的主体内<br>
-                                从而映衬出边框投影
+                            <div class="layui-card-header">支出额</div>
+                            <div class="layui-card-body" id="expensesTotalPriceByDay" style="width: 100%;height:700px">
+
                             </div>
                         </div>
                     </div>

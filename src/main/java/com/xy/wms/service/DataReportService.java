@@ -1,8 +1,10 @@
 package com.xy.wms.service;
 
 import com.xy.wms.base.ResultInfo;
+import com.xy.wms.dao.IntoWarehouseMapper;
 import com.xy.wms.dao.OutWarehouseMapper;
 import com.xy.wms.dao.WarehouseMapper;
+import com.xy.wms.vo.report.DailyExpenses;
 import com.xy.wms.vo.report.InventoryOverviewQuery;
 import com.xy.wms.vo.report.SaleTotalPriceByDay;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ public class DataReportService {
     private WarehouseMapper warehouseMapper;
     @Resource
     private OutWarehouseMapper outWarehouseMapper;
+    @Resource
+    private IntoWarehouseMapper intoWarehouseMapper;
 
     public ResultInfo inventoryOverview(){
         ResultInfo resultInfo = new ResultInfo();
@@ -46,22 +50,33 @@ public class DataReportService {
 
     }
 
-    public ResultInfo saleTotalPriceByDay() {
+    public ResultInfo dailySalesExpenses() {
         ResultInfo resultInfo = new ResultInfo();
+        Map<String,List> saleTotalPriceByDayMap = new HashMap<>();
         List<SaleTotalPriceByDay> saleTotalPriceByDayList = outWarehouseMapper.saleTotalPriceByDay();
         if (saleTotalPriceByDayList != null && saleTotalPriceByDayList.size()>0){
-            List<String> groupNameList = new ArrayList<>();
+            List<String> saleGroupNameList = new ArrayList<>();
             List<Integer> salePriceList = new ArrayList<>();
             for (SaleTotalPriceByDay saleTotalPriceByDay : saleTotalPriceByDayList){
-                groupNameList.add(saleTotalPriceByDay.getGroupName());
+                saleGroupNameList.add(saleTotalPriceByDay.getGroupName());
                 salePriceList.add(saleTotalPriceByDay.getSalePrice());
             }
-            Map<String,List> saleTotalPriceByDayMap = new HashMap<>();
-            saleTotalPriceByDayMap.put("groupNameList",groupNameList);
+            saleTotalPriceByDayMap.put("saleGroupNameList",saleGroupNameList);
             saleTotalPriceByDayMap.put("salePriceList",salePriceList);
+        }
+
+        List<DailyExpenses> dailyExpensesList = intoWarehouseMapper.dailyExpensesList();
+        if (dailyExpensesList!=null&& dailyExpensesList.size()>0){
+            List<String> expensesGroupNameList = new ArrayList<>();
+            List<Integer> expensesPriceList = new ArrayList<>();
+            for (DailyExpenses dailyExpenses : dailyExpensesList){
+                expensesGroupNameList.add(dailyExpenses.getGroupName());
+                expensesPriceList.add(dailyExpenses.getDailyExpenses());
+            }
+            saleTotalPriceByDayMap.put("expensesGroupNameList",expensesGroupNameList);
+            saleTotalPriceByDayMap.put("expensesPriceList",expensesPriceList);
             resultInfo.setResult(saleTotalPriceByDayMap);
             return resultInfo;
-
         }
         resultInfo.setCode(405);
         resultInfo.setMsg("查询数据失败或无数据");

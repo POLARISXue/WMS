@@ -29,10 +29,10 @@ public class DataReportController extends BaseController {
         return dataReportService.inventoryOverview();
     }
 
-    @RequestMapping("/saleTotalPriceByDay")
+    @RequestMapping("/dailySalesExpenses")
     @ResponseBody
-    public ResultInfo saleTotalPriceByDay(){
-        return dataReportService.saleTotalPriceByDay();
+    public ResultInfo dailySalesExpenses(){
+        return dataReportService.dailySalesExpenses();
     }
 
 }

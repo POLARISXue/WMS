@@ -182,4 +182,9 @@
     #{id}
   </foreach>
   </update>
+
+  <select id="dailyExpensesList" resultType="com.xy.wms.vo.report.DailyExpenses">
+    select DATE_FORMAT(create_date,'%Y年%m月%d日') group_name,SUM(total_price)  daily_expenses from into_warehouse GROUP BY DATE_FORMAT(create_date,'%Y年%m月%d日') limit 10
+  </select>
+
 </mapper>

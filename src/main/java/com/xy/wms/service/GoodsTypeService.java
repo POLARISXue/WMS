@@ -42,7 +42,6 @@ public class GoodsTypeService extends BaseService<GoodsType,Integer> {
 
     }
     private void checkGoodsType(Integer id, String typeName) {
-        AssertUtil.isTrue(null == id,"商品类型id不能为空！");
         AssertUtil.isTrue(StringUtils.isBlank(typeName),"商品类型名称不能为空！");
         GoodsType temp = goodsTypeMapper.selectByTypeName(typeName);
         AssertUtil.isTrue(null != temp &&!(temp.getId().equals(id)),"商品类型不能重复");

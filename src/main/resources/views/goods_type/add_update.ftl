@@ -18,7 +18,7 @@
                 <label class="layui-form-label" style="width: 120px"  >商品类型编号</label>
                 <div class="layui-input-block" >
                     <input type="text" class="layui-input userName"
-                           lay-verify="required" name="id" id="id" value="${(goodsTypeInfo.id)!}" readonly>
+                           name="id" id="id" value="${(goodsTypeInfo.id)!}" readonly placeholder="商品编号自动生成">
                 </div>
             </div>
 
