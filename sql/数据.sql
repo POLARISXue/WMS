@@ -11,7 +11,7 @@
  Target Server Version : 80018
  File Encoding         : 65001
 
- Date: 22/02/2023 21:02:40
+ Date: 24/02/2023 18:53:44
 */
 
 SET NAMES utf8mb4;
@@ -112,54 +112,53 @@ CREATE TABLE `goods_supplier`  (
   `supplier_id` int(11) NULL DEFAULT NULL,
   `create_date` datetime NULL DEFAULT NULL,
   `update_date` datetime NULL DEFAULT NULL,
-  `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 124 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of goods_supplier
 -- ----------------------------
-INSERT INTO `goods_supplier` VALUES (1, 2, 1, '2023-02-20 15:57:42', '2023-02-20 15:57:45', 1);
-INSERT INTO `goods_supplier` VALUES (2, 1, 2, '2023-02-22 09:20:46', '2023-02-22 09:20:48', 1);
-INSERT INTO `goods_supplier` VALUES (3, 8, 3, '2023-02-22 09:21:00', '2023-02-22 09:21:03', 1);
-INSERT INTO `goods_supplier` VALUES (4, 3, 5, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (5, 4, 5, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (6, 5, 3, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (7, 6, 10, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (8, 7, 3, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (9, 9, 4, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (10, 10, 8, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (11, 11, 5, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (12, 12, 8, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (13, 13, 8, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (14, 14, 8, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (15, 15, 7, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (16, 16, 9, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (17, 17, 11, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (18, 18, 7, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (19, 19, 7, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (20, 20, 7, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (21, 21, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (22, 22, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (23, 23, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (24, 24, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (25, 25, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (26, 26, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (27, 27, 12, '2023-02-20 15:57:42', '2023-02-20 15:57:42', 1);
-INSERT INTO `goods_supplier` VALUES (28, 28, 12, '2023-02-22 18:06:27', '2023-02-22 18:06:35', 1);
-INSERT INTO `goods_supplier` VALUES (29, 29, 12, '2023-02-22 18:06:30', '2023-02-22 18:06:37', 1);
-INSERT INTO `goods_supplier` VALUES (30, 30, 12, '2023-02-22 18:06:33', '2023-02-22 18:06:39', 1);
+INSERT INTO `goods_supplier` VALUES (2, 1, 2, '2023-02-22 09:20:46', '2023-02-22 09:20:48');
+INSERT INTO `goods_supplier` VALUES (3, 8, 3, '2023-02-22 09:21:00', '2023-02-22 09:21:03');
+INSERT INTO `goods_supplier` VALUES (4, 3, 5, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (5, 4, 5, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (6, 5, 3, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (7, 6, 10, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (8, 7, 3, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (9, 9, 4, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (10, 10, 8, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (11, 11, 5, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (12, 12, 8, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (13, 13, 8, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (14, 14, 8, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (15, 15, 7, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (16, 16, 9, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (17, 17, 11, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (18, 18, 7, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (19, 19, 7, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (20, 20, 7, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (21, 21, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (22, 22, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (23, 23, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (24, 24, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (25, 25, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (26, 26, 6, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (27, 27, 12, '2023-02-20 15:57:42', '2023-02-20 15:57:42');
+INSERT INTO `goods_supplier` VALUES (28, 28, 12, '2023-02-22 18:06:27', '2023-02-22 18:06:35');
+INSERT INTO `goods_supplier` VALUES (29, 29, 12, '2023-02-22 18:06:30', '2023-02-22 18:06:37');
+INSERT INTO `goods_supplier` VALUES (30, 30, 12, '2023-02-22 18:06:33', '2023-02-22 18:06:39');
+INSERT INTO `goods_supplier` VALUES (63, 1, 1, '2023-02-24 16:00:45', '2023-02-24 16:00:45');
 
 -- ----------------------------
 -- Table structure for goods_type
 -- ----------------------------
 DROP TABLE IF EXISTS `goods_type`;
 CREATE TABLE `goods_type`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `is_valid` int(2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of goods_type
@@ -229,22 +228,6 @@ INSERT INTO `into_warehouse` VALUES (41, 4, 7, 100, 3500, '2023-02-15 17:55:52',
 INSERT INTO `into_warehouse` VALUES (42, 27, 12, 100, 5000, '2023-02-14 17:56:00', '2023-02-14 17:56:03', '测试数据', 0, 1);
 
 -- ----------------------------
--- Table structure for into_warehouse_supplier
--- ----------------------------
-DROP TABLE IF EXISTS `into_warehouse_supplier`;
-CREATE TABLE `into_warehouse_supplier`  (
-  `id` int(11) NOT NULL,
-  `into_warehouse_id` int(11) NULL DEFAULT NULL,
-  `supplier_id` int(11) NULL DEFAULT NULL,
-  `is_valid` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of into_warehouse_supplier
--- ----------------------------
-
--- ----------------------------
 -- Table structure for out_warehouse
 -- ----------------------------
 DROP TABLE IF EXISTS `out_warehouse`;
@@ -312,22 +295,6 @@ INSERT INTO `out_warehouse` VALUES (44, 6, 1, 100, 350, 0, NULL, '2023-02-04 20:
 INSERT INTO `out_warehouse` VALUES (45, 22, 12, 50, 25000, 0, NULL, '2023-02-07 20:05:06', '2023-02-07 20:05:13', 1);
 
 -- ----------------------------
--- Table structure for out_warehouse_customers
--- ----------------------------
-DROP TABLE IF EXISTS `out_warehouse_customers`;
-CREATE TABLE `out_warehouse_customers`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `out_warehouse_id` int(11) NULL DEFAULT NULL,
-  `customers_id` int(11) NULL DEFAULT NULL,
-  `is_valid` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of out_warehouse_customers
--- ----------------------------
-
--- ----------------------------
 -- Table structure for supplier
 -- ----------------------------
 DROP TABLE IF EXISTS `supplier`;
@@ -341,12 +308,12 @@ CREATE TABLE `supplier`  (
   `update_date` datetime NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of supplier
 -- ----------------------------
-INSERT INTO `supplier` VALUES (1, '百事可乐供应商', '张吉惟', '13786541256', '北京', '2023-02-22 17:02:22', '2023-02-22 17:02:34', 1);
+INSERT INTO `supplier` VALUES (1, '百事可乐供应商', '张吉惟', '13786541256', '北京', '2023-02-22 17:02:22', '2023-02-24 16:00:46', 1);
 INSERT INTO `supplier` VALUES (2, '可口可乐供应商', '林国瑞', '18965411256', '上海', '2023-02-22 17:02:36', '2023-02-22 17:03:10', 1);
 INSERT INTO `supplier` VALUES (3, '食品加工厂', '江奕云', '13876763423', '广州', '2023-02-22 17:02:39', '2023-02-22 17:03:13', 1);
 INSERT INTO `supplier` VALUES (4, '杯子制造工厂', '刘柏宏', '18546378765', '深圳', '2023-02-22 17:02:42', '2023-02-22 17:03:16', 1);
@@ -358,6 +325,8 @@ INSERT INTO `supplier` VALUES (9, '联想加工厂', '郭芳天', '13697632544',
 INSERT INTO `supplier` VALUES (10, '乐视薯片供应商', '方一强', '18347289384', '荆门', '2023-02-22 17:03:00', '2023-02-22 17:03:33', 1);
 INSERT INTO `supplier` VALUES (11, 'iPhone供应商', '林子帆', '13927362763', '宜昌', '2023-02-22 17:03:03', '2023-02-22 17:03:35', 1);
 INSERT INTO `supplier` VALUES (12, '化妆品加工厂', '李秀风', '13898234589', '兰州', '2023-02-22 17:32:51', '2023-02-22 17:32:54', 1);
+INSERT INTO `supplier` VALUES (13, '111', '玩啥呢', '13546895264', '北京的', '2023-02-24 14:43:45', '2023-02-24 14:43:57', 0);
+INSERT INTO `supplier` VALUES (16, '我', '135', '13597956352', '12', '2023-02-24 16:06:05', '2023-02-24 16:06:05', 0);
 
 -- ----------------------------
 -- Table structure for t_module
@@ -377,7 +346,7 @@ CREATE TABLE `t_module`  (
   `create_date` datetime NULL DEFAULT NULL,
   `update_date` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 183 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 192 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_module
@@ -400,7 +369,15 @@ INSERT INTO `t_module` VALUES (178, '物品类型管理', '', '#goodsType', 170,
 INSERT INTO `t_module` VALUES (179, '用户管理', '', '#user', 171, NULL, 1, '6010', NULL, 1, '2023-02-20 17:41:48', '2023-02-20 17:41:48');
 INSERT INTO `t_module` VALUES (180, '角色管理', '', '#roles', 171, NULL, 1, '6020', NULL, 1, '2023-02-20 17:42:06', '2023-02-20 17:42:06');
 INSERT INTO `t_module` VALUES (181, '菜单管理', '', '#menuManagement', 171, NULL, 1, '6030', NULL, 1, '2023-02-20 17:43:18', '2023-02-20 17:43:18');
-INSERT INTO `t_module` VALUES (182, '测试228', '', NULL, 172, NULL, 2, '101001', NULL, 1, '2023-02-20 17:57:54', '2023-02-20 17:57:54');
+INSERT INTO `t_module` VALUES (182, '测试228', '', NULL, 172, NULL, 2, '101001', NULL, 0, '2023-02-20 17:57:54', '2023-02-23 10:41:54');
+INSERT INTO `t_module` VALUES (183, '搜索', '', NULL, 177, NULL, 2, '501001', NULL, 0, '2023-02-22 17:33:37', '2023-02-23 17:38:49');
+INSERT INTO `t_module` VALUES (184, '添加商品', '', NULL, 177, NULL, 2, '501002', NULL, 1, '2023-02-22 17:34:02', '2023-02-22 17:34:02');
+INSERT INTO `t_module` VALUES (185, '删除商品', '', NULL, 177, NULL, 2, '501003', NULL, 1, '2023-02-22 17:34:26', '2023-02-22 17:34:26');
+INSERT INTO `t_module` VALUES (186, '修改商品', '', NULL, 177, NULL, 2, '501004', NULL, 1, '2023-02-22 17:34:42', '2023-02-22 17:34:42');
+INSERT INTO `t_module` VALUES (187, '删除', '', NULL, 177, NULL, 2, '501005', NULL, 0, '2023-02-22 17:35:01', '2023-02-23 17:34:19');
+INSERT INTO `t_module` VALUES (188, '增加', '', NULL, 172, NULL, 2, '101001', NULL, 1, '2023-02-23 10:42:21', '2023-02-23 10:42:21');
+INSERT INTO `t_module` VALUES (190, '删除', '', NULL, 172, NULL, 2, '101002', NULL, 1, '2023-02-23 14:38:58', '2023-02-23 14:38:58');
+INSERT INTO `t_module` VALUES (191, '搜索', '', NULL, 172, NULL, 2, '101003', NULL, 1, '2023-02-23 14:47:36', '2023-02-23 14:47:36');
 
 -- ----------------------------
 -- Table structure for t_permission
@@ -414,97 +391,37 @@ CREATE TABLE `t_permission`  (
   `create_date` datetime NULL DEFAULT NULL,
   `update_date` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7324 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7726 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_permission
 -- ----------------------------
-INSERT INTO `t_permission` VALUES (7206, 1, 1, '10', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7207, 1, 2, '1010', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7208, 1, 3, '101001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7209, 1, 4, '101002', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7210, 1, 5, '101003', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7211, 1, 44, '101004', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7212, 1, 6, '1020', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7213, 1, 7, '102001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7214, 1, 154, '1030', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7215, 1, 8, '20', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7216, 1, 9, '2010', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7217, 1, 10, '201001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7218, 1, 11, '201002', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7219, 1, 19, '201003', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7220, 1, 12, '2020', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7221, 1, 13, '202001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7222, 1, 126, '123213', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7223, 1, 14, '40', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7224, 1, 15, '4010', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7225, 1, 39, '4020', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7226, 1, 40, '4030', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7227, 1, 109, '4060', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7228, 1, 16, '30', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7229, 1, 34, '3010', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7230, 1, 147, '301001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7231, 1, 35, '3020', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7232, 1, 149, '302001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7233, 1, 36, '3030', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7234, 1, 150, '303001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7235, 1, 151, '303002', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7236, 1, 37, '3040', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7237, 1, 152, '304001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7238, 1, 153, '304002', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7239, 1, 38, '3050', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7240, 1, 17, '50', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7241, 1, 102, '5010', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7242, 1, 103, '5020', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7243, 1, 18, '60', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7244, 1, 26, '6010', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7245, 1, 130, '601001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7246, 1, 131, '601002', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7247, 1, 132, '601003', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7248, 1, 133, '601004', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7249, 1, 27, '6020', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7250, 1, 134, '602001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7251, 1, 135, '602002', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7252, 1, 136, '602003', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7253, 1, 137, '602004', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7254, 1, 28, '6030', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7255, 1, 138, '603001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7256, 1, 139, '603002', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7257, 1, 140, '603003', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7258, 1, 141, '603004', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7259, 1, 142, '6040', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7260, 1, 143, '604001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7261, 1, 144, '604002', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7262, 1, 145, '604003', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7263, 1, 146, '604004', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7264, 1, 155, '70', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7265, 1, 156, '7010', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7266, 1, 157, '701001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7267, 1, 158, '100', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7268, 1, 160, '10010', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7269, 1, 161, '1001001', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7270, 1, 162, '801003', '2023-02-13 21:33:12', '2023-02-13 21:33:12');
-INSERT INTO `t_permission` VALUES (7303, 2, 1, '10', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7304, 2, 2, '1010', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7305, 2, 3, '101001', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7306, 2, 4, '101002', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7307, 2, 5, '101003', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7308, 2, 44, '101004', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7309, 2, 6, '1020', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7310, 2, 7, '102001', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7311, 2, 154, '1030', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7312, 2, 16, '30', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7313, 2, 34, '3010', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7314, 2, 147, '301001', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7315, 2, 35, '3020', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7316, 2, 149, '302001', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7317, 2, 36, '3030', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7318, 2, 150, '303001', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7319, 2, 151, '303002', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7320, 2, 37, '3040', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7321, 2, 152, '304001', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7322, 2, 153, '304002', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
-INSERT INTO `t_permission` VALUES (7323, 2, 38, '3050', '2023-02-14 09:48:00', '2023-02-14 09:48:00');
+INSERT INTO `t_permission` VALUES (7647, 1, 166, '10', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7648, 1, 172, '1010', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7649, 1, 188, '101001', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7650, 1, 190, '101002', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7651, 1, 191, '101003', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7652, 1, 167, '20', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7653, 1, 173, '2010', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7654, 1, 168, '30', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7655, 1, 174, '3010', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7656, 1, 169, '40', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7657, 1, 175, '4010', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7658, 1, 176, '4020', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7659, 1, 170, '50', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7660, 1, 177, '5010', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7662, 1, 184, '501002', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7663, 1, 185, '501003', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7664, 1, 186, '501004', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7666, 1, 178, '5020', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7667, 1, 171, '60', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7668, 1, 179, '6010', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7669, 1, 180, '6020', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7670, 1, 181, '6030', '2023-02-23 17:32:59', '2023-02-23 17:32:59');
+INSERT INTO `t_permission` VALUES (7676, 2, 168, '30', '2023-02-24 17:20:20', '2023-02-24 17:20:20');
+INSERT INTO `t_permission` VALUES (7677, 2, 174, '3010', '2023-02-24 17:20:20', '2023-02-24 17:20:20');
+INSERT INTO `t_permission` VALUES (7724, 25, 167, '20', '2023-02-24 17:21:35', '2023-02-24 17:21:35');
+INSERT INTO `t_permission` VALUES (7725, 25, 173, '2010', '2023-02-24 17:21:35', '2023-02-24 17:21:35');
 
 -- ----------------------------
 -- Table structure for t_role
@@ -518,7 +435,7 @@ CREATE TABLE `t_role`  (
   `update_date` datetime NULL DEFAULT NULL,
   `is_valid` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role
@@ -531,10 +448,11 @@ INSERT INTO `t_role` VALUES (17, '人事', '人事', '2017-10-23 09:15:10', '202
 INSERT INTO `t_role` VALUES (18, '测试人员', NULL, '2020-11-10 14:34:00', '2020-11-10 14:34:00', 1);
 INSERT INTO `t_role` VALUES (19, '测试经理', '测试经理', '2020-11-10 14:34:42', '2020-11-10 15:53:03', 0);
 INSERT INTO `t_role` VALUES (20, '经理2号', '测试2', '2020-11-10 14:51:04', '2020-11-10 15:50:13', 0);
-INSERT INTO `t_role` VALUES (21, 'xy', NULL, '2023-02-13 10:59:35', '2023-02-13 10:59:35', 1);
-INSERT INTO `t_role` VALUES (22, '测试经理', NULL, '2023-02-13 11:01:48', '2023-02-13 11:01:48', 1);
+INSERT INTO `t_role` VALUES (21, 'xy', NULL, '2023-02-13 10:59:35', '2023-02-22 17:08:05', 0);
+INSERT INTO `t_role` VALUES (22, '测试经理', '张三2', '2023-02-13 11:01:48', '2023-02-24 17:20:55', 0);
 INSERT INTO `t_role` VALUES (23, '大boss的', '阿萨德的', '2023-02-13 11:48:57', '2023-02-13 14:21:47', 0);
 INSERT INTO `t_role` VALUES (24, '新一代', 'ad', '2023-02-13 12:40:04', '2023-02-13 12:40:04', 0);
+INSERT INTO `t_role` VALUES (25, '仓库管理员', '张三', '2023-02-22 17:04:39', '2023-02-22 17:04:39', 1);
 
 -- ----------------------------
 -- Table structure for t_user
@@ -551,22 +469,23 @@ CREATE TABLE `t_user`  (
   `create_date` datetime NULL DEFAULT NULL,
   `update_date` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 91 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 93 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
 INSERT INTO `t_user` VALUES (10, 'admin', '4QrcOUm6Wau+VuBX8g+IPg==', 'admin', '126@126.com', '13327792157', 1, '2016-12-01 12:05:49', '2023-02-13 21:32:45');
-INSERT INTO `t_user` VALUES (42, 'scott', '4QrcOUm6Wau+VuBX8g+IPg==', 'scott', '234@126.com', '13327792157', 1, '2017-09-09 00:14:53', '2023-02-14 09:40:47');
+INSERT INTO `t_user` VALUES (42, 'scott', '4QrcOUm6Wau+VuBX8g+IPg==', 'scott', '234@126.com', '13327792157', 1, '2017-09-09 00:14:53', '2023-02-24 17:21:58');
 INSERT INTO `t_user` VALUES (79, 'zhangsan', '4QrcOUm6Wau+VuBX8g+IPg==', NULL, 'zhangsan@163.com', '18876545687', 1, '2020-11-05 17:15:50', '2020-11-05 17:15:50');
 INSERT INTO `t_user` VALUES (80, 'lisi', '4QrcOUm6Wau+VuBX8g+IPg==', 'lisi', 'lisi@163.com', '18876767890', 1, '2020-11-05 17:16:35', '2020-11-05 17:16:35');
-INSERT INTO `t_user` VALUES (81, 'test', '4QrcOUm6Wau+VuBX8g+IPg==', '王五', 'testa@163.com', '15856787654', 1, '2020-11-05 17:33:21', '2020-11-05 19:43:41');
-INSERT INTO `t_user` VALUES (82, 'aabb', '4QrcOUm6Wau+VuBX8g+IPg==', 'ab', 'ab@163.com', '13876545678', 1, '2020-11-05 19:44:30', '2020-11-05 20:12:52');
+INSERT INTO `t_user` VALUES (81, 'test', '4QrcOUm6Wau+VuBX8g+IPg==', '王五', 'testa@163.com', '15856787654', 1, '2020-11-05 17:33:21', '2023-02-23 20:44:04');
+INSERT INTO `t_user` VALUES (82, 'aabb', '4QrcOUm6Wau+VuBX8g+IPg==', 'ab', 'ab@163.com', '13876545678', 0, '2020-11-05 19:44:30', '2020-11-05 20:12:52');
 INSERT INTO `t_user` VALUES (85, 'test001', '4QrcOUm6Wau+VuBX8g+IPg==', '测试一号', 'test001@163.com', '13787654345', 0, '2020-11-10 03:35:05', '2020-11-10 03:38:25');
 INSERT INTO `t_user` VALUES (86, 'test002', '4QrcOUm6Wau+VuBX8g+IPg==', '测试二号', 'test002@163.com', '13876545678', 0, '2020-11-10 03:36:03', '2020-11-10 03:36:03');
 INSERT INTO `t_user` VALUES (87, 'zhangsan', '4QrcOUm6Wau+VuBX8g+IPg==', NULL, '123456@qq.com', '13797980203', 0, '2023-02-10 20:20:47', '2023-02-10 20:20:47');
 INSERT INTO `t_user` VALUES (88, 'zha', '4QrcOUm6Wau+VuBX8g+IPg==', '123', '126@1267.com', '13797980365', 0, '2023-02-10 21:50:29', '2023-02-11 09:22:25');
 INSERT INTO `t_user` VALUES (90, '薛洋', '4QrcOUm6Wau+VuBX8g+IPg==', '薛洋', '123@qq.com', '13797970383', 0, '2023-02-13 09:35:52', '2023-02-13 09:37:43');
+INSERT INTO `t_user` VALUES (92, 'x', '4QrcOUm6Wau+VuBX8g+IPg==', 'as', '12@qq.com', '13986984356', 0, '2023-02-23 20:38:57', '2023-02-23 20:39:07');
 
 -- ----------------------------
 -- Table structure for t_user_role
@@ -579,14 +498,22 @@ CREATE TABLE `t_user_role`  (
   `create_date` datetime NULL DEFAULT NULL,
   `update_date` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 206 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 219 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_user_role
 -- ----------------------------
 INSERT INTO `t_user_role` VALUES (198, 80, 2, NULL, NULL);
 INSERT INTO `t_user_role` VALUES (204, 10, 1, '2023-02-13 21:32:45', '2023-02-13 21:32:45');
-INSERT INTO `t_user_role` VALUES (205, 42, 2, '2023-02-14 09:40:46', '2023-02-14 09:40:46');
+INSERT INTO `t_user_role` VALUES (209, 81, 1, '2023-02-23 20:44:03', '2023-02-23 20:44:03');
+INSERT INTO `t_user_role` VALUES (210, 81, 2, '2023-02-23 20:44:03', '2023-02-23 20:44:03');
+INSERT INTO `t_user_role` VALUES (211, 81, 3, '2023-02-23 20:44:03', '2023-02-23 20:44:03');
+INSERT INTO `t_user_role` VALUES (212, 81, 14, '2023-02-23 20:44:03', '2023-02-23 20:44:03');
+INSERT INTO `t_user_role` VALUES (213, 81, 17, '2023-02-23 20:44:03', '2023-02-23 20:44:03');
+INSERT INTO `t_user_role` VALUES (214, 81, 18, '2023-02-23 20:44:03', '2023-02-23 20:44:03');
+INSERT INTO `t_user_role` VALUES (215, 81, 22, '2023-02-23 20:44:03', '2023-02-23 20:44:03');
+INSERT INTO `t_user_role` VALUES (216, 81, 25, '2023-02-23 20:44:03', '2023-02-23 20:44:03');
+INSERT INTO `t_user_role` VALUES (218, 42, 25, '2023-02-24 17:21:58', '2023-02-24 17:21:58');
 
 -- ----------------------------
 -- Table structure for warehouse
@@ -605,7 +532,7 @@ CREATE TABLE `warehouse`  (
 -- ----------------------------
 -- Records of warehouse
 -- ----------------------------
-INSERT INTO `warehouse` VALUES (1, 1, 500, '2023-02-20 09:13:42', '2023-02-21 10:29:27', 1);
+INSERT INTO `warehouse` VALUES (1, 1, 510, '2023-02-20 09:13:42', '2023-02-24 11:46:20', 1);
 INSERT INTO `warehouse` VALUES (2, 2, 500, '2023-02-20 20:21:58', '2023-02-22 09:19:45', 1);
 INSERT INTO `warehouse` VALUES (3, 3, 500, '2023-02-01 20:10:39', '2023-02-02 20:10:39', 1);
 INSERT INTO `warehouse` VALUES (4, 4, 300, '2023-02-22 20:10:13', '2023-02-02 20:10:39', 1);
