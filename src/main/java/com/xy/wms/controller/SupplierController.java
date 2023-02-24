@@ -1,10 +1,12 @@
 package com.xy.wms.controller;
 
+import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
 import com.xy.wms.query.SupplierQuery;
 import com.xy.wms.service.SupplierService;
 import com.xy.wms.vo.Supplier;
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +25,7 @@ public class SupplierController extends BaseController {
      * 进入供应商管理主页
      * @return
      */
+    @RequiredPermission(code = "4010")
     @RequestMapping("/index")
     public String index(){
         return "supplier/supplier";

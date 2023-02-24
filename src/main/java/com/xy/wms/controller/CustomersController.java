@@ -1,5 +1,6 @@
 package com.xy.wms.controller;
 
+import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
 import com.xy.wms.query.CustomersQuery;
@@ -32,6 +33,7 @@ public class CustomersController extends BaseController {
      * 需求商管理主页
      * @return
      */
+    @RequiredPermission(code = "4020")
     @RequestMapping("/index")
     public String index(){
         return "customers/customers";

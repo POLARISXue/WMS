@@ -43,92 +43,114 @@
 
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll layui-left-menu">
-
+            <#if permissions??>
                 <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-this" id="currency">
 
-                        <li class="layui-nav-item">
-                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-street-view"></i><span class="layui-left-nav"> 数据报表</span> <span class="layui-nav-more"></span></a>
-                            <dl class="layui-nav-child">
-                                <dd>
-                                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="dataReport/index" target="_self"><i class="fa fa-tty"></i><span class="layui-left-nav">数据报表</span></a>
-                                </dd>
-                            </dl>
-                        </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-street-view"></i><span class="layui-left-nav"> 数据报表</span> <span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="dataReport/index" target="_self"><i class="fa fa-tty"></i><span class="layui-left-nav">数据报表</span></a>
+                            </dd>
+                        </dl>
+                    </li>
 
+                    <#if permissions?seq_contains("10")>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-street-view"></i><span class="layui-left-nav"> 采购计划管理</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
+                                <#if permissions?seq_contains("1010")>
                                     <dd>
                                         <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="intowarehouse/index" target="_self"><i class="fa fa-tty"></i><span class="layui-left-nav">采购计划管理</span></a>
                                     </dd>
+                                </#if>
                             </dl>
                         </li>
-
+                    </#if>
+                    <#if permissions?seq_contains("20")>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-flag"></i><span class="layui-left-nav"> 仓库管理</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
-
-                                <dd>
-                                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="warehouse/index" target="_self"><i class="fa fa-exchange"></i><span class="layui-left-nav"> 库存管理</span></a>
-                                </dd>
-
+                                <#if permissions?seq_contains("2010")>
+                                    <dd>
+                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="warehouse/index" target="_self"><i class="fa fa-exchange"></i><span class="layui-left-nav"> 库存管理</span></a>
+                                    </dd>
+                                </#if>
                             </dl>
                         </li>
-
+                    </#if>
+                    <#if permissions?seq_contains("30")>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-desktop"></i><span class="layui-left-nav"> 销售管理</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
+                                <#if permissions?seq_contains("3010")>
                                     <dd>
                                         <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-5" data-tab="outwarehouse/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 销售计划管理</span></a>
                                     </dd>
-
+                                </#if>
                             </dl>
                         </li>
+                    </#if>
+                    <#if permissions?seq_contains("40")>
+                        <li class="layui-nav-item">
+                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 供需商管理</span> <span class="layui-nav-more"></span></a>
+                            <dl class="layui-nav-child">
+                                <#if permissions?seq_contains("4010")>
+                                    <dd>
+                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="supplier/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 供应商管理</span></a>
+                                    </dd>
+                                </#if>
+                                <#if permissions?seq_contains("4020")>
+                                    <dd class="">
+                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="customers/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 需求商管理</span></a>
+                                    </dd>
+                                </#if>
+                            </dl>
+                        </li>
+                    </#if>
+                    <#if permissions?seq_contains("50")>
+                        <li class="layui-nav-item">
+                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 物品管理</span> <span class="layui-nav-more"></span></a>
+                            <dl class="layui-nav-child">
+                                <#if permissions?seq_contains("5010")>
+                                    <dd>
+                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="goods/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 物品管理</span></a>
+                                    </dd>
+                                </#if>
+                                <#if permissions?seq_contains("5020")>
+                                    <dd class="">
+                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="goodsType/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 物品类型管理</span></a>
+                                    </dd>
+                                </#if>
+                            </dl>
+                        </li>
+                    </#if>
 
-                    <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 供需商管理</span> <span class="layui-nav-more"></span></a>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="supplier/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 供应商管理</span></a>
-                            </dd>
-                            <dd class="">
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="customers/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 需求商管理</span></a>
-                            </dd>
-                        </dl>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 物品管理</span> <span class="layui-nav-more"></span></a>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="goods/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 物品管理</span></a>
-                            </dd>
-                            <dd class="">
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="goodsType/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 物品类型管理</span></a>
-                            </dd>
-                        </dl>
-                    </li>
-
-
-
-                    <li class="layui-nav-item">
+                    <#if permissions?seq_contains("60")>
+                        <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 系统设置</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
+                                <#if permissions?seq_contains("6010")>
                                     <dd>
                                         <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-11" data-tab="user/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 用户管理</span></a>
                                     </dd>
+                                </#if>
+                                <#if permissions?seq_contains("6020")>
                                     <dd class="">
                                         <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-12" data-tab="role/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 角色管理</span></a>
                                     </dd>
+                                </#if>
+                                <#if permissions?seq_contains("6030")>
                                     <dd class="">
                                         <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-13" data-tab="module/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 菜单管理</span></a>
                                     </dd>
+                                </#if>
                             </dl>
                         </li>
-
+                    </#if>
                     <span class="layui-nav-bar" style="top: 201px; height: 0px; opacity: 0;"></span>
                 </ul>
-
+            </#if>
         </div>
     </div>
 
@@ -156,7 +178,7 @@
 
     <div class="layui-footer layui-tab -copyright" style="height: 30px;background-color: #393D49;text-align: center" >
         <div style="color: #FFFFFF ;text-align: center" >
-       © Copyright <strong><span>JAVA63-2-WMS</span></strong>. All Rights Reserved
+            © Copyright <strong><span>JAVA63-2-WMS</span></strong>. All Rights Reserved
         </div>
     </div>
 
