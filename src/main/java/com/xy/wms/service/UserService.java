@@ -219,7 +219,7 @@ public class UserService extends BaseService<User,Integer> {
         AssertUtil.isTrue(userMapper.deleteBatch(ids) !=ids.length,"用户删除失败！");
 
         //遍历用户ID的数组
-        /*for (Integer userId : ids) {
+        for (Integer userId : ids) {
             //通过用户ID查询对应的用户角色记录
             Integer count = userRoleMapper.countUserRoleByUserId(userId);
             //判断用户角色记录是否存在
@@ -227,7 +227,7 @@ public class UserService extends BaseService<User,Integer> {
                 //通过用户ID删除对应的用户角色记录
                 AssertUtil.isTrue(userRoleMapper.deleteUserRoleByUserId(userId) !=count,"删除用户失败！");
             }
-        }*/
+        }
     }
 
 }

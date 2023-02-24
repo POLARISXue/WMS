@@ -8,6 +8,11 @@ import java.util.Map;
 
 public interface GoodsSupplierMapper extends BaseMapper<GoodsSupplier,Integer> {
 
-    List<Map<String,Object>> queryAllSupplierByGoodsId(Integer goodsId);
+    List<Map<String, Object>> queryAllSupplierByGoodsId(Integer goodsId);
 
+    List<Map<String, Object>> queryAllGoodsSupplier(Integer supplierId);
+
+    Integer countGoodsSupplierBySupplierId(Integer supplierId);
+
+    Integer deleteGoodsSupplierBySupplierId(Integer supplierId);
 }

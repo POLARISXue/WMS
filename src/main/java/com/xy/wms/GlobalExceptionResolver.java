@@ -21,7 +21,7 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("404");
+        modelAndView.setViewName("error");
 
 
         if (e instanceof NoLoginException){

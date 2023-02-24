@@ -10,4 +10,7 @@ public interface CustomersMapper extends BaseMapper<Customers,Integer> {
 
 
     List<Map<String, Object>> queryAllCustomers();
+
+    Customers queryCustomersByName(String name);
+
 }

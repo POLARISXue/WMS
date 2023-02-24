@@ -26,10 +26,10 @@ layui.use(['form', 'layer'], function () {
         // 通过获取隐藏域中的ID
         var warehouseId = $("[name='id']").val();
         // 判断ID是否为空
-        if (warehouseId != null && warehouseId != '') {
+       /* if (warehouseId != null && warehouseId != '') {
             // 更新操作
            url = ctx + "/warehouse/update";
-        }
+        }*/
 
         $.post(url, data.field, function (result) {
             // 判断操作是否执行成功 200=成功
@@ -48,6 +48,9 @@ layui.use(['form', 'layer'], function () {
                 layer.msg(result.msg, {icon: 5});
             }
         });
+
+
+
 
         // 阻止表单提交
         return false;

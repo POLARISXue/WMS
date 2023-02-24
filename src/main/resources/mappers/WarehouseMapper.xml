@@ -166,4 +166,7 @@
     on gt.id = wg.goods_type_id WHERE gt.is_valid=1 ORDER BY gt.id
   </select>
 
+  <select id="queryGoodsById" parameterType="java.lang.Integer" resultType="com.xy.wms.vo.Warehouse">
+    select warehouse.*,goods.goods_name goods_name from warehouse left join goods on warehouse.goods_id = goods.id where warehouse.Id = #{warehouseId}
+  </select>
 </mapper>

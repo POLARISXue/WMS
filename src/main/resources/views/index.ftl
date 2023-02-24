@@ -6,7 +6,6 @@
     <#include "common.ftl">
     <link rel="stylesheet" href="${ctx}/css/index.css" media="all">
     <link rel="stylesheet" href="${ctx}/css/layout.css?v=0.2">
-
 </head>
 <body>
 <div class="preloader">
@@ -45,5 +44,6 @@
 <script type="text/javascript" src="${ctx}/js/echarts.js"></script>
 <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
 <script type="text/javascript" src="${ctx}/js/index.Title.js"></script>
+
 </body>
 </html>

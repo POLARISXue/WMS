@@ -1,110 +1,139 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xy.wms.dao.GoodsSupplierMapper" >
-  <resultMap id="BaseResultMap" type="com.xy.wms.vo.GoodsSupplier" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
-    <result column="supplier_id" property="supplierId" jdbcType="INTEGER" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
-    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xy.wms.dao.GoodsSupplierMapper">
+  <resultMap id="BaseResultMap" type="com.xy.wms.vo.GoodsSupplier">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="supplier_id" jdbcType="INTEGER" property="supplierId" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    id, goods_id, supplier_id, create_date, update_date, is_valid
+  <sql id="Base_Column_List">
+    id, goods_id, supplier_id, create_date, update_date
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from goods_supplier
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from goods_supplier
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.xy.wms.vo.GoodsSupplier" >
+  <insert id="insert" parameterType="com.xy.wms.vo.GoodsSupplier">
     insert into goods_supplier (id, goods_id, supplier_id, 
-      create_date, update_date, is_valid
-      )
+      create_date, update_date)
     values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{supplierId,jdbcType=INTEGER}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{isValid,jdbcType=INTEGER}
-      )
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.xy.wms.vo.GoodsSupplier" >
+  <insert id="insertSelective" parameterType="com.xy.wms.vo.GoodsSupplier">
     insert into goods_supplier
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="goodsId != null" >
+      <if test="goodsId != null">
         goods_id,
       </if>
-      <if test="supplierId != null" >
+      <if test="supplierId != null">
         supplier_id,
       </if>
-      <if test="createDate != null" >
+      <if test="createDate != null">
         create_date,
       </if>
-      <if test="updateDate != null" >
+      <if test="updateDate != null">
         update_date,
       </if>
-      <if test="isValid != null" >
-        is_valid,
-      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="goodsId != null" >
+      <if test="goodsId != null">
         #{goodsId,jdbcType=INTEGER},
       </if>
-      <if test="supplierId != null" >
+      <if test="supplierId != null">
         #{supplierId,jdbcType=INTEGER},
       </if>
-      <if test="createDate != null" >
+      <if test="createDate != null">
         #{createDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateDate != null" >
+      <if test="updateDate != null">
         #{updateDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isValid != null" >
-        #{isValid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xy.wms.vo.GoodsSupplier" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.xy.wms.vo.GoodsSupplier">
     update goods_supplier
-    <set >
-      <if test="goodsId != null" >
+    <set>
+      <if test="goodsId != null">
         goods_id = #{goodsId,jdbcType=INTEGER},
       </if>
-      <if test="supplierId != null" >
+      <if test="supplierId != null">
         supplier_id = #{supplierId,jdbcType=INTEGER},
       </if>
-      <if test="createDate != null" >
+      <if test="createDate != null">
         create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateDate != null" >
+      <if test="updateDate != null">
         update_date = #{updateDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isValid != null" >
-        is_valid = #{isValid,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.xy.wms.vo.GoodsSupplier" >
+  <update id="updateByPrimaryKey" parameterType="com.xy.wms.vo.GoodsSupplier">
     update goods_supplier
     set goods_id = #{goodsId,jdbcType=INTEGER},
       supplier_id = #{supplierId,jdbcType=INTEGER},
       create_date = #{createDate,jdbcType=TIMESTAMP},
-      update_date = #{updateDate,jdbcType=TIMESTAMP},
-      is_valid = #{isValid,jdbcType=INTEGER}
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="queryAllGoodsSupplier" resultType="java.util.Map" parameterType="java.lang.Integer">
+    select
+      g.id,
+      g.goods_name AS goodsName,
+      CASE
+        WHEN IFNULL(temp.id,0) = 0 THEN ''
+        ELSE 'selected'
+        END
+      AS 'selected'
+    FROM
+      goods g
+        LEFT JOIN
+      ( SELECT g.id FROM goods g LEFT JOIN goods_supplier gs ON g.id = gs.goods_id WHERE supplier_id = #{supplierId}) temp ON g.id = temp.id
+    WHERE
+      g.is_valid = 1
+  </select>
 
   <select id="queryAllSupplierByGoodsId" parameterType="int" resultType="map">
     SELECT id,name from supplier WHERE id in(SELECT supplier_id FROM goods_supplier WHERE goods_id=#{goodsId}) and is_valid=1
   </select>
+
+  <select id="countGoodsSupplierBySupplierId" parameterType="int" resultType="int">
+    select
+      count(1)
+    from
+      goods_supplier
+    where
+      supplier_id=#{supplierId}
+  </select>
+
+  <delete id="deleteGoodsSupplierBySupplierId" parameterType="int">
+    delete from
+      goods_supplier
+    where
+      supplier_id=#{supplierId}
+  </delete>
+
+  <insert id="insertBatch">
+    insert into
+    goods_supplier(goods_id,supplier_id,create_date,update_date)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.goodsId},#{item.supplierId},now(),now())
+    </foreach>
+  </insert>
 </mapper>

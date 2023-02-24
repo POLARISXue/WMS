@@ -4,16 +4,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
-public class Customers {
+public class Supplier {
     private Integer id;
+
+    private String address;
+
+    private String contact;
 
     private String name;
 
     private String linkPhone;
-
-    private String address;
-
-    private String remarks;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createDate;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
@@ -21,12 +21,38 @@ public class Customers {
 
     private Integer isValid;
 
+    private String goodsIds;
+
+    public String getGoodsIds() {
+        return goodsIds;
+    }
+
+    public void setGoodsIds(String goodsIds) {
+        this.goodsIds = goodsIds;
+    }
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact == null ? null : contact.trim();
     }
 
     public String getName() {
@@ -43,22 +69,6 @@ public class Customers {
 
     public void setLinkPhone(String linkPhone) {
         this.linkPhone = linkPhone == null ? null : linkPhone.trim();
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks == null ? null : remarks.trim();
     }
 
     public Date getCreateDate() {

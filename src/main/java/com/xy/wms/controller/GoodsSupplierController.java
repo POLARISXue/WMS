@@ -25,5 +25,11 @@ public class GoodsSupplierController extends BaseController {
         return list;
     }
 
+    @RequestMapping("/queryAllGoodsSupplier")
+    @ResponseBody
+    public List<Map<String,Object>> queryAllGoodsSupplier(Integer supplierId){
+        return goodsSupplierService.queryAllGoodsSupplier(supplierId);
+    }
+
 
 }

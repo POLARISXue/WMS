@@ -59,6 +59,7 @@ public class WarehouseService extends BaseService<Warehouse,Integer> {
 
         }else {
             temp.setGoodsNumber(temp.getGoodsNumber()+warehouse.getGoodsNumber());
+            temp.setUpdateDate(new Date());
             warehouseMapper.updateByPrimaryKeySelective(temp);
 //            updateWarehouse(warehouse);
         }
@@ -80,6 +81,8 @@ public class WarehouseService extends BaseService<Warehouse,Integer> {
         }else{
             warehouse.setChooseTime(null);
         }
+        warehouse.setChooseTime(new Date());
+        warehouse.setUpdateDate(new Date());
         AssertUtil.isTrue(updateByPrimaryKeySelective(warehouse)<1,"库存更新失败");
     }
     /**
@@ -108,6 +111,9 @@ public class WarehouseService extends BaseService<Warehouse,Integer> {
         return resultInfo;
     }
 
+    public Warehouse queryGoodsById(Integer warehouseId) {
+        return warehouseMapper.queryGoodsById(warehouseId);
+    }
 
     public List<Integer> loadRadarChart() {
        return warehouseMapper.loadRadarChart();

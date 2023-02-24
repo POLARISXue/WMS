@@ -44,14 +44,17 @@ public class WarehouseController extends BaseController {
      */
     @RequestMapping("toWarehousePage")
     public String toWarehousePage(Integer warehouseId, HttpServletRequest request) {
-        // 判断saleChanceId是否为空
-        if (warehouseId != null) {
-            // 通过ID查询营销机会数据
-            Warehouse warehouse = warehouseService.selectByPrimaryKey(warehouseId);
-            // 将数据设置到请求域中
-            request.setAttribute("warehouse",warehouse);
-        }
+
         return "warehouse/add_update";
+    }
+
+
+    @RequestMapping("toWarehousePage1")
+    public String toWarehousePage1(Integer warehouseId, HttpServletRequest request) {
+        Warehouse warehouse = warehouseService.queryGoodsById(warehouseId);
+        //warehouseService.que
+        request.setAttribute("warehouse",warehouse);
+        return "warehouse/update";
     }
     /**
     查询所有货物

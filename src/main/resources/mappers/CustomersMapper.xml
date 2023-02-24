@@ -126,6 +126,45 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <!-- 通过需求商查询需求商记录，返回需求商对象 -->
+  <select id="queryCustomersByName" parameterType="string" resultType="com.xy.wms.vo.Customers">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    customers
+    where
+    name = #{name}
+  </select>
+  <!-- 查询 -->
+  <select id="selectByParams" parameterType="com.xy.wms.query.CustomersQuery" resultType="com.xy.wms.vo.Customers">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    customers
+    <where>
+      is_valid = 1
+      <if test="name != null and name != ''">
+        and name like concat('%',#{name},'%')
+      </if>
+      <!-- 联系号码查询 -->
+      <if test="null != linkPhone and linkPhone != ''">
+        and linkPhone like concat('%',#{linkPhone},'%')
+      </if>
+    </where>
+  </select>
+  <!--批量删除（修改操作）-->
+  <update id="deleteBatch">
+    update
+    customers
+    set
+    is_valid = 0
+    where
+    id
+    in
+    <foreach collection="array" separator="," open="(" close=")" item="id">
+      #{id}
+    </foreach>
+  </update>
 
   <select id="queryAllCustomers" resultType="map">
     select

@@ -19,13 +19,14 @@ layui.use(['table','layer'],function() {
             {type: "checkbox", fixed: "center"},
             {field: "id", title: '编号', fixed: "true"},
             {field: 'goodsId', title: '货物编号', align: "center"},
+            {field: 'goodsNumber', title: '货物数量', align: 'center'},
+            {field: 'createDate', title: '创建时间', align: 'center'},
+            {field: 'updateDate', title: '更新时间', align: 'center'},
             {field: 'goodsName', title: '货物名称', align: 'center'},
             {field: 'goodsCostPrice', title: '货物进价', align: 'center'},
             {field: 'goodsSalePrice', title: '货物售价', align: 'center'},
             {field: 'typeName', title: '类型名称', align: 'center'},
-            {field: 'goodsNumber', title: '货物数量', align: 'center'},
-            {field: 'createDate', title: '创建时间', align: 'center'},
-            {field: 'updateDate', title: '更新时间', align: 'center'},
+
             {
                 title: '操作', templet: '#warehouseListBar', fixed: "right", align: "center",
                 minWidth: 150
@@ -55,7 +56,7 @@ layui.use(['table','layer'],function() {
      */
     table.on('toolbar(warehouse)', function (data) {
         // data.event：对应的元素上设置的lay-event属性值
-        // console.log(data);
+        console.log(data);
         // 判断对应的事件类型
         if (data.event == "add") {
             // 添加操作
@@ -73,18 +74,18 @@ layui.use(['table','layer'],function() {
      *      如果营销机会ID为空，则为添加操作
      *      如果营销机会ID不为空，则为修改操作
      */
-    function openWarehouseDialog(warehouseId) {
+    function openWarehouseDialog() {
         // 弹出层的标题
         var title = "<h3>库存管理 - 添加库存</h3>";
         var url = ctx + "/warehouse/toWarehousePage";
 
-        // 判断营销机会ID是否为空
+        /*// 判断营销机会ID是否为空
         if (warehouseId != null && warehouseId != 'warehouseId') {
             // 更新操作
             title  = "<h3>库存管理 - 更新库存</h3>";
             // 请求地址传递营销机会的ID
             url += '?warehouseId=' + warehouseId;
-        }
+        }*/
 
         // iframe层
         layui.layer.open({
@@ -100,6 +101,37 @@ layui.use(['table','layer'],function() {
             maxmin:true
         });
     }
+
+
+    function openWarehouseDialog1(warehouseId) {
+        // 弹出层的标题
+        var title = "<h3>库存管理 - 修改库存</h3>";
+        var url = ctx + "/warehouse/toWarehousePage1?warehouseId="+warehouseId;
+
+        /*// 判断营销机会ID是否为空
+        if (warehouseId != null && warehouseId != 'warehouseId') {
+            // 更新操作
+            title  = "<h3>库存管理 - 更新库存</h3>";
+            // 请求地址传递营销机会的ID
+
+        }*/
+
+        // iframe层
+        layui.layer.open({
+            // 类型
+            type: 2,
+            // 标题
+            title: title,
+            // 宽高
+            area: ['750px', '240px'],
+            // url地址
+            content: url,
+            // 可以最大化与最小化
+            maxmin:true
+        });
+    }
+
+
 
     /**
      * 删除营销机会（删除多条记录）
@@ -160,14 +192,13 @@ layui.use(['table','layer'],function() {
          });
      */
     table.on('tool(warehouse)', function (data) {
-        // console.log(data);
         // 判断类型
         if (data.event == "edit") { // 编辑操作
 
             // 得到营销机会的ID
             var warehouseId = data.data.id;
             // 打开修改营销机会数据的窗口
-            openWarehouseDialog(warehouseId)
+            openWarehouseDialog1(warehouseId)
 
         } else if (data.event == "del") { // 删除操作
             // 弹出确认框，询问用户是否确认删除

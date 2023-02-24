@@ -26,4 +26,6 @@ public interface WarehouseMapper extends BaseMapper<Warehouse,Integer> {
     Integer queryInventory();
 
     List<Integer> loadRadarChart();
+
+    Warehouse queryGoodsById(Integer warehouseId);
 }

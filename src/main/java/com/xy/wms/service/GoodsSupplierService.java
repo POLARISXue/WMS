@@ -18,4 +18,8 @@ public class GoodsSupplierService extends BaseService<GoodsSupplier,Integer> {
     public List<Map<String,Object>> queryAllSupplierByGoodsId(Integer goodsId){
         return goodsSupplierMapper.queryAllSupplierByGoodsId(goodsId);
     }
+
+    public List<Map<String, Object>> queryAllGoodsSupplier(Integer supplierId) {
+        return goodsSupplierMapper.queryAllGoodsSupplier(supplierId);
+    }
 }

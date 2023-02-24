@@ -25,8 +25,6 @@ layui.use(['form', 'layer','formSelects'], function () {
             url=ctx+"/user/update";
             info="用户修改成功！";
         }
-
-        console.log(data.field);
         $.post(url,data.field,function(result){
             if (result.code==200){
                 // 关闭弹出层（返回值为index的弹出层）

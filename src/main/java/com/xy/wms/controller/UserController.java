@@ -1,5 +1,6 @@
 package com.xy.wms.controller;
 
+
 import com.xy.wms.annotation.RequiredPermission;
 import com.xy.wms.base.BaseController;
 import com.xy.wms.base.ResultInfo;
@@ -22,6 +23,7 @@ public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
+
 
     @PostMapping("/login")
     @ResponseBody
