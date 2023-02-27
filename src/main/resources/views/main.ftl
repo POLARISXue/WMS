@@ -25,13 +25,22 @@
                 <a href="javascript:;">${(user.userName)!""}</a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a href="javascript:;" data-iframe-tab="${ctx}/user/toSettingPage" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
+                        <a href="javascript:;" data-iframe-tab="${ctx}/user/toSettingPage" data-title="基本资料" data-icon="fa fa-gears">
+                            <i class="layui-icon">&#xe60a;</i>
+                            基本资料
+                        </a>
                     </dd>
                     <dd>
-                        <a href="javascript:;" data-iframe-tab="${ctx}/user/toPasswordPage" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
+                        <a href="javascript:;" data-iframe-tab="${ctx}/user/toPasswordPage" data-title="修改密码" data-icon="fa fa-gears">
+                            <i class="layui-icon">&#xe642;</i>
+                            修改密码
+                        </a>
                     </dd>
                     <dd>
-                        <a href="javascript:;" class="login-out">退出登录</a>
+                        <a href="javascript:;" class="login-out" data-title="退出登录" data-icon="fa fa-gears">
+                            <i class="layui-icon">&#xe682;</i>
+                            退出登录
+                        </a>
                     </dd>
                 </dl>
             </li>
@@ -47,21 +56,21 @@
                 <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-this" id="currency">
 
                     <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-street-view"></i><span class="layui-left-nav"> 数据报表</span> <span class="layui-nav-more"></span></a>
+                        <a href="javascript:;" class="layui-menu-tips"> <i class="layui-icon">&#xe629;</i><span class="layui-left-nav"> 数据报表</span> <span class="layui-nav-more"></span></a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="dataReport/index" target="_self"><i class="fa fa-tty"></i><span class="layui-left-nav">数据报表</span></a>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="dataReport/index" target="_self"><i class="layui-icon">&#xe629;</i><span class="layui-left-nav">数据报表</span></a>
                             </dd>
                         </dl>
                     </li>
 
                     <#if permissions?seq_contains("10")>
                         <li class="layui-nav-item">
-                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-street-view"></i><span class="layui-left-nav"> 采购计划管理</span> <span class="layui-nav-more"></span></a>
+                            <a href="javascript:;" class="layui-menu-tips"><i class="layui-icon">&#xe698;</i><span class="layui-left-nav"> 采购计划管理</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
                                 <#if permissions?seq_contains("1010")>
                                     <dd>
-                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="intowarehouse/index" target="_self"><i class="fa fa-tty"></i><span class="layui-left-nav">采购计划管理</span></a>
+                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="intowarehouse/index" target="_self"><i class="layui-icon">&#xe698;</i><span class="layui-left-nav">采购计划管理</span></a>
                                     </dd>
                                 </#if>
                             </dl>
@@ -69,11 +78,11 @@
                     </#if>
                     <#if permissions?seq_contains("20")>
                         <li class="layui-nav-item">
-                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-flag"></i><span class="layui-left-nav"> 仓库管理</span> <span class="layui-nav-more"></span></a>
+                            <a href="javascript:;" class="layui-menu-tips"><i class="layui-icon">&#xe656;</i><span class="layui-left-nav"> 仓库管理</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
                                 <#if permissions?seq_contains("2010")>
                                     <dd>
-                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="warehouse/index" target="_self"><i class="fa fa-exchange"></i><span class="layui-left-nav"> 库存管理</span></a>
+                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="warehouse/index" target="_self"><i class="layui-icon">&#xe656;</i><span class="layui-left-nav"> 库存管理</span></a>
                                     </dd>
                                 </#if>
                             </dl>

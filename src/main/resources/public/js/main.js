@@ -11,8 +11,8 @@ layui.use(['element', 'layer', 'layuimini','jquery','jquery_cookie'], function (
         layer.confirm('是否确认退出?', {icon: 3, title:'提示'}, function(index){
             //do something
             layer.close(index);
-            $.removeCookie("userIdStr",{domain:"localhost",path:"/crm"});
-            $.removeCookie("userName",{domain:"localhost",path:"/crm"});
+            $.removeCookie("userIdStr",{domain:"localhost",path:"/wms"});
+            $.removeCookie("userName",{domain:"localhost",path:"/wms"});
             window.parent.location.href=ctx+"/index";
         });
     })

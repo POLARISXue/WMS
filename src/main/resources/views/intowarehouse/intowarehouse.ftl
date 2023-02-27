@@ -37,6 +37,18 @@
 	<!-- 头部工具栏 -->
 	<script type="text/html" id="toolbarDemo">
 		<div class="layui-btn-container">
+			<a class="layui-btn layui-btn-radius layui-btn-normal delNews_btn" lay-event="getCheckData">
+				<i class="layui-icon">&#xe63c;</i>
+				获取选中行数据
+			</a>
+			<a class="layui-btn layui-btn-radius layui-btn-normal delNews_btn" lay-event="getCheckLength">
+				<i class="layui-icon">&#xe615;</i>
+				获取选中数目
+			</a>
+			<a class="layui-btn layui-btn-radius layui-btn-normal delNews_btn" lay-event="isAll">
+				<i class="layui-icon">&#xe615;</i>
+				验证是否全选
+			</a>
 			<a class="layui-btn layui-btn-radius layui-btn-normal addNews_btn" lay-event="add">
 				<i class="layui-icon">&#xe608;</i>
 				添加
