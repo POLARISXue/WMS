@@ -166,8 +166,8 @@
       <if test="customersName !=null and customersName !=''">
         and c.name like concat('%',#{customersName},'%')
       </if>
-      <if test="state !=null and state !=''">
-        and ow.state = #{state}
+      <if test="state !=null">
+        and ow.out_warehouse_state = #{state}
       </if>
     </where>
   </select>

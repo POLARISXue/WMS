@@ -166,7 +166,7 @@
       <if test=" null != supplier and supplier != '' ">
         and s.name like concat('%',#{supplier},'%')
       </if>
-      <if test=" state != null and state !='' ">
+      <if test=" state != null ">
         and state = #{state}
       </if>
     </where>

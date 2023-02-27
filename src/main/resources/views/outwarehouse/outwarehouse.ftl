@@ -22,7 +22,7 @@
 				<div class="layui-input-inline">
                     <select name="state"  id="state">
                         <option value="" >分配状态</option>
-                        <option value="0">未出库</option>
+                        <option value="0" >未出库</option>
                         <option value="1" >已出库</option>
                     </select>
 				</div>
