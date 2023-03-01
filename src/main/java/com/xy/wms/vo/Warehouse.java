@@ -7,7 +7,7 @@ public class Warehouse extends Goods{
 
     private Integer goodsId;
 
-    private Integer goodsNumber;
+    private int goodsNumber;
 
     private Date createDate;
 
@@ -41,11 +41,11 @@ public class Warehouse extends Goods{
         this.goodsId = goodsId;
     }
 
-    public Integer getGoodsNumber() {
+    public int getGoodsNumber() {
         return goodsNumber;
     }
 
-    public void setGoodsNumber(Integer goodsNumber) {
+    public void setGoodsNumber(int goodsNumber) {
         this.goodsNumber = goodsNumber;
     }
 

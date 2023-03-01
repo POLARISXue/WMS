@@ -9,6 +9,8 @@ import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.*;
 import com.xy.wms.vo.report.RadarChart;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

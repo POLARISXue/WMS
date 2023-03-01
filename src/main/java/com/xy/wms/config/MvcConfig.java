@@ -8,8 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 public class MvcConfig extends WebMvcConfigurerAdapter {
-
-
+    
     @Bean
     public NologinInterceptor nologinInterceptor(){
         return new NologinInterceptor();
@@ -20,6 +19,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(nologinInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/index","/user/login","/css/**","/images/**","/js/**","/lib/**");
-
     }
+
+
 }
