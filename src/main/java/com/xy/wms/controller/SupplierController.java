@@ -21,6 +21,7 @@ public class SupplierController extends BaseController {
     @Resource
     private SupplierService supplierService;
 
+
     /**
      * 进入供应商管理主页
      * @return
@@ -39,7 +40,7 @@ public class SupplierController extends BaseController {
     @RequestMapping("list")
     @ResponseBody
     public Map<String,Object> selectByParams(SupplierQuery supplierQuery){
-        return supplierService.queryByParamsForTable(supplierQuery);
+        return supplierService.queryByParamsForTable(supplierQuery,"supplier:list");
     }
 
     /**

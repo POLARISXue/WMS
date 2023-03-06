@@ -37,7 +37,7 @@ public class GoodsController extends BaseController {
     @RequestMapping("list")
     @ResponseBody
     public Map<String, Object> selectByParams(GoodsQuery goodsQuery) {
-        return goodsService.queryByParamsForTable(goodsQuery);
+        return goodsService.queryByParamsForTable(goodsQuery,"goods:list");
     }
     @RequiredPermission(code = "501002")
     @PostMapping("add")

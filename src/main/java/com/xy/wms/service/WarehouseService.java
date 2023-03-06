@@ -11,6 +11,8 @@ import com.xy.wms.vo.Warehouse;
 import com.xy.wms.vo.report.RadarChart;
 import com.xy.wms.vo.wms.WMS;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,19 +28,24 @@ public class WarehouseService extends BaseService<Warehouse,Integer> {
     @Resource
     private WarehouseMapper warehouseMapper;
 
-    /**
-     * 多条件分页查询物品信息
-     */
-    public Map<String,Object> queryWarehouseByParams(WarehouseQuery warehouseQuery){
-        Map<String,Object> map = new HashMap<>();
-        PageHelper.startPage(warehouseQuery.getPage(),warehouseQuery.getLimit());
-        PageInfo<Warehouse> pageInfo = new PageInfo<>(warehouseMapper.selectByParams(warehouseQuery));
-        map.put("code",0);
-        map.put("msg","success");
-        map.put("count",pageInfo.getTotal());
-        map.put("data",pageInfo.getList());
-        return map;
-    }
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
+    @Resource(name = "redisTemplate")
+    private ValueOperations<String,Object> valueOperations;
+
+//    /**
+//     * 多条件分页查询物品信息
+//     */
+//    public Map<String,Object> queryWarehouseByParams(WarehouseQuery warehouseQuery,String keyBuff){
+//        Map<String,Object> map = new HashMap<>();
+//        PageHelper.startPage(warehouseQuery.getPage(),warehouseQuery.getLimit());
+//        PageInfo<Warehouse> pageInfo = new PageInfo<>(warehouseMapper.selectByParams(warehouseQuery));
+//        map.put("code",0);
+//        map.put("msg","success");
+//        map.put("count",pageInfo.getTotal());
+//        map.put("data",pageInfo.getList());
+//        return map;
+//    }
 
     /**
      * 添加
@@ -63,7 +70,9 @@ public class WarehouseService extends BaseService<Warehouse,Integer> {
             warehouseMapper.updateByPrimaryKeySelective(temp);
 //            updateWarehouse(warehouse);
         }
-}
+        redisTemplate.delete(redisTemplate.keys("warehouse:list*"));
+
+    }
 
     private void checkWarehouseParams(String goodsName, String typeName) {
     }
@@ -84,6 +93,7 @@ public class WarehouseService extends BaseService<Warehouse,Integer> {
         warehouse.setChooseTime(new Date());
         warehouse.setUpdateDate(new Date());
         AssertUtil.isTrue(updateByPrimaryKeySelective(warehouse)<1,"库存更新失败");
+        redisTemplate.delete(redisTemplate.keys("warehouse:list*"));
     }
     /**
      * 查询所有的货物名称
@@ -97,7 +107,8 @@ public class WarehouseService extends BaseService<Warehouse,Integer> {
      */
     public void deleteWarehouse(Integer[] ids){
         AssertUtil.isTrue(null==ids||ids.length==0,"请选择待删除记录！");
-        AssertUtil.isTrue(deleteBatch(ids)!=ids.length,"记录删除失败");
+        AssertUtil.isTrue(deleteBatch(ids,"warehouse:list")!=ids.length,"记录删除失败");
+        redisTemplate.delete(redisTemplate.keys("warehouse:list*"));
     }
 
     public ResultInfo queryInventory() {

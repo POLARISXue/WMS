@@ -111,7 +111,7 @@
     <where>
       w.is_valid = 1
       <if test="goodsId != null and goodsId != ''">
-        and w.goods_id like concat('%',#{goodsId},'%')
+        and w.goods_id =#{goodsId}
       </if>
       <if test="goodsName != null and goodsName != ''">
         and G.goods_name like concat('%',#{goodsName},'%')

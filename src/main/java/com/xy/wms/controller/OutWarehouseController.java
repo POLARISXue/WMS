@@ -33,7 +33,7 @@ public class OutWarehouseController extends BaseController {
     @ResponseBody
     public Map<String,Object> list(OutWarehouseQuery query){
 
-        return outWarehouseService.queryByParamsForTable(query);
+        return outWarehouseService.queryByParamsForTable(query,"outwarehouse:list");
     }
 
     //添加出库记录
@@ -66,7 +66,7 @@ public class OutWarehouseController extends BaseController {
     @PostMapping("/delete")
     @ResponseBody
     public ResultInfo deleteOutWarehouse(Integer[] ids){
-        outWarehouseService.deleteBatch(ids);
+        outWarehouseService.deleteBatch(ids,"outwarehouse:list");
         return success("出库记录删除成功！");
     }
 

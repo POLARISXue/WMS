@@ -9,6 +9,8 @@ import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.*;
 import com.xy.wms.vo.report.RadarChart;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,9 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
     private CustomersMapper customersMapper;
     @Resource
     private WarehouseMapper warehouseMapper;
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
+
 
 
     /**
@@ -63,13 +68,14 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
         outWarehouse.setCreateDate(new Date());
         //3.执⾏添加 判断结果
         AssertUtil.isTrue(outWarehouseMapper.insertSelective(outWarehouse)!=1,"出库记录添加失败！");
+        redisTemplate.delete(redisTemplate.keys("outwarehouse:list*"));
+        redisTemplate.delete(redisTemplate.keys("warehouse:list*"));
     }
 
 
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void updateOutWarehouse(OutWarehouse outWarehouse){
-
         //校验基础参数
         Goods goods = goodsMapper.selectByPrimaryKey(outWarehouse.getGoodsId());
         Customers customers = customersMapper.selectByPrimaryKey(outWarehouse.getCustomersId());
@@ -94,6 +100,9 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
         }
         AssertUtil.isTrue(outWarehouseMapper.updateByPrimaryKeySelective(outWarehouse)!=1,"出库记录更新失败！");
 
+        redisTemplate.delete(redisTemplate.keys("outwarehouse:list*"));
+        redisTemplate.delete(redisTemplate.keys("warehouse:list*"));
+
     }
 
 
@@ -115,7 +124,6 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
         AssertUtil.isTrue(null==outWarehouseId,"未获取到待更新记录Id！");
         //判断是否为空
         AssertUtil.isTrue(null==outWarehouseMapper.selectByPrimaryKey(outWarehouseId),"待更新记录不存在！");
-
         AssertUtil.isTrue(StringUtils.isBlank(goodsName),"未检测到物品名称！");
         AssertUtil.isTrue(StringUtils.isBlank(name),"未检测到需求商名称！");
         AssertUtil.isTrue(goodsNumber<=0,"出库数量不合法！");
@@ -127,7 +135,6 @@ public class OutWarehouseService extends BaseService<OutWarehouse,Integer> {
         AssertUtil.isTrue(wareHouse==null,"未查询到对应物品的库存");
         int sum = wareHouse.getGoodsNumber()-outWarehouse.getGoodsNumber();
         AssertUtil.isTrue( warehouseMapper.updateByGoodsId(outWarehouse.getGoodsId(),sum)!=1,"修改库存失败");
-
     }
 
     public List<Integer> loadRadarChart() {

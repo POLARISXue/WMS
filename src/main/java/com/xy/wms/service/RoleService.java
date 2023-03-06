@@ -8,6 +8,7 @@ import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.Permission;
 import com.xy.wms.vo.Role;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,9 @@ public class RoleService extends BaseService<Role,Integer> {
     private PermissionMapper permissionMapper;
     @Resource
     private ModuleMapper moduleMapper;
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
+
 
     public List<Map<String,Object>> queryAllRoles(Integer userId){
         return roleMapper.queryAllRoles(userId);
@@ -42,6 +46,7 @@ public class RoleService extends BaseService<Role,Integer> {
         role.setUpdateDate(new Date());
         //执行添加操作，根据返回行数判断是否添加成功
         AssertUtil.isTrue(roleMapper.insertSelective(role)<1,"角色添加失败");
+        redisTemplate.delete(redisTemplate.keys("role:list*"));
     }
     @Transactional(propagation = Propagation.REQUIRED)
     public void updateRole(Role role) {
@@ -59,6 +64,7 @@ public class RoleService extends BaseService<Role,Integer> {
         role.setUpdateDate(new Date());
         //执行添加操作
         AssertUtil.isTrue(roleMapper.updateByPrimaryKeySelective(role)<1,"角色修改失败");
+        redisTemplate.delete(redisTemplate.keys("role:list*"));
 
     }
     @Transactional(propagation = Propagation.REQUIRED)
@@ -73,6 +79,7 @@ public class RoleService extends BaseService<Role,Integer> {
         temp.setUpdateDate(new Date());
         //执行添加操作
         AssertUtil.isTrue(roleMapper.updateByPrimaryKeySelective(temp)<1,"用户修改失败");
+        redisTemplate.delete(redisTemplate.keys("role:list*"));
     }
     @Transactional(propagation = Propagation.REQUIRED)
     public void addGrant(Integer roleId, Integer[] mIds) {

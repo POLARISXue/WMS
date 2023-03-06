@@ -28,7 +28,7 @@ public class WarehouseController extends BaseController {
     @GetMapping("list")
     @ResponseBody
     public Map<String,Object> queryWarehouseByParams(WarehouseQuery warehouseQuery){
-        return warehouseService.queryWarehouseByParams(warehouseQuery);
+        return warehouseService.queryByParamsForTable(warehouseQuery,"warehouse:list");
     }
 
     @RequestMapping("add")

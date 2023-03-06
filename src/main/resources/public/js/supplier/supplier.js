@@ -50,6 +50,7 @@ layui.use(['table','layer'],function(){
             where: {//设定异步数据接口的额外参数，任意设
                 //通过文本框/下拉框的值，设置传递的参数
                 name: $("input[name='name']").val(),  //供应商名称
+                contact: $("input[name='contact']").val(),  //供应商名称
             },
             page: {
                 curr: 1 //重新从第 1 页开始
@@ -108,7 +109,7 @@ layui.use(['table','layer'],function(){
                             //提示成功
                             layer.msg("删除成功！",{icon:6});
                             //删除表格
-                            tableIns.reload();
+                            tableIns.reload({page:{curr:1}});
                         }else {
                             //提示失败
                             layer.msg(result.msg,{icon:5});
@@ -198,7 +199,7 @@ layui.use(['table','layer'],function(){
                         //提示成功
                         layer.msg("删除成功！",{icon:6});
                         //删除表格
-                        tableIns.reload();
+                        tableIns.reload({page:{curr:1}});
                     }else {
                         //提示失败
                         layer.msg(result.msg,{icon:5});

@@ -5,6 +5,7 @@ import com.xy.wms.dao.GoodsMapper;
 import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.Goods;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,9 @@ public class GoodsService extends BaseService<Goods,Integer> {
 
     @Resource
     private GoodsMapper goodsMapper;
+
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
 
     public List<Map<String,Object>> queryAllGoods(){
         return goodsMapper.queryAllGoods();
@@ -38,6 +42,7 @@ public class GoodsService extends BaseService<Goods,Integer> {
         goods.setUpdateDate(new Date());
         //执行添加操作返回作用行数进行判断
         AssertUtil.isTrue(goodsMapper.insertSelective(goods) < 1,"商品添加失败");
+        redisTemplate.delete(redisTemplate.keys("goods:list*"));
 
     }
 
@@ -55,6 +60,7 @@ public class GoodsService extends BaseService<Goods,Integer> {
         goods.setUpdateDate(new Date());
         //执行修改操作，进行判断
         AssertUtil.isTrue(goodsMapper.updateByPrimaryKeySelective(goods) < 1,"用户修改失败");
+        redisTemplate.delete(redisTemplate.keys("goods:list*"));
     }
 
     /**
@@ -65,7 +71,7 @@ public class GoodsService extends BaseService<Goods,Integer> {
     public void deleteByIds(Integer[] ids) {
         AssertUtil.isTrue(null == ids || ids.length < 0,"待删除记录不存在");
         AssertUtil.isTrue(goodsMapper.deleteBatch(ids)<ids.length,"用户记录删除失败");
-
+        redisTemplate.delete(redisTemplate.keys("goods:list*"));
     }
 
     /**

@@ -47,7 +47,7 @@ public class UserController extends BaseController {
     @ResponseBody
     public Map<String,Object> selectByParams(UserQuery userQuery){
 
-        return userService.queryByParamsForTable(userQuery);
+        return userService.queryByParamsForTable(userQuery,"user:list");
     }
 
     //添加用户

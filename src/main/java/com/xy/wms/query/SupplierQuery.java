@@ -1,6 +1,7 @@
 package com.xy.wms.query;
 
 import com.xy.wms.base.BaseQuery;
+import org.apache.commons.lang3.StringUtils;
 
 public class SupplierQuery extends BaseQuery {
     //分页参数
@@ -32,5 +33,20 @@ public class SupplierQuery extends BaseQuery {
 
     public void setLinkPhone(String linkPhone) {
         this.linkPhone = linkPhone;
+    }
+
+    @Override
+    public StringBuffer getRedisKey() {
+        StringBuffer key = new StringBuffer(super.getRedisKey());
+        if (StringUtils.isNotBlank(name)){
+            key.append(":name:"+name);
+        }
+        if (StringUtils.isNotBlank(contact)){
+            key.append(":contact:"+contact);
+        }
+        if (StringUtils.isNotBlank(linkPhone)){
+            key.append(":linkPhone:"+linkPhone);
+        }
+        return key;
     }
 }

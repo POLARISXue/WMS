@@ -30,10 +30,7 @@ layui.use(['form', 'layer'], function () {
         //判断ID是否为空
         if (customersId != null && customersId != ''){
             //更新操作
-            url = ctx + "customers/update";
-        }
-        if($("input[name='id']").val()){
-            url=ctx + "/customers/update";
+            url = ctx + "/customers/update";
         }
         $.post(url, data.field, function (result) {
             //判断操作是否执行成功  200=成功

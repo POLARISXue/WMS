@@ -12,6 +12,7 @@ import com.xy.wms.utils.UserIDBase64;
 import com.xy.wms.vo.User;
 import com.xy.wms.vo.UserRole;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,8 @@ public class UserService extends BaseService<User,Integer> {
     private UserMapper userMapper;
     @Resource
     private UserRoleMapper userRoleMapper;
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
 
     /**
      * 登录
@@ -124,7 +127,8 @@ public class UserService extends BaseService<User,Integer> {
         AssertUtil.isTrue(userMapper.insertSelective(user) <1,"用户添加失败！");
 
         /* 用户角色关联  */
-         relationUserRole(user.getId(),user.getRoleIds());
+        relationUserRole(user.getId(),user.getRoleIds());
+        redisTemplate.delete(redisTemplate.keys("user:list*"));
     }
 
 
@@ -188,6 +192,7 @@ public class UserService extends BaseService<User,Integer> {
 
         /* 用户角色关联  */
          relationUserRole(user.getId(),user.getRoleIds());
+        redisTemplate.delete(redisTemplate.keys("user:list*"));
     }
 
     private void checkUserParams(String userName, String email, String phone,Integer userId) {
@@ -228,6 +233,7 @@ public class UserService extends BaseService<User,Integer> {
                 AssertUtil.isTrue(userRoleMapper.deleteUserRoleByUserId(userId) !=count,"删除用户失败！");
             }
         }
+        redisTemplate.delete(redisTemplate.keys("user:list*"));
     }
 
 }

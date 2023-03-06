@@ -12,6 +12,8 @@ import com.xy.wms.vo.GoodsSupplier;
 import com.xy.wms.vo.Supplier;
 import com.xy.wms.vo.UserRole;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,26 +27,30 @@ public class SupplierService extends BaseService<Supplier,Integer> {
     private SupplierMapper supplierMapper;
     @Resource
     private GoodsSupplierMapper goodsSupplierMapper;
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
 
-    /**
-     * 分页查询
-     * @param supplierQuery
-     * @return
-     */
-    public Map<String, Object> selectByParams(SupplierQuery supplierQuery) {
-        Map<String,Object> map = new HashMap<>();
-        //开启分页
-        PageHelper.startPage(supplierQuery.getPage(),supplierQuery.getLimit());
-        //得到对应的分页对象
-        PageInfo<Supplier> pageInfo = new PageInfo<>(supplierMapper.selectByParams(supplierQuery));
-        //设置map对象
-        map.put("code",0);
-        map.put("msg","success");
-        map.put("count",pageInfo.getTotal());
-        //设置分页的列表
-        map.put("data",pageInfo.getList());
-        return map;
-    }
+
+
+//    /**
+//     * 分页查询
+//     * @param supplierQuery
+//     * @return
+//     */
+//    public Map<String, Object> selectByParams(SupplierQuery supplierQuery) {
+//        Map<String,Object> map = new HashMap<>();
+//        //开启分页
+//        PageHelper.startPage(supplierQuery.getPage(),supplierQuery.getLimit());
+//        //得到对应的分页对象
+//        PageInfo<Supplier> pageInfo = new PageInfo<>(supplierMapper.selectByParams(supplierQuery));
+//        //设置map对象
+//        map.put("code",0);
+//        map.put("msg","success");
+//        map.put("count",pageInfo.getTotal());
+//        //设置分页的列表
+//        map.put("data",pageInfo.getList());
+//        return map;
+//    }
     /**
      * 添加供应商
      * @param supplier
@@ -63,6 +69,7 @@ public class SupplierService extends BaseService<Supplier,Integer> {
         AssertUtil.isTrue(supplierMapper.insertSelective(supplier) != 1,"添加供应商失败！");
 
         relationUserRole(supplier.getId(),supplier.getGoodsIds());
+        redisTemplate.delete(redisTemplate.keys("supplier:list*"));
     }
 
     /**
@@ -87,6 +94,7 @@ public class SupplierService extends BaseService<Supplier,Integer> {
         AssertUtil.isTrue(supplierMapper.updateByPrimaryKeySelective(supplier) != 1, "供应商更新失败！");
 
         relationUserRole(supplier.getId(),supplier.getGoodsIds());
+        redisTemplate.delete(redisTemplate.keys("supplier:list*"));
     }
 
 
@@ -135,6 +143,7 @@ public class SupplierService extends BaseService<Supplier,Integer> {
                 AssertUtil.isTrue(goodsSupplierMapper.deleteGoodsSupplierBySupplierId(supplierId)!=count,"删除供应商数据失败");
             }
         }
+        redisTemplate.delete(redisTemplate.keys("supplier:list*"));
     }
     /**
      * 参数校验

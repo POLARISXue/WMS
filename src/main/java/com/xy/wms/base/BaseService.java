@@ -4,7 +4,11 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,11 +19,20 @@ public abstract class BaseService<T,ID> {
     @Autowired
     private BaseMapper<T,ID> baseMapper;
 
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
+
+    @Resource(name = "redisTemplate")
+    private ValueOperations<String,Object> valueOperations;
+
+
+
     /**
      * 添加记录返回行数
      * @param entity
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED)
     public Integer insertSelective(T entity) throws DataAccessException{
         return baseMapper.insertSelective(entity);
     }
@@ -29,6 +42,7 @@ public abstract class BaseService<T,ID> {
      * @param entity
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED)
     public ID insertHasKey(T entity) throws DataAccessException{
         baseMapper.insertHasKey(entity);
         try {
@@ -44,6 +58,7 @@ public abstract class BaseService<T,ID> {
      * @param entities
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED)
     public Integer insertBatch(List<T> entities) throws DataAccessException{
         return baseMapper.insertBatch(entities);
     }
@@ -54,6 +69,7 @@ public abstract class BaseService<T,ID> {
      * @param id
      * @return
      */
+
     public T selectByPrimaryKey(ID id) throws DataAccessException{
         return baseMapper.selectByPrimaryKey(id);
     }
@@ -74,6 +90,7 @@ public abstract class BaseService<T,ID> {
      * @param entity
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED)
     public Integer updateByPrimaryKeySelective(T entity) throws DataAccessException{
         return baseMapper.updateByPrimaryKeySelective(entity);
     }
@@ -84,6 +101,7 @@ public abstract class BaseService<T,ID> {
      * @param entities
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED)
     public Integer updateBatch(List<T> entities) throws DataAccessException{
         return baseMapper.updateBatch(entities);
     }
@@ -93,6 +111,7 @@ public abstract class BaseService<T,ID> {
      * @param id
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED)
     public Integer deleteByPrimaryKey(ID id) throws DataAccessException{
         return baseMapper.deleteByPrimaryKey(id);
     }
@@ -102,15 +121,32 @@ public abstract class BaseService<T,ID> {
      * @param ids
      * @return
      */
-    public Integer deleteBatch(ID[] ids) throws DataAccessException{
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Integer deleteBatch(ID[] ids,String key) throws DataAccessException{
+        redisTemplate.delete(redisTemplate.keys(key+"*"));
         return baseMapper.deleteBatch(ids);
     }
 
 
-    public Map<String, Object> queryByParamsForTable(BaseQuery baseQuery) {
+    public Map<String, Object> queryByParamsForTable(BaseQuery baseQuery,String keyString) {
+        //redis缓存
+        StringBuffer keyBuff = new StringBuffer(keyString);
+        keyBuff.append(baseQuery.getRedisKey());
+        String key = keyBuff.toString();
+
+        //依据key找值
+        PageInfo<T> pageInfo = null;
+        if (redisTemplate.hasKey(key)){
+            pageInfo = (PageInfo<T>) valueOperations.get(key);
+        }else {
+            PageHelper.startPage(baseQuery.getPage(),baseQuery.getLimit());
+            pageInfo =new PageInfo<T>(selectByParams(baseQuery));
+            if (pageInfo.getTotal()>0){
+                valueOperations.set(key,pageInfo);
+            }
+        }
+
         Map<String,Object> result = new HashMap<String,Object>();
-        PageHelper.startPage(baseQuery.getPage(),baseQuery.getLimit());
-        PageInfo<T> pageInfo =new PageInfo<T>(selectByParams(baseQuery));
         result.put("count",pageInfo.getTotal());
         result.put("data",pageInfo.getList());
         result.put("code",0);

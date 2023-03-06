@@ -5,6 +5,7 @@ import com.xy.wms.dao.GoodsTypeMapper;
 import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.GoodsType;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,6 +16,9 @@ import java.util.Map;
 public class GoodsTypeService extends BaseService<GoodsType,Integer> {
     @Resource
     private GoodsTypeMapper goodsTypeMapper;
+
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
 
     public List<Map<String,Object>> queryAllGoodsType(){
         return goodsTypeMapper.queryAllGoodsType();
@@ -27,7 +31,7 @@ public class GoodsTypeService extends BaseService<GoodsType,Integer> {
         goodsType.setIsValid(1);
         //根据返回行数判断是否添加成功
         AssertUtil.isTrue(goodsTypeMapper.insertSelective(goodsType)<1,"商品类型添加失败");
-
+        redisTemplate.delete(redisTemplate.keys("goodsType:list*"));
     }
 
 
@@ -41,7 +45,7 @@ public class GoodsTypeService extends BaseService<GoodsType,Integer> {
         checkGoodsType(goodsType.getId(),goodsType.getTypeName());
         //执行修改操作并赋值
         AssertUtil.isTrue(goodsTypeMapper.updateByPrimaryKeySelective(goodsType)<1,"用户修改失败");
-
+        redisTemplate.delete(redisTemplate.keys("goodsType:list*"));
     }
     private void checkGoodsType(Integer id, String typeName) {
         AssertUtil.isTrue(StringUtils.isBlank(typeName),"商品类型名称不能为空！");

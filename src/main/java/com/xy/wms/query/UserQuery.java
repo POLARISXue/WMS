@@ -2,6 +2,7 @@ package com.xy.wms.query;
 
 
 import com.xy.wms.base.BaseQuery;
+import org.apache.commons.lang3.StringUtils;
 
 public class UserQuery extends BaseQuery {
 
@@ -31,5 +32,20 @@ public class UserQuery extends BaseQuery {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public StringBuffer getRedisKey() {
+        StringBuffer key = new StringBuffer(super.getRedisKey());
+        if (StringUtils.isNotBlank(userName)){
+            key.append(":userName:"+userName);
+        }
+        if (StringUtils.isNotBlank(email)){
+            key.append(":email:"+email);
+        }
+        if (StringUtils.isNotBlank(phone)){
+            key.append(":phone:"+phone);
+        }
+        return key;
     }
 }

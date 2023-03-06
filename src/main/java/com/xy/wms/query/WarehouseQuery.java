@@ -1,6 +1,7 @@
 package com.xy.wms.query;
 
 import com.xy.wms.base.BaseQuery;
+import org.apache.commons.lang3.StringUtils;
 
 public class WarehouseQuery extends BaseQuery {
     //物品的ID
@@ -35,4 +36,15 @@ public class WarehouseQuery extends BaseQuery {
         this.goodsId = goodsId;
     }
 
+    @Override
+    public StringBuffer getRedisKey() {
+        StringBuffer key = new StringBuffer(super.getRedisKey());
+        if (goodsId!=null){
+            key.append(":goodsId:"+goodsId);
+        }
+        if (StringUtils.isNotBlank(goodsName)){
+            key.append(":goodsName:"+goodsName);
+        }
+        return key;
+    }
 }

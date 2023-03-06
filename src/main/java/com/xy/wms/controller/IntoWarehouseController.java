@@ -30,7 +30,7 @@ public class IntoWarehouseController extends BaseController {
     @RequestMapping("/list")
     @ResponseBody
     public Map<String,Object> queryIntoWarehouseListByParams(IntoWarehouseQuery intoWarehouseQuery){
-        return intoWarehouseService.queryByParamsForTable(intoWarehouseQuery);
+        return intoWarehouseService.queryByParamsForTable(intoWarehouseQuery,"intowarehouse:list");
     }
 
     @RequestMapping("/addOrUpdateIntoWarehousePage")
@@ -60,7 +60,7 @@ public class IntoWarehouseController extends BaseController {
     @PostMapping("/delete")
     @ResponseBody
     public ResultInfo delete(Integer[] ids){
-        intoWarehouseService.deleteBatch(ids);
+        intoWarehouseService.deleteBatch(ids,"intowarehouse:list");
         return success("入库记录删除成功");
     }
 

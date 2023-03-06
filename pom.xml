@@ -108,7 +108,17 @@
       <optional>true</optional>
     </dependency>
 
+    <!-- commons-pool2 对象池依赖 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-pool2</artifactId>
+    </dependency>
 
+    <!-- redis -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
 
 
 
@@ -144,7 +154,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
-          <!-- 如果没有该配置，热部署的devtools不⽣效 -->
+          <!-- 如果没有该配置，热 部署的devtools不⽣效 -->
           <fork>true</fork>
         </configuration>
       </plugin>

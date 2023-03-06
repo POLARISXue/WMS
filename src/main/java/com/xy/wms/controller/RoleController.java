@@ -27,11 +27,13 @@ public class RoleController extends BaseController {
     public String index(){
         return "role/role";
     }
+
     @RequestMapping("list")
     @ResponseBody
     public Map<String,Object> selectByParams(RoleQuery roleQuery){
-        return roleService.queryByParamsForTable(roleQuery);
+        return roleService.queryByParamsForTable(roleQuery,"role:list");
     }
+
     @PostMapping("add")
     @ResponseBody
     public ResultInfo addRole(Role role){

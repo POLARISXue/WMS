@@ -1,6 +1,7 @@
 package com.xy.wms.query;
 
 import com.xy.wms.base.BaseQuery;
+import org.apache.commons.lang3.StringUtils;
 
 public class GoodsQuery extends BaseQuery {
     private String goodsName;
@@ -20,5 +21,17 @@ public class GoodsQuery extends BaseQuery {
 
     public void setGoodsType(String goodsType) {
         this.goodsType = goodsType;
+    }
+
+    @Override
+    public StringBuffer getRedisKey() {
+        StringBuffer key = new StringBuffer(super.getRedisKey());
+        if (StringUtils.isNotBlank(goodsName)){
+            key.append(":goodsName:"+goodsName);
+        }
+        if (StringUtils.isNotBlank(goodsType)){
+            key.append(":goodsType:"+goodsType);
+        }
+        return key;
     }
 }

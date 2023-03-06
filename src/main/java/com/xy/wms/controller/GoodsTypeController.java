@@ -26,34 +26,40 @@ public class GoodsTypeController extends BaseController {
     public String index(){
         return "goods_type/goods_type";
     }
+
     @RequestMapping("list")
     @ResponseBody
     public Map<String, Object> selectByParams(GoodsTypeQuery goodsTypeQuery) {
-        return goodsTypeService.queryByParamsForTable(goodsTypeQuery);
+        return goodsTypeService.queryByParamsForTable(goodsTypeQuery,"goodsType:list");
     }
+
     @RequestMapping("/queryAllGoodsType")
     @ResponseBody
     public List<Map<String,Object>> queryAllGoodsType(){
         return goodsTypeService.queryAllGoodsType();
     }
+
     @PostMapping("add")
     @ResponseBody
     public ResultInfo addGoodsType(GoodsType goodsType){
         goodsTypeService.addGoodsType(goodsType);
         return success("用户添加成功");
     }
+
     @PostMapping("update")
     @ResponseBody
     public ResultInfo updateGoodsType(GoodsType goodsType){
         goodsTypeService.updateGoodsType(goodsType);
         return success("用户修改成功");
     }
+
     @PostMapping("delete")
     @ResponseBody
     public ResultInfo deleteGoodsType(Integer[] ids){
-        goodsTypeService.deleteBatch(ids);
+        goodsTypeService.deleteBatch(ids,"goodsType:list");
         return success("用户删除成功");
     }
+
     @RequestMapping("openAddOrUpdateGoodsTypePage")
     public String openAddOrUpdateGoodsTypePage(Integer id, HttpServletRequest request) {
 

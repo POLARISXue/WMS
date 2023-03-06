@@ -7,6 +7,8 @@ import com.xy.wms.model.TreeModel;
 import com.xy.wms.utils.AssertUtil;
 import com.xy.wms.vo.Module;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,10 +26,28 @@ public class ModuleService extends BaseService<Module, Integer> {
     @Resource
     private PermissionMapper permissionMapper;
 
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
+
+    @Resource(name = "redisTemplate")
+    private ValueOperations<String,Object> valueOperations;
+
+
     public Map<String, Object> queryModuleList() {
+        StringBuffer keyBuff = new StringBuffer("module:list");
+        String key = keyBuff.toString();
+        List<Module> moduleList = null;
+        if (redisTemplate.hasKey(key)){
+            moduleList = (List<Module>) valueOperations.get(key);
+        }else {
+            moduleList = moduleMapper.queryModuleList();
+            if (moduleList!=null){
+                valueOperations.set(key,moduleList);
+            }
+        }
+
         Map<String, Object> map = new HashMap<>();
         //查询资源数据
-        List<Module> moduleList = moduleMapper.queryModuleList();
         //设置默认值
         map.put("code", 0);
         map.put("msg", "");
@@ -77,7 +97,7 @@ public class ModuleService extends BaseService<Module, Integer> {
         module.setUpdateDate(new Date());
         //执行添加操作
         AssertUtil.isTrue(moduleMapper.insertSelective(module) < 1,"资源添加失败");
-
+        redisTemplate.delete(redisTemplate.keys("module:list*"));
     }
 
     /**
@@ -126,6 +146,7 @@ public class ModuleService extends BaseService<Module, Integer> {
 
         /* 3. 执行更新操作，判断受影响的行数 */
         AssertUtil.isTrue(moduleMapper.updateByPrimaryKeySelective(module) < 1,"修改资源失败");
+        redisTemplate.delete(redisTemplate.keys("module:list*"));
     }
 
     /**
@@ -151,6 +172,7 @@ public class ModuleService extends BaseService<Module, Integer> {
         temp.setIsValid((byte) 0);
         temp.setUpdateDate(new Date());
         AssertUtil.isTrue(moduleMapper.updateByPrimaryKeySelective(temp)<1,"用户记录删除失败！" );
+        redisTemplate.delete(redisTemplate.keys("module:list*"));
     }
 
     public List<TreeModel> queryAllModules(Integer roleId) {

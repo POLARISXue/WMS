@@ -197,7 +197,7 @@ layui.use(['table','layer'],function(){
                         //提示成功
                         layer.msg("删除成功！",{icon:6});
                         //删除表格
-                        tableIns.reload();
+                        tableIns.reload({page:{curr:1}});
                     }else {
                         //提示失败
                         layer.msg(result.msg,{icon:5});

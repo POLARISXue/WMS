@@ -3,9 +3,9 @@ server:
   port: 8083
   servlet:
     context-path: /wms
+
 ## 数据源配置
 spring:
-
   datasource:
     type: com.mchange.v2.c3p0.ComboPooledDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -23,6 +23,31 @@ spring:
     restart:
       enabled: true
       additional-paths: src/main/java
+  ## 启用reids缓存
+  redis:
+    # Redis服务器地址
+    host: 192.168.10.180
+    # Redis服务器端口
+    port: 6379
+    # Redis服务器端口
+    password: root
+    # Redis服务器端口
+    database: 0
+    # 连接超时时间
+    timeout: 10000ms
+    lettuce:
+      pool:
+        # 最大连接数，默认8
+        max-active: 1024
+        # 最大连接阻塞等待时间，单位毫秒，默认-1ms
+        max-wait: 10000ms
+        # 最大空闲连接，默认8
+        max-idle: 200
+        # 最小空闲连接，默认0
+        min-idle: 5
+    sentinel:
+      master: mymaster
+      nodes: 192.168.10.180:26379,192.168.10.180:26380,192.168.10.180:26381
 
 ## mybatis 配置
 mybatis:

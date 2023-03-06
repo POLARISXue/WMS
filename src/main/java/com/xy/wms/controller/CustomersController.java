@@ -47,20 +47,17 @@ public class CustomersController extends BaseController {
     @RequestMapping("list")
     @ResponseBody
     public Map<String,Object> selectByParams(CustomersQuery customersQuery){
-        return customersService.queryByParamsForTable(customersQuery);
+        return customersService.selectByParams(customersQuery);
     }
     /**
      * 添加需求商
      * @param customers
-     * @param request
      * @return
      */
     @RequestMapping("add")
     @ResponseBody
-    public ResultInfo addCustomers(Customers customers, HttpServletRequest request){
+    public ResultInfo addCustomers(Customers customers){
         //获取数据
-        String name = CookieUtil.getCookieValue(request,"name");
-        customers.setName(name);
         //调用service
         customersService.addCustomers(customers);
         return success("需求商添加成功！");
@@ -71,7 +68,7 @@ public class CustomersController extends BaseController {
      * @param customers
      * @return
      */
-    @RequestMapping("update")
+    @RequestMapping("/update")
     @ResponseBody
     public ResultInfo updateCustomers(Customers customers){
         //调用service
